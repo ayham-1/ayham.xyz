@@ -7,10 +7,10 @@ tags: ["lifestyle", "website"]
 
 Topics:
 	Introduction:
-		- introduce my website
+		- introduce emacs taking over everything
 	P1:
-		- the problem of documentation in emacs
-		- the problem of images in emacs
+		- the problem of documentation in emacs built websites
+		- the problem of images in emacs built websites
 	P2:
 		- the disadvantages of using emacs
 			- no interportability
