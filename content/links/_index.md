@@ -28,6 +28,7 @@ A top-tier list of interesting links I found on the Internet.
 * <https://jcs.org> - OpenBSD user and developer.
 * <https://scottlocklin.wordpress.com> - A former physicist.
 * <https://mnot.net> - Chair of IETF HTTP WG.
+* <https://is.xyz> - Partner at Matrix and Angel Investor.
 
 # Podcasts
 * <https://notrelated.xyz> - An interesting podcast.
