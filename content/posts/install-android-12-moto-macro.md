@@ -1,7 +1,7 @@
 ---
 title: "Installing Android 12 On The Motorola One Macro (lima)"
 date: 2022-08-02T13:00:46+03:00
-draft: true
+tags: ["guide", "android"]
 ---
 
 Motorola One Macro, codename lima, can surprisingly be upgraded to Android 12.
