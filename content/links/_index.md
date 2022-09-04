@@ -5,7 +5,7 @@ type: "generic"
 layout: "single"
 ---
 
-A top-tier list of interesting links I found on the Internet.
+A top-tier list of interesting links I find on the Internet.
 
 # People
 * <https://denshi.org> - A zoomer turning boomer.
