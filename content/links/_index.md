@@ -72,6 +72,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://art.marcsimonetti.com> - French concept artist/illustrator.
 * <https://artvee.com> - Classical Art
 * <https://craiyon.com> - Generate images using prompts fed into an AI.
+* <https://beta.dreamstudio.ai> - A more realistic image AI generation.
 
 # Other
 * <https://nytimes.com/games/wordle> - A good word game hosted by NYtimes.
