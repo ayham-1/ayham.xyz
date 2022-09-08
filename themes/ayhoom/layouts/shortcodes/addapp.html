@@ -1,13 +1,6 @@
 <!-- ENTERING SHORTCODE: addapp -->
 {{- $appName := .Get 0 }}
-
-{{- $appHTML := resources.Get (printf "apps/%s/app.html" ($appName | safeURL)) |
-resources.Minify}}
-{{- $appJS := resources.Get (printf "apps/%s/app.js" ($appName | safeURL)) |
-resources.Minify}}
-
-{{ safeHTML $appHTML.Content }}
-
+{{- $appJS := resources.Get (printf "apps/%s/app.js" ($appName | safeURL)) }}
+{{- partial (printf "apps/%s/app.html" ($appName | safeURL)) . }}
 <script src="{{ $appJS.Permalink }}"></script>
-
 <!-- EXITING SHORTCODE: addapp -->

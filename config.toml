@@ -9,7 +9,7 @@ date = [":git","date", "publishDate", "lastmod"]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 rssLimit = 20
-copyright = "(c) 2021 ayham"
+copyright = "(c) 2022 ayham"
 
 [author]
 	name = "ayham"
@@ -56,6 +56,11 @@ copyright = "(c) 2021 ayham"
 		pre = "apps"
 		url = "/apps/"
 		weight = 8
+	[[menu.main]]
+		name = "AIartist"
+		pre = "random"
+		url = "/random/"
+		weight = 9
 
 [markup]
   [markup.highlight]

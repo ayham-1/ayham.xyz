@@ -1,0 +1,17 @@
+<center>
+	<div id="rndCanvas">
+	</div>
+	<script>
+		var arr = [];
+		{{ with resources.Match "pix/ai/*" }}
+		{{- range . }}
+		{{- $image := resources.Get (printf "%s" (. | safeURL)) -}}
+		{{- $image = $image.Resize " 512x webp" -}}
+		{{- $image = $image | resources.Fingerprint "md5" -}}
+		arr.push(["{{- $image.Permalink -}}", "{{- $image.Data.Integrity -}}"]);
+		{{- end }}
+		{{- end }}
+		var imageToShow=arr[Math.floor(Math.random() * arr.length)]
+		document.getElementById("rndCanvas").innerHTML="<img src='"+imageToShow[0]+"' integrity='"+imageToShow[1]+"' />";
+	</script>
+</center>
