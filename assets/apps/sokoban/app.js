@@ -13,7 +13,7 @@ Module.expectedDataFileDownloads++;
             PACKAGE_PATH = encodeURIComponent(location.pathname.toString().substring(0, location.pathname.toString().lastIndexOf("/")) + "/")
         }
         var PACKAGE_NAME = "zig-out/web/game.data";
-        var REMOTE_PACKAGE_BASE = "game.data";
+        var REMOTE_PACKAGE_BASE = "https://codeberg.org/ayham/sokoban/raw/branch/master/web.bin/game.data";
         if (typeof Module["locateFilePackage"] === "function" && !Module["locateFile"]) {
             Module["locateFile"] = Module["locateFilePackage"];
             err("warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)")
@@ -968,7 +968,7 @@ function createExportWrapper(name, fixedasm) {
     }
 }
 var wasmBinaryFile;
-wasmBinaryFile = "game.wasm";
+wasmBinaryFile = "https://codeberg.org/ayham/sokoban/raw/branch/master/web.bin/game.wasm";
 if (!isDataURI(wasmBinaryFile)) {
     wasmBinaryFile = locateFile(wasmBinaryFile)
 }
