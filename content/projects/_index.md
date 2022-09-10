@@ -18,6 +18,17 @@ Creation Date: 2022-05-18
 Description:  
 An upcoming project...
 
+## cd proj/sokoban
+[sokoban.webp](pix/proj/sokoban.png "sokoban")
+Development Status: *Semi-Archived*  
+Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
+Last Update: 2022-09-09
+Creation Date: 2022-06-26
+Description:  
+A simple sokoban implementation that currently uses an AI pre-generated set of
+puzzles. The code for home-built puzzle generation is currently incomplete. 
+Uses very bleedy-edge technology: Zig (master), WASM and emscripten.
+
 ## cd proj/CamCurrency
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")
 Development Status: *Active*  
