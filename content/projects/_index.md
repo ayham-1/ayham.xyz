@@ -19,7 +19,7 @@ Description:
 An upcoming project...
 
 ## cd proj/sokoban
-[sokoban.webp](pix/proj/sokoban.png "sokoban")
+[sokoban.webp](pix/proj/sokoban.webp "sokoban")
 Development Status: *Semi-Archived*  
 Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
 Last Update: 2022-09-09
