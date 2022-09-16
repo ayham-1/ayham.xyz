@@ -46,6 +46,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://mentalmodelsbox.com> - A list of mental models
 * <https://effectiviology.com> - Practical philosophy.
 * <https://towardsdatascience.com> - Data science newspaper.
+* <https://dangitgit.com> - Lifesaver in regards to Git.
 
 # Tools
 * <https://wiby.org> - The search engine for the minimal internet.
