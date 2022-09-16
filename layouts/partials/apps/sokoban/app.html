@@ -1,5 +1,7 @@
-{{- $sokoshell := resources.Get (printf "apps/sokoban/sokoshell.css" | safeURL) -}}
-<link href="{{- $sokoshell.Permalink -}}" rel="stylesheet" />
+{{- $sokoshellCSS := resources.Get (printf "apps/sokoban/sokoshell.css" | safeURL)
+| resources.Fingerprint "md5" -}}
+<link href="{{- $sokoshellCSS.Permalink -}}" rel="stylesheet" integrity="{{
+$sokoshellCSS.Data.Integrity }}" />
 <div class="emscripten" id="status">Downloading...</div>
 <div class="emscripten">
   <progress hidden id="progress" max="100" value="0"></progress>
@@ -41,5 +43,7 @@
   </div>
 </div>
 <br />
-{{- $sokoshell := resources.Get (printf "apps/sokoban/sokoshell.js" | safeURL) -}}
-<script src="{{- $sokoshell.Permalink -}}"></script>
+{{- $sokoshellJS := resources.Get (printf "apps/sokoban/sokoshell.js" | safeURL)
+|resources.Fingerprint "md5" -}}
+<script src="{{- $sokoshellJS.Permalink -}}" integrity="{{
+			 $sokoshellJS.Data.Integrity }}"></script>
