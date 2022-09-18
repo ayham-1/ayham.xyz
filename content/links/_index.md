@@ -45,7 +45,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://yourlogicalfallacyis.com> - Stop making logical fallacies.
 * <https://mentalmodelsbox.com> - A list of mental models
 * <https://effectiviology.com> - Practical philosophy.
-* <https://towardsdatascience.com> - Data science newspaper.
+* <https://towardsdatascience.com> - Data science journal.
 * <https://dangitgit.com> - Lifesaver in regards to Git.
 
 # Tools
