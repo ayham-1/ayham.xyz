@@ -4,7 +4,7 @@ date: 2022-09-04T18:07:13+03:00
 tags: ["guide", "website"]
 ---
 
-Static webpages are well renowned for there speed, security, and simplicity. A
+Static webpages are well renowned for their speed, security, and simplicity. A
 very common misconception is that static webpages can't enjoy Javascript. Here
 is how I got this website to template applications that use Javascript and WASM
 using Hugo's shortcode system.
