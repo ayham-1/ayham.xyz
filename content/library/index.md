@@ -43,5 +43,4 @@ List of books I read, this is neither a recommendation list nor endorsement.
 * Slavoj Zizek - The Sublime Object of Ideology
 * Mario Puzo - The Godfather
 * Debra Soh - The End of Gender: Debunking the Myths About Sex and Identity in Our Society
-
-# Research Papers
+* John Kessnich, Graham Sollers, and Dave Shreiner - The OpenGL Programing Guide
