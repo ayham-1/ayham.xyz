@@ -1,7 +1,6 @@
 ---
 title: "A Practical Guide to GnuPG"
 date: 2022-09-27T18:22:03+03:00
-draft: true
 ---
 
 {{< image-resize "pix/posts/guide-to-gpg/encryption-chadism.webp" "400x400" >}}
