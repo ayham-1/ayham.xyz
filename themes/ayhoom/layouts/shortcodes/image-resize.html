@@ -1,0 +1,10 @@
+{{- $imagename := (.Get 0) -}}
+{{- $options := .Get 1 -}}
+{{- $original := resources.Get (printf "%s" ($imagename | safeURL)) |
+resources.Fingerprint "md5" -}}
+{{- with ($original.Resize $options) -}}
+<center>
+<img alt="{{- $imagename | htmlUnescape -}}" src="{{ .RelPermalink }}" width="{{
+.Width }}" height="{{ .Height }}" integrity="{{ .Data.Integrity }}">
+</center>
+{{- end -}} 
