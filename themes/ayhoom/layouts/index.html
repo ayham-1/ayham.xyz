@@ -10,10 +10,32 @@
 	<center>
 		<h4>{{ .Site.Title }}</h4>
 		<img class=pfp src="{{ $image.Permalink }}" width=35% height=auto
-		alt="ayham">
+					   alt="ayham">
 		<h3>{{ .Params.subtitle }}</h3>
-		{{- partial "header.html" . -}}
-		<p>Navigate this website by clicking on the above navigation bar.</p>
+		<table style="width:80%">
+			<tr>
+				<td style="width:50%">
+					<h5 style="text-align:center">Latest Articles</h5>
+					<ul style="text-align:left">
+						{{- range ( where .Site.RegularPages "Type" "posts" | first 5 ) -}}
+						<li><a href="{{.Permalink}}">{{.Title}}</a></li>
+						{{- end -}}
+					</ul>
+				</td>
+				<td>
+					<h5 style="text-align:center">Website's Navigation</h5>
+					{{- partial "header.html" . -}}
+				</td>
+			</tr>
+			<tr >
+				<td></td>
+				<td style="width:50%">
+					<center>
+					<p>Navigate this website by clicking on the above navigation bar.</p>
+					</center>
+				</td>
+			</tr>
+		</table>
 		{{ .Content }}
 	</center>
 </main>
