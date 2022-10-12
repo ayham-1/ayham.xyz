@@ -1,0 +1,10 @@
+.indexTable {
+	display:grid;
+	grid-template-rows: 50% 50%;
+}
+
+@media screen and (min-width: 40em) {
+	.indexTable {
+		grid-template-columns: 50% 50%;
+	}
+}
