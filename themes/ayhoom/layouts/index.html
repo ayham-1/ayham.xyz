@@ -12,30 +12,23 @@
 		<img class=pfp src="{{ $image.Permalink }}" width=35% height=auto
 					   alt="ayham">
 		<h3>{{ .Params.subtitle }}</h3>
-		<table style="width:80%">
-			<tr>
-				<td style="width:50%">
+		<div style="display:grid;grid-template-rows: 50% 50%;">
+			<div style="display:block">
 					<h5 style="text-align:center">Latest Articles</h5>
-					<ul style="text-align:left">
+					<ul style="width:80%;text-align:left">
 						{{- range ( where .Site.RegularPages "Type" "posts" | first 5 ) -}}
 						<li><a href="{{.Permalink}}">{{.Title}}</a></li>
 						{{- end -}}
 					</ul>
-				</td>
-				<td>
-					<h5 style="text-align:center">Website's Navigation</h5>
-					{{- partial "header.html" . -}}
-				</td>
-			</tr>
-			<tr >
-				<td></td>
-				<td style="width:50%">
-					<center>
+			</div>
+			<div style="display:block">
+				<h5 style="text-align:center">Website's Navigation</h5>
+				{{- partial "header.html" . -}}
+				<center>
 					<p>Navigate this website by clicking on the above navigation bar.</p>
-					</center>
-				</td>
-			</tr>
-		</table>
+				</center>
+			</div>
+		</div>
 		{{ .Content }}
 	</center>
 </main>
