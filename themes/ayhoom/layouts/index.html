@@ -17,10 +17,10 @@
 					   alt="ayham">
 		<h3>{{ .Params.subtitle }}</h3>
 		<div class="indexTable">
-			<div style="display:block;vertical-align: center">
+			<div style="display:block;">
 					<h5 style="text-align:center">Latest Articles</h5>
 					<ul style="width:80%;text-align:left">
-						{{- range ( where .Site.RegularPages "Type" "posts" | first 5 ) -}}
+						{{- range ( where .Site.RegularPages "Type" "posts" | first 7 ) -}}
 						<li><a href="{{.Permalink}}">{{.Title}}</a></li>
 						{{- end -}}
 					</ul>

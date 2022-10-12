@@ -30,7 +30,7 @@ IDEAS:
 Imagine an application distribution system where it is decentralized, a SINGLE
 executable, directly from the developer, with no extra dependencies. Meet
 AppImages, argueably the second worst distribution system after Snaps. But Why?
-Why would I call such a /great/ system as second worst? 
+Why would I call such a *great* system as second worst? 
 
 It all begins with this quote from their official website: 
 > "As a user, I want to download an application from the original author, and
