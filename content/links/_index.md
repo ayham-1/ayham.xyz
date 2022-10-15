@@ -75,6 +75,16 @@ A top-tier list of interesting links I find on the Internet.
 * <https://craiyon.com> - Generate images using prompts fed into an AI.
 * <https://beta.dreamstudio.ai> - A more realistic image AI generation.
 
+# German Language
+* <https://www.verbformen.com> - Word definitions, pronounciations &
+  declensions.
+* <https://www.wordreference.com> - Very detailed word definitions.
+* <https://www.linguee.com> - Word translations with example uses from around
+  the internet.
+* <https://www.deepl.com> - AI powered phrase & sentence translations.
+* <https://german.net> - Reading material & comprehension categorized into the
+  CEFR groups.
+
 # Other
 * <https://nytimes.com/games/wordle> - A good word game hosted by NYtimes.
 * <https://tie-a-tie.net> - Learn to tie a tie; sometimes tying a tie is not
