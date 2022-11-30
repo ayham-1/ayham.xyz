@@ -7,6 +7,34 @@ layout: "store"
 
 This is my store where you can find information all about apps I sell.
 
+## firmus
+![feature.webp](/pix/store/firmus/feature.webp "feature")
+Platform: Google Play Store & Codeberg
+
+Install:
+[BUY](https://play.google.com/store/apps/details?id=xyz.ayham.)
+[FREE](https://codeberg.org/ayham/firmus)
+
+firmus is a trusty, strong and reliable application launcher for Android.
+
+The main distinctive feature of the firmus launcher is the 4-page homescreen: 
+empty, history, search page and all apps. The pages are accessed by: clicking
+on the screen to open history, clicking on the small circle to open all apps,
+typing in the search bar opens the search page, clicking anywhere empty clears
+the screens.
+
+The settings page includes a minimal but comprehensive list of configurations
+that can be toggled and changed dynamically in runtime: startup page choice,
+disable history, prefer applications over contacts when searching, left/right
+hand layout, use grid layout, setup background color (can be transparent), 
+border color, search bar color.
+
+* ![1080x1080_1.webp](/pix/store/firmus/1080x1080_1.webp)
+* ![1080x1080_2.webp](/pix/store/firmus/1080x1080_2.webp)
+* ![1080x1080_3.webp](/pix/store/firmus/1080x1080_3.webp)
+* ![1080x1080_4.webp](/pix/store/firmus/1080x1080_4.webp)
+* ![1080x1080_5.webp](/pix/store/firmus/1080x1080_5.webp)
+
 ## CamCurrency
 ![feature.webp](pix/store/camcurrency/feature.webp "feature")
 Platform: Google Play Store

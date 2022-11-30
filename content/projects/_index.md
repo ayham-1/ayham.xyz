@@ -9,6 +9,26 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/firmus
+![firmus.webp](pix/proj/firmus.webp "firmus")
+Development Status: *Active*  
+Project Link: [codeberg.org/ayham/firmus](https://codeberg.org/ayham/firmus)  
+Last Update: *
+Creation Date: 2022-09-25  
+Description:  
+A trusty, strong and reliable application launcher for Android.
+
+## cd proj/sokoban
+![sokoban.webp](pix/proj/sokoban.webp "sokoban")
+Development Status: *Archived*  
+Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
+Last Update: 2022-09-09
+Creation Date: 2022-06-26
+Description:  
+A simple sokoban implementation that currently uses an AI pre-generated set of
+puzzles. The code for home-built puzzle generation is currently incomplete. 
+Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
+
 ## cd proj/wsgen
 ![wsgen.webp](pix/proj/wsgen.webp "wsgen")
 Development Status: *Active*  
@@ -17,17 +37,6 @@ Last Update: *
 Creation Date: 2022-05-18  
 Description:  
 An upcoming project...
-
-## cd proj/sokoban
-![sokoban.webp](pix/proj/sokoban.webp "sokoban")
-Development Status: *Semi-Archived*  
-Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
-Last Update: 2022-09-09
-Creation Date: 2022-06-26
-Description:  
-A simple sokoban implementation that currently uses an AI pre-generated set of
-puzzles. The code for home-built puzzle generation is currently incomplete. 
-Uses very bleedy-edge technology: Zig (master), WASM and emscripten.
 
 ## cd proj/CamCurrency
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")
