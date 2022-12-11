@@ -1,33 +1,30 @@
 name: Deploy Site
-
-on:
+true:
   push:
     branches:
       - master
-
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: '${{ github.workflow }}-${{ github.ref }}'
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
+          fetch-depth: 0
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.98.0'
           extended: true
-
+          hugo-version: 0.98.0
       - name: Build
         run: hugo --minify
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
+      - env:
           BRANCH: public
           FOLDER: public
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: "Build: ({sha}) {msg}"
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          MESSAGE: 'Build: ({sha}) {msg}'
+          REPO: self
+          SQUASH_HISTORY: true
+        name: Push
+        uses: s0/git-publish-subdir-action@develop
