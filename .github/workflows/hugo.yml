@@ -1,5 +1,5 @@
 name: Deploy Site
-true:
+on:
   push:
     branches:
       - master
