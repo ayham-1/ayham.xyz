@@ -47,6 +47,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://effectiviology.com> - Practical philosophy.
 * <https://towardsdatascience.com> - Data science journal.
 * <https://dangitgit.com> - Lifesaver in regards to Git.
+* <https://no-color.org> - Minimize colors in terminals.
 
 # Tools
 * <https://wiby.org> - The search engine for the minimal internet.
