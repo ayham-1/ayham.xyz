@@ -5,7 +5,8 @@ date: 2022-12-18T10:59:37+03:00
 
 *The following is my script for a speech I made in my school's Oxford-style
 debate competition which was held today, on 2022-12-25. The motion of the debate
-was "All Truth is Subjective", I was the opposition's 1st speaker. Our team went on to win the debate.*
+was "All Truth is Subjective", I was the opposition's 1st speaker. Our team went
+on to win the debate.*
 
 Hello Everyone. 
 
