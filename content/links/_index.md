@@ -49,6 +49,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://dangitgit.com> - Lifesaver in regards to Git.
 * <https://no-color.org> - Minimize colors in terminals.
 * <https://zettelkasten.de> - An interesting note-taking system.
+* <https://arewewaylandyet.com> - Are we wayland yet?.
 
 # Tools
 * <https://wiby.org> - The search engine for the minimal internet.
