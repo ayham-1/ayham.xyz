@@ -70,6 +70,8 @@ h1, h2, h3, h4, h5, h6 {
 	text-decoration: underline;
 	text-decoration-style: solid;
 	text-decoration-color: var(--headings-underline);
+
+	font-variant: small-caps;
 }
 
 ul h3 { 
