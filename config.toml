@@ -56,11 +56,6 @@ copyright = "(c) 2022 ayham"
 		pre = "apps"
 		url = "/apps/"
 		weight = 8
-	[[menu.main]]
-		name = "AIartist"
-		pre = "random"
-		url = "/random/"
-		weight = 9
 
 [markup]
   [markup.highlight]
