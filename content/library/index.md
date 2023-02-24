@@ -4,8 +4,10 @@ type: "library"
 layout: "single"
 ---
 
-List of books I read, this is neither a recommendation list nor endorsement.
+List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* War Kitchen - Issue 9
+* War Kitchen - Issue 8
 * Theodore Kaczynski - Technological Slavery
 * Bronze Age Pervert - Bronze Age Mindset
 * Anne Rooney - Think Like A Mathematician
