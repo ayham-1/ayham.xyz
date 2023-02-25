@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Alain Deneault - Mediocracy: The Politics of the Extreme Centre
 * War Kitchen - Issue 9
 * War Kitchen - Issue 8
 * Theodore Kaczynski - Technological Slavery
