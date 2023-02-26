@@ -5,9 +5,12 @@ type: "generic"
 layout: "single"
 ---
 
+# Links
+
 A top-tier list of interesting links I find on the Internet.
 
-# People
+## People
+
 * <https://denshi.org> - A zoomer turning boomer.
 * <https://lukesmith.xyz> - The chad, the man himself, Luke.
 * <https://drewdevault.com> - Creator of [Sway](https://swaywm.org/).
@@ -30,10 +33,12 @@ A top-tier list of interesting links I find on the Internet.
 * <https://mnot.net> - Chair of IETF HTTP WG.
 * <https://is.xyz> - Partner at Matrix and Angel Investor.
 
-# Podcasts
+## Podcasts
+
 * <https://notrelated.xyz> - An interesting podcast.
 
-# Good Articles
+## Good Articles
+
 * <https://wiki.chadnet.org> - Weird and obscure wiki.
 * <https://based.cooking> - Based Cooking.
 * <https://landchad.net> - Build a website!
@@ -50,8 +55,10 @@ A top-tier list of interesting links I find on the Internet.
 * <https://no-color.org> - Minimize colors in terminals.
 * <https://zettelkasten.de> - An interesting note-taking system.
 * <https://arewewaylandyet.com> - Are we wayland yet?.
+* <https://dontasktoask.com> - Just ask.
 
-# Tools
+## Tools
+
 * <https://wiby.org> - The search engine for the minimal internet.
 * <https://cht.sh> - A useful cheatsheet.
 * <https://0x0.st> - File sharing service, 512MB limit.
