@@ -5,11 +5,11 @@ type: "generic"
 layout: "single"
 ---
 
-# Links
+<!-- markdownlint-configure-file { "MD025": {"level": 2} } -->
 
 A top-tier list of interesting links I find on the Internet.
 
-## People
+# People
 
 * <https://denshi.org> - A zoomer turning boomer.
 * <https://lukesmith.xyz> - The chad, the man himself, Luke.
@@ -33,11 +33,11 @@ A top-tier list of interesting links I find on the Internet.
 * <https://mnot.net> - Chair of IETF HTTP WG.
 * <https://is.xyz> - Partner at Matrix and Angel Investor.
 
-## Podcasts
+# Podcasts
 
 * <https://notrelated.xyz> - An interesting podcast.
 
-## Good Articles
+# Good Articles
 
 * <https://wiki.chadnet.org> - Weird and obscure wiki.
 * <https://based.cooking> - Based Cooking.
@@ -57,7 +57,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://arewewaylandyet.com> - Are we wayland yet?.
 * <https://dontasktoask.com> - Just ask.
 
-## Tools
+# Tools
 
 * <https://wiby.org> - The search engine for the minimal internet.
 * <https://cht.sh> - A useful cheatsheet.
@@ -68,24 +68,29 @@ A top-tier list of interesting links I find on the Internet.
 * <https://goatcounter.com> - Privacy respecting WebAnalytics.
 
 # Hardware
+
 * <https://thelightphone.com> - A minimal phone.
 
 # Link Directories
+
 * <https://soda.privatevoid.net/num/links> - An unorganized list of links.
 * <https://dotshare.it> - dotfile sharing platform, social media style
   (somewhat)
 
 # Social
+
 * <https://lobste.rs> - Tech community.
 * <https://news.ycombinator.com/> - The Official Hacker News forum.
 
 # Art
+
 * <https://art.marcsimonetti.com> - French concept artist/illustrator.
 * <https://artvee.com> - Classical Art
 * <https://craiyon.com> - Generate images using prompts fed into an AI.
 * <https://beta.dreamstudio.ai> - A more realistic image AI generation.
 
 # German Language
+
 * <https://www.verbformen.com> - Word definitions, pronounciations &
   declensions.
 * <https://www.wordreference.com> - Very detailed word definitions.
@@ -96,6 +101,7 @@ A top-tier list of interesting links I find on the Internet.
   CEFR groups.
 
 # Other
+
 * <https://nytimes.com/games/wordle> - A good word game hosted by NYtimes.
 * <https://tie-a-tie.net> - Learn to tie a tie; sometimes tying a tie is not
   en-tie-rely easy.
