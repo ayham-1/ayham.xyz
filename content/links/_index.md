@@ -66,6 +66,7 @@ A top-tier list of interesting links I find on the Internet.
 * <https://temp.sh> - A file sharing service, but with 4GB limit.
 * <https://search.marginalia.nu> - DIY Search engine.
 * <https://goatcounter.com> - Privacy respecting WebAnalytics.
+* <https://johnsonsdictionaryonline.com> - Samuel Johnson's Dictionary.
 
 # Hardware
 
