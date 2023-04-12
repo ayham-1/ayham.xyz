@@ -6,6 +6,8 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* DK - Quantum Physics Simply
+* Victor Hugo - Les Miserables [Volume 1]
 * Charles Dickens - Hard Times
 * Zero HP Lovecraft - They Had No Deepness of Earth
 * Alain Deneault - Mediocracy: The Politics of the Extreme Centre
