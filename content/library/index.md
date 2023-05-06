@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Aldous Huxley - Brave New World
 * Franz Kafka - The Trial
 * DK - Quantum Physics Simply
 * Victor Hugo - Les Miserables [Volume 1]
