@@ -14,9 +14,9 @@ This page could also be seen as a timeline of my 'project-life'.
 
 ![wsgen.webp](pix/proj/wsgen.webp "wsgen")
 Development Status: *Active*  
-Project Link: [codeberg.org/ayham/wsgen](https://codeberg.org/ayham/wsgen.db)  
+Project Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
 Last Update: *  
-Creation Date: 2022-05-18  
+Creation Date: 2022-05-18
 Description:
 Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
 
