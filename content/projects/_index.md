@@ -5,11 +5,23 @@ layout: "single"
 ---
 
 # cd proj/
+
 This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/wsgen
+
+![wsgen.webp](pix/proj/wsgen.webp "wsgen")
+Development Status: *Active*  
+Project Link: [codeberg.org/ayham/wsgen](https://codeberg.org/ayham/wsgen.db)  
+Last Update: *  
+Creation Date: 2022-05-18  
+Description:
+Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
+
 ## cd proj/firmus
+
 ![firmus.webp](pix/proj/firmus.webp "firmus")
 Development Status: *Active*  
 Project Link: [codeberg.org/ayham/firmus](https://codeberg.org/ayham/firmus)  
@@ -19,6 +31,7 @@ Description:
 A trusty, strong and reliable application launcher for Android.
 
 ## cd proj/sokoban
+
 ![sokoban.webp](pix/proj/sokoban.webp "sokoban")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
@@ -29,16 +42,8 @@ A simple sokoban implementation that currently uses an AI pre-generated set of
 puzzles. The code for home-built puzzle generation is currently incomplete. 
 Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
 
-## cd proj/wsgen
-![wsgen.webp](pix/proj/wsgen.webp "wsgen")
-Development Status: *Active*  
-Project Link: [codeberg.org/ayham/wsgen](https://codeberg.org/ayham/wsgen.db)  
-Last Update: *  
-Creation Date: 2022-05-18  
-Description:  
-An upcoming project...
-
 ## cd proj/CamCurrency
+
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")
 Development Status: *Active*  
 Project Link: [ayham.xyz/store](https://ayham.xyz/store)  
@@ -49,6 +54,7 @@ An application that allows users to convert between currencies on the fly using
 the camera. Currently the application is available on Google Play Store.
 
 ## cd proj/PaperTrader
+
 ![papertrader.webp](pix/proj/papertrader.webp "papertrader")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/PaperTrader](https://codeberg.org/ayham/PaperTrader)  
@@ -61,6 +67,7 @@ and the only part that currently works is accounts &amp; database
 management w/ the server-client 1-1 model.
 
 ## cd proj/fixmydownloads
+
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/fixmydownloads](https://codeberg.org/ayham/fixmydownloads)  
 Last Update: 2020-05-02  
@@ -71,6 +78,7 @@ is configured by code making it so small that the whole thing fits in one file!
 Eliminating the need to manually organize or clean up your downloads folder!
 
 ## cd proj/rftp
+
 ![rftp.webp](pix/proj/rftp.webp "rftp")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/rftp](https://codeberg.org/ayham/rftp)  
@@ -80,6 +88,7 @@ Description:
 A simple CLI ftp server for a school project written in rust.
 
 ## cd proj/ContractNotifier
+
 ![contractnotifier.webp](pix/proj/contractnotifier.webp "contractnotifier")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/ContractNotifier](https://codeberg.org/ayham/ContractNotifier)  
@@ -93,6 +102,7 @@ solutions out there. But apparently my school principle found non, and then
 resorted to me.
 
 ## cd proj/GraphSolver
+
 ![graphsolver.webp](pix/proj/graphsolver.webp "graphsolver")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/GraphSolver](https://codeberg.org/ayham/GraphSolver)  
@@ -104,6 +114,7 @@ equations of Linear, Quadratic and Cubic. May contain bugs :D. This project
 is written with a friend, [Ali](https://github.com/AliAlboainin96).
 
 ## cd proj/upperLowerBounds
+
 ![upperlowerbounds.webp](pix/proj/upperlowerbounds.webp "upperlowerbounds")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/upperLowerBounds](https://codeberg.org/ayham/upperLowerBounds)  
@@ -114,6 +125,7 @@ Yet another grade 8 project. Calculates upper and lower bounds for
 pre-configured set of equations.
 
 ## cd proj/QuicMaf
+
 ![quicmaf.webp](pix/proj/quicmaf.webp "quicmaf")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/QuicMaf](https://codeberg.org/ayham/QuicMaf)  
@@ -125,6 +137,7 @@ notations. This project ended up containing alot of bugs that I was too lazy to
 fix.
 
 ## cd proj/kilo
+
 ![kilo.webp](pix/proj/kilo.webp "kilo")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/kilo](https://codeberg.org/ayham/kilo)  
@@ -134,6 +147,7 @@ Description:
 A small editor for the sole purpose of learning. Built by following a tutorial.
 
 ## cd proj/lsh
+
 ![lsh.webp](pix/proj/lsh.webp "lsh")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/lsh](https://codeberg.org/ayham/lsh)  
@@ -143,6 +157,7 @@ Description:
 A small shell for the sole purpose of learning. Built by following a tutorial.
 
 ## cd proj/clox
+
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/clox](https://codeberg.org/ayham/clox)  
 Last Update: 2019-02-01  
@@ -152,6 +167,7 @@ A language interpreter, followed by this tutorial:
 [craftinginterpreters.com](http://www.craftinginterpreters.com/)
 
 ## cd proj/Time-Manager
+
 ![time.manager.webp](pix/proj/time.manager.webp "time.manager")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/Time-Manager](https://codeberg.org/ayham/Time-Manager)  
@@ -161,6 +177,7 @@ Description:
 A half-complete project written for personal use to gamify time management.
 
 ## cd proj/OSRAM
+
 ![OSRAM.webp](pix/proj/osram.webp "osram.webp")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/OSRAM](https://codeberg.org/ayham/OSRAM)  
@@ -172,6 +189,7 @@ for this project is Visual Studio. Supports basic 2D rendering and simple
 collision physics.
 
 ## cd proj/TicTacToe
+
 ![tictactoe.webp](pix/proj/tictactoe.webp "tictactoe")
 Development Status: *Archived*  
 Project Link: [codeberg.org/ayham/TicTacToe](https://codeberg.org/ayham/TicTacToe)  
