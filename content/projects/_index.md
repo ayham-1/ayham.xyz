@@ -14,18 +14,21 @@ This page could also be seen as a timeline of my 'project-life'.
 
 ![wsgen.webp](pix/proj/wsgen.webp "wsgen")
 Development Status: *Active*  
-Project Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
+Webpage Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
+Project Link: [github.com/ayham-1/wsgen](https://github.com/ayham-1/wsgen)  
 Last Update: *  
-Creation Date: 2022-05-18
-Description:
-Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
+Creation Date: 2022-05-18  
+Description:  
+Innovating the workflow of curating highschool worksheet from A-Level
+like past-papers. An easy application to maintain worksheets, update them,
+export them into Question Papers, Markschemes, and Examiner report automatically.
 
 ## cd proj/firmus
 
 ![firmus.webp](pix/proj/firmus.webp "firmus")
 Development Status: *Active*  
-Project Link: [codeberg.org/ayham/firmus](https://codeberg.org/ayham/firmus)  
-Last Update: *
+Project Link: [github.com/ayham-1/firmus](https://github.com/ayham-1/firmus)  
+Last Update: *  
 Creation Date: 2022-09-25  
 Description:  
 A trusty, strong and reliable application launcher for Android.
@@ -34,19 +37,20 @@ A trusty, strong and reliable application launcher for Android.
 
 ![sokoban.webp](pix/proj/sokoban.webp "sokoban")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/sokoban](https://codeberg.org/ayham/sokoban)  
-Last Update: 2022-09-09
-Creation Date: 2022-06-26
+Project Link: [github.com/ayham-1/sokoban](https://github.com/ayham-1/sokoban)  
+Last Update: 2022-09-09  
+Creation Date: 2022-06-26  
 Description:  
 A simple sokoban implementation that currently uses an AI pre-generated set of
-puzzles. The code for home-built puzzle generation is currently incomplete. 
+puzzles. The code for home-built puzzle generation is currently incomplete.
 Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
 
 ## cd proj/CamCurrency
 
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")
 Development Status: *Active*  
-Project Link: [ayham.xyz/store](https://ayham.xyz/store)  
+Store Link: [ayham.xyz/store](https://ayham.xyz/store)  
+Project Link: [github.com/ayham-1/CamCurrency](https://github.com/ayham-1/CamCurrency)  
 Last Update: 2021-10-24  
 Creation Date: 2021-09-21  
 Description:  
@@ -57,19 +61,19 @@ the camera. Currently the application is available on Google Play Store.
 
 ![papertrader.webp](pix/proj/papertrader.webp "papertrader")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/PaperTrader](https://codeberg.org/ayham/PaperTrader)  
-Last Update: 2021-12-24  
-Creation Date: 2020-05-02  
-Description:  
-The opensource cross-platform paper trading platform for
-learning assets trading. This project has a basic architecture,
+Project Link: [github.com/ayham-1/PaperTrader](https://github.com/ayham-1/PaperTrader)  
+last update: 2021-12-24  
+creation date: 2020-05-02  
+description:  
+the opensource cross-platform paper trading platform for
+learning assets trading. this project has a basic architecture,
 and the only part that currently works is accounts &amp; database
 management w/ the server-client 1-1 model.
 
 ## cd proj/fixmydownloads
 
-Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/fixmydownloads](https://codeberg.org/ayham/fixmydownloads)  
+development status: *archived*  
+project link: [github.com/ayham-1/fixmydownloads](https://github.com/ayham-1/fixmydownloads)  
 Last Update: 2020-05-02  
 Creation Date: 2020-04-17  
 Description:  
@@ -81,7 +85,7 @@ Eliminating the need to manually organize or clean up your downloads folder!
 
 ![rftp.webp](pix/proj/rftp.webp "rftp")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/rftp](https://codeberg.org/ayham/rftp)  
+Project Link: [github.com/ayham-1/rftp](https://github.com/ayham-1/rftp)  
 Last Update: 2020-01-18  
 Creation Date: 2019-11-01  
 Description:  
@@ -91,7 +95,7 @@ A simple CLI ftp server for a school project written in rust.
 
 ![contractnotifier.webp](pix/proj/contractnotifier.webp "contractnotifier")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/ContractNotifier](https://codeberg.org/ayham/ContractNotifier)  
+Project Link: [github.com/ayham-1/ContractNotifier](https://github.com/ayham-1/ContractNotifier)  
 Last Update: 2020-01-18  
 Creation Date: 2019-11-01  
 Description:  
@@ -105,7 +109,7 @@ resorted to me.
 
 ![graphsolver.webp](pix/proj/graphsolver.webp "graphsolver")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/GraphSolver](https://codeberg.org/ayham/GraphSolver)  
+Project Link: [github.com/ayham-1/GraphSolver](https://github.com/ayham-1/GraphSolver)  
 Last Update: 2019-12-08  
 Creation Date: 2019-10-11  
 Description:  
@@ -117,7 +121,7 @@ is written with a friend, [Ali](https://github.com/AliAlboainin96).
 
 ![upperlowerbounds.webp](pix/proj/upperlowerbounds.webp "upperlowerbounds")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/upperLowerBounds](https://codeberg.org/ayham/upperLowerBounds)  
+Project Link: [github.com/ayham-1/upperLowerBounds](https://github.com/ayham-1/upperLowerBounds)  
 Last Update: 2019-10-25  
 Creation Date: 2019-09-26  
 Description:  
@@ -128,7 +132,7 @@ pre-configured set of equations.
 
 ![quicmaf.webp](pix/proj/quicmaf.webp "quicmaf")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/QuicMaf](https://codeberg.org/ayham/QuicMaf)  
+Project Link: [github.com/ayham-1/QuicMaf](https://github.com/ayham-1/QuicMaf)  
 Last Update: 2019-03-24  
 Creation Date: 2019-02-14  
 Description:  
@@ -140,7 +144,7 @@ fix.
 
 ![kilo.webp](pix/proj/kilo.webp "kilo")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/kilo](https://codeberg.org/ayham/kilo)  
+Project Link: [github.com/ayham-1/kilo](https://github.com/ayham-1/kilo)  
 Last Update: 2019-02-06  
 Creation Date: 2019-02-01  
 Description:  
@@ -150,7 +154,7 @@ A small editor for the sole purpose of learning. Built by following a tutorial.
 
 ![lsh.webp](pix/proj/lsh.webp "lsh")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/lsh](https://codeberg.org/ayham/lsh)  
+Project Link: [github.com/ayham-1/lsh](https://github.com/ayham-1/lsh)  
 Last Update: 2019-02-01  
 Creation Date: 2019-02-01  
 Description:  
@@ -159,7 +163,7 @@ A small shell for the sole purpose of learning. Built by following a tutorial.
 ## cd proj/clox
 
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/clox](https://codeberg.org/ayham/clox)  
+Project Link: [github.com/ayham-1/clox](https://github.com/ayham-1/clox)  
 Last Update: 2019-02-01  
 Creation Date: 2019-01-12  
 Description:  
@@ -170,7 +174,7 @@ A language interpreter, followed by this tutorial:
 
 ![time.manager.webp](pix/proj/time.manager.webp "time.manager")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/Time-Manager](https://codeberg.org/ayham/Time-Manager)  
+Project Link: [github.com/ayham-1/Time-Manager](https://github.com/ayham-1/Time-Manager)  
 Last Update: not available  
 Creation Date: 2019-01-02  
 Description:  
@@ -180,7 +184,7 @@ A half-complete project written for personal use to gamify time management.
 
 ![OSRAM.webp](pix/proj/osram.webp "osram.webp")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/OSRAM](https://codeberg.org/ayham/OSRAM)  
+Project Link: [github.com/ayham-1/OSRAM](https://github.com/ayham-1/OSRAM)  
 Last Update: 2018-06-08  
 Creation Date: 2018-04-18  
 Description:  
@@ -192,7 +196,7 @@ collision physics.
 
 ![tictactoe.webp](pix/proj/tictactoe.webp "tictactoe")
 Development Status: *Archived*  
-Project Link: [codeberg.org/ayham/TicTacToe](https://codeberg.org/ayham/TicTacToe)  
+Project Link: [github.com/ayham-1/TicTacToe](https://github.com/ayham-1/TicTacToe)  
 Last Update: 2017-11-19  
 Creation Date: 2017-11-18  
 Description:  
