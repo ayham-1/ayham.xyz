@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Albert Camus - Myth of Sisyphus
 * Aldous Huxley - Brave New World
 * Franz Kafka - The Trial
 * DK - Quantum Physics Simply
