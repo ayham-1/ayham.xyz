@@ -12,15 +12,15 @@
 	<meta name="author" content="ayham">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+	{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
 	<link rel="icon" type="image/x-icon" href="{{ $favicon.Permalink }}"
-										 integrity="{{ $favicon.Data.Integrity }}">
+	integrity="{{ $favicon.Data.Integrity }}">
 
 	<link rel="stylesheet" type="text/css" href="{{ $navCSS.Permalink }}"
-										   integrity="{{ $navCSS.Data.Integrity }}">
+	integrity="{{ $navCSS.Data.Integrity }}" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ $commonCSS.Permalink }}"
-										   integrity="{{ $commonCSS.Data.Integrity }}">
+	integrity="{{ $commonCSS.Data.Integrity }}" crossorigin="anonymous">
 
 	{{- $title := print .Site.Title " | " .Title -}}
 	{{- if .IsHome }}{{ $title = .Site.Title }}{{ end -}}
