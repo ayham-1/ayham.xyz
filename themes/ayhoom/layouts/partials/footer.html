@@ -1,17 +1,18 @@
 <!-- ENTERING PARTIAL: FOOTER -->
 {{- $image := resources.Get "pix/webpins/ayhamxyz.gif" | resources.Fingerprint "md5" -}}
 <footer>
-	<center>
+<center>
 		<p>Unique Visitors:
-		<a href="https://www.digits.net" target="_blank" rel=noopener>
-			<img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0  />
-		</a>
+			<a href="https://www.digits.net" target="_blank" rel=noopener>
+				<img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0  />
+			</a>
 		</p>
 		<p>
-		<a href="https://ayham.xyz">
-			<img width=88 height=31 src="{{- $image.Permalink -}}"
-									integrity="{{- $image.Data.Integrity -}}" alt="ayham.xyz webpin">
-		</a>
+			<a href="https://ayham.xyz">
+				<img width=88 height=31 src="{{- $image.Permalink -}}"
+					crossorigin="anonymous"
+					integrity="{{- $image.Data.Integrity -}}" alt="ayham.xyz webpin">
+			</a>
 		</p>
 		<p>Last Edited On: {{ now.Format "2006-01-02" -}}
 		</p>
@@ -22,6 +23,6 @@
 	<small><a href="/index.xml">Subscribe via RSS.</a></small><br/>
 	<small><a href="{{ ref . "details.md" }}">Website Details.</a></small>
 	<script data-goatcounter="https://ayham.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+	async src="//gc.zgo.at/count.js"></script>
 </center>
 <!-- EXITING PARTIAL: FOOTER -->

@@ -5,6 +5,6 @@ resources.Fingerprint "md5" -}}
 {{- with ($original.Resize $options) -}}
 <center>
 <img alt="{{- $imagename | htmlUnescape -}}" src="{{ .RelPermalink }}" width="{{
-.Width }}" height="{{ .Height }}" integrity="{{ .Data.Integrity }}">
+.Width }}" height="{{ .Height }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 </center>
 {{- end -}} 

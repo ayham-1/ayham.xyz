@@ -45,14 +45,16 @@ Link the `.css` files in `app.html` like so:
 
 ```html
 {{- $sokoshellCSS := resources.Get (printf "apps/sokoban/sokoshell.css" | safeURL) | resources.Fingerprint "md5" -}}
-<link href="{{- $sokoshellCSS.Permalink -}}" rel="stylesheet" integrity="{{ $sokoshellCSS.Data.Integrity }}" />
+<link href="{{- $sokoshellCSS.Permalink -}}" rel="stylesheet" 
+integrity="{{ $sokoshellCSS.Data.Integrity }}"  crossorigin="anonymous"/>
 ```
 
 Link any extra `.js` files in `app.html` like so:
 
 ```html
 {{- $sokoshellJS := resources.Get (printf "apps/sokoban/sokoshell.js" | safeURL) |resources.Fingerprint "md5" -}}
-<script src="{{- $sokoshellJS.Permalink -}}" integrity="{{ $sokoshellJS.Data.Integrity }}"></script>
+<script src="{{- $sokoshellJS.Permalink -}}"
+integrity="{{ $sokoshellJS.Data.Integrity }}" crossorigin="anonymous"></script>
 ```
 
 # addapp + WASM binaries
