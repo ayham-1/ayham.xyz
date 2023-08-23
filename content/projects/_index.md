@@ -10,12 +10,22 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/maid
+![maid.webp](pix/proj/maid.webp "maid")
+Development Status: *Archived*  
+Project Link: [github.com/ayham-1/linux.home.maid](https://github.com/ayham-1/linux.home.maid)  
+Last Update: 2023-08-18  
+Creation Date: 2023-08-16
+Description:  
+A simple BASH script which uses a whitelist to enforce files and directories
+in the /home/user. The script can use system's trash if `trash` cmd is present.
+
 ## cd proj/wsgen
 
 ![wsgen.webp](pix/proj/wsgen.webp "wsgen")
 Development Status: *Active*  
-Webpage Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
-Project Link: [github.com/ayham-1/wsgen](https://github.com/ayham-1/wsgen)  
+Webpage Link: [wsgendb.github.io](wsgendb.github.io)  
+Project Link: [github.com/wsgendb](https://github.com/wsgendb)  
 Last Update: *  
 Creation Date: 2022-05-18  
 Description:  
@@ -44,6 +54,19 @@ Description:
 A simple sokoban implementation that currently uses an AI pre-generated set of
 puzzles. The code for home-built puzzle generation is currently incomplete.
 Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
+
+## cd proj/wsgen
+
+![wsgen.webp](pix/proj/wsgen.webp "wsgen")
+Development Status: *Active*  
+Webpage Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
+Project Link: [github.com/ayham-1/wsgen](https://github.com/ayham-1/wsgen)  
+Last Update: *  
+Creation Date: 2022-05-18  
+Description:  
+Innovating the workflow of curating highschool worksheet from A-Level
+like past-papers. An easy application to maintain worksheets, update them,
+export them into Question Papers, Markschemes, and Examiner report automatically.
 
 ## cd proj/CamCurrency
 

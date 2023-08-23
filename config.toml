@@ -37,25 +37,20 @@ copyright = "(c) 2022 ayham"
 		url = "/posts/"
 		weight = 4
 	[[menu.main]]
-		name = "Workflow"
-		pre = "workflow"
-		url = "/workflow/"
-		weight = 5
-	[[menu.main]]
 		name = "Library"
 		pre = "library"
 		url = "/library/"
-		weight = 6
+		weight = 5
 	[[menu.main]]
 		name = "Links"
 		pre = "links"
 		url = "/links/"
-		weight = 7
+		weight = 6
 	[[menu.main]]
 		name = "Apps"
 		pre = "apps"
 		url = "/apps/"
-		weight = 8
+		weight = 7
 
 [markup]
   [markup.highlight]
