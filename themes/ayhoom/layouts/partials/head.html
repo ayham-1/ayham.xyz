@@ -1,6 +1,7 @@
 <!-- ENTERING PARTIAL: HEAD -->
 {{- $commonCSS := resources.Get "css/common.css" | resources.Fingerprint "md5" -}}
 {{- $navCSS := resources.Get "css/nav.css" | resources.Fingerprint "md5" -}}
+{{- $footerCSS := resources.Get "css/footer.css" | resources.Fingerprint "md5" -}}
 
 {{- $favicon := resources.Get "pix/avatar/pfp.png" -}}
 {{- $favicon := $favicon.Resize (printf "%dx%d ico" 16 16) | resources.Fingerprint "md5" -}}
@@ -11,6 +12,7 @@
 	<meta name="keywords" content="ayham, personal, blog, linux">
 	<meta name="author" content="ayham">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
 	{{ with .OutputFormats.Get "rss" -}}
 	{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
@@ -19,6 +21,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ $navCSS.Permalink }}"
 	integrity="{{ $navCSS.Data.Integrity }}" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ $footerCSS.Permalink }}"
+	integrity="{{ $footerCSS.Data.Integrity }}" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ $commonCSS.Permalink }}"
 	integrity="{{ $commonCSS.Data.Integrity }}" crossorigin="anonymous">
 

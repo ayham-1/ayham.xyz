@@ -1,15 +1,12 @@
 nav {
 	background: var(--altbg);
 	border-radius: var(--border-radius);
-	border-style: solid;
-	border-color: rgba(var(--border-color-navbar), 0.8);
-	border-width: 1px;
 
 	text-align: center;
 	font-variant: small-caps;
 	clear: both;
 
-	font-size: 24px;
+	font-size: 18px;
 	max-width: var(--navwidth);
 }
 nav li {
@@ -18,11 +15,6 @@ nav li {
 	background: var(--bg);
 	padding: 8px;
 	max-width: 7em;
-
-	border-width: 0.5px;
-	border-style: solid;
-	border-color: rgba(var(--border-color-navbar-list), 0.8);
-	border-radius: var(--border-radius);
 
 	margin: 4px;
 }

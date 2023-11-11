@@ -55,19 +55,6 @@ A simple sokoban implementation that currently uses an AI pre-generated set of
 puzzles. The code for home-built puzzle generation is currently incomplete.
 Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
 
-## cd proj/wsgen
-
-![wsgen.webp](pix/proj/wsgen.webp "wsgen")
-Development Status: *Active*  
-Webpage Link: [ayham.xyz/apps/wsgen](https://ayham.xyz/apps/wsgen)  
-Project Link: [github.com/ayham-1/wsgen](https://github.com/ayham-1/wsgen)  
-Last Update: *  
-Creation Date: 2022-05-18  
-Description:  
-Innovating the workflow of curating highschool worksheet from A-Level
-like past-papers. An easy application to maintain worksheets, update them,
-export them into Question Papers, Markschemes, and Examiner report automatically.
-
 ## cd proj/CamCurrency
 
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")

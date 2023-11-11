@@ -5,35 +5,42 @@
 {{- $pfpCSS := resources.Get "css/image.pfp.css" | resources.Fingerprint "md5" -}}
 {{- $indexCSS := resources.Get "css/index.css" | resources.Fingerprint "md5" -}}
 
-<main>
-	<link rel="stylesheet" type="text/css" href="{{ $pfpCSS.Permalink }}"
-		integrity="{{ $pfpCSS.Data.Integrity }}" crossorigin="anonymous">
+<header>
+    <link rel="stylesheet" type="text/css" href="{{ $pfpCSS.Permalink }}"
+        integrity="{{ $pfpCSS.Data.Integrity }}" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="{{ $indexCSS.Permalink }}"
-		integrity="{{ $indexCSS.Data.Integrity }}" crossorigin="anonymous">
-<center>
-		<h4>{{ .Site.Title }}</h4>
-		<img class=pfp src="{{ $image.Permalink }}" width=35% height=auto
-			alt="ayham">
-		<h3>{{ .Params.subtitle }}</h3>
-		{{ .Content }}
-		<div class="indexTable">
-			<div style="display:block;">
-				<h5 style="text-align:center">Latest Articles</h5>
-				<ul style="width:80%;text-align:left">
-					{{- range ( where .Site.RegularPages "Type" "posts" | first 7 ) -}}
-				<li><a href="{{.Permalink}}">{{.Title}}</a></li>
-					{{- end -}}
-				</ul>
-			</div>
-			<div style="display:block">
-				<h5 style="text-align:center">Website's Navigation</h5>
-				{{- partial "header.html" . -}}
-				<center>
-					<p>Navigate this website by clicking on the above navigation bar.</p>
-				</center>
-			</div>
-		</div>
-	</center>
+    <link rel="stylesheet" type="text/css" href="{{ $indexCSS.Permalink }}"
+        integrity="{{ $indexCSS.Data.Integrity }}" crossorigin="anonymous">
+
+    <center>
+        {{- partial "header.html" . -}}
+    </center>
+</header>
+
+<main>
+    <center>
+        <div class="indexTable">
+            <div style="display:block;">
+                <h5 style="text-align:center">Website's Navigation</h5>
+                <center>
+                    <p>Navigate this website by clicking on the above navigation bar.</p>
+                </center>
+
+                <h5 style="text-align:center">Latest Articles</h5>
+                <ul style="width:80%;text-align:left">
+                    {{- range ( where .Site.RegularPages "Type" "posts" | first 7 ) -}}
+                    <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+                    {{- end -}}
+                </ul>
+            </div>
+            <div style="display:block">
+                <h4>{{ .Site.Title }}</h4>
+                <img class=pfp src="{{ $image.Permalink }}" width=35% height=auto
+                    alt="ayham">
+                <h3>{{ .Params.subtitle }}</h3>
+                {{ .Content }}
+            </div>
+        </div>
+    </center>
 </main>
 {{ end }}
