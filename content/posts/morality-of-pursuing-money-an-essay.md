@@ -2,6 +2,7 @@
 title: "Morality Of Pursuing Money: An Essay"
 date: 2022-03-31T04:51:03+03:00
 tags: ["lifestyle", "essay"]
+draft: true
 ---
 
 *The following is an essay from an assignment task in school that I took too
