@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Seneca - Letters From A Stoic
 * Olly Richards & Alex Rawlings - Short Stories in German
 * McGrawHill - Easy German Step-by-Step
 * Plato - Socrates' Defence
