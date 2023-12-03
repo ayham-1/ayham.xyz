@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Geoff Colvin - Talent is Overrated
 * Cornelsen - Grammatik Aktiv (A1-B1)
 * Seneca - Letters From A Stoic
 * Olly Richards & Alex Rawlings - Short Stories in German
