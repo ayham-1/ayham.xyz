@@ -42,15 +42,10 @@ copyright = "(c) 2022 ayham"
 		url = "/library/"
 		weight = 5
 	[[menu.main]]
-		name = "Links"
-		pre = "links"
-		url = "/links/"
-		weight = 6
-	[[menu.main]]
 		name = "Apps"
 		pre = "apps"
 		url = "/apps/"
-		weight = 7
+		weight = 6
 
 [markup]
   [markup.highlight]
