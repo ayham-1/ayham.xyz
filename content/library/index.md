@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Victor Hugo - Les Miserables [Volume 2]
 * Postman Neil - Amusing Ourselves to Death
 * Geoff Colvin - Talent is Overrated
 * Cornelsen - Grammatik Aktiv (A1-B1)
