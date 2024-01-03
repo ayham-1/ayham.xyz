@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Edward Bernays - Propaganda
 * Victor Hugo - Les Miserables [Volume 2]
 * Postman Neil - Amusing Ourselves to Death
 * Geoff Colvin - Talent is Overrated
@@ -62,3 +63,4 @@ List of books/magazines I read, this is neither a recommendation list nor endors
 * Mario Puzo - The Godfather
 * Debra Soh - The End of Gender: Debunking the Myths About Sex and Identity in Our Society
 * John Kessnich, Graham Sollers, and Dave Shreiner - The OpenGL Programing Guide
+* Walter Savitch - Introduction to Java
