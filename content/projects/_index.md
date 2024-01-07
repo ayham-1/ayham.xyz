@@ -10,6 +10,19 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/donglify
+![donglify.webp](pix/proj/donglify.webp "donglify")
+Development Status: *Active*  
+Project Link: [github.com/ayham-1/donglify](https://github.com/ayham-1/donglify)  
+Last Update: *  
+Creation Date: 2024-01-01  
+Description:  
+The majority of Linux installs suffer from a major security threat, physical security. Any unencrypted drive's data can
+be easily stolen by attaching to a secondary device. This bypasses the user's password and leaves all data free for
+access. Unfortunately, to correctly configure a *complete* encrypted Linux system takes alot of patience and
+configuration. This script helps you manage GRUB automatically. All you have to do is install the system's `/`
+partition, plug the USB in and run the script. The script also supports booting from ISOs available on the dongle.
+
 ## cd proj/maid
 ![maid.webp](pix/proj/maid.webp "maid")
 Development Status: *Archived*  
@@ -17,8 +30,8 @@ Project Link: [github.com/ayham-1/linux.home.maid](https://github.com/ayham-1/li
 Last Update: 2023-08-18  
 Creation Date: 2023-08-16
 Description:  
-A simple BASH script which uses a whitelist to enforce files and directories
-in the /home/user. The script can use system's trash if `trash` cmd is present.
+A simple BASH script which uses a whitelist to enforce files and directories in the /home/user. The script can use
+system's trash if `trash` cmd is present.
 
 ## cd proj/wsgen
 
@@ -29,9 +42,8 @@ Project Link: [github.com/wsgendb](https://github.com/wsgendb)
 Last Update: *  
 Creation Date: 2022-05-18  
 Description:  
-Innovating the workflow of curating highschool worksheet from A-Level
-like past-papers. An easy application to maintain worksheets, update them,
-export them into Question Papers, Markschemes, and Examiner report automatically.
+Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain
+worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
 
 ## cd proj/firmus
 
@@ -51,9 +63,8 @@ Project Link: [github.com/ayham-1/sokoban](https://github.com/ayham-1/sokoban)
 Last Update: 2022-09-09  
 Creation Date: 2022-06-26  
 Description:  
-A simple sokoban implementation that currently uses an AI pre-generated set of
-puzzles. The code for home-built puzzle generation is currently incomplete.
-Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
+A simple sokoban implementation that currently uses an AI pre-generated set of puzzles. The code for home-built puzzle
+generation is currently incomplete.  Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
 
 ## cd proj/CamCurrency
 
@@ -64,21 +75,19 @@ Project Link: [github.com/ayham-1/CamCurrency](https://github.com/ayham-1/CamCur
 Last Update: 2021-10-24  
 Creation Date: 2021-09-21  
 Description:  
-An application that allows users to convert between currencies on the fly using
-the camera. Currently the application is available on Google Play Store.
+An application that allows users to convert between currencies on the fly using the camera. Currently the application is
+available on Google Play Store.
 
 ## cd proj/PaperTrader
 
 ![papertrader.webp](pix/proj/papertrader.webp "papertrader")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/PaperTrader](https://github.com/ayham-1/PaperTrader)  
-last update: 2021-12-24  
-creation date: 2020-05-02  
-description:  
-the opensource cross-platform paper trading platform for
-learning assets trading. this project has a basic architecture,
-and the only part that currently works is accounts &amp; database
-management w/ the server-client 1-1 model.
+Last update: 2021-12-24  
+Creation date: 2020-05-02  
+Description:  
+The opensource cross-platform paper trading platform for learning assets trading. this project has a basic architecture,
+and the only part that currently works is accounts &amp; database management w/ the server-client 1-1 model.
 
 ## cd proj/fixmydownloads
 
@@ -88,8 +97,8 @@ Last Update: 2020-05-02
 Creation Date: 2020-04-17  
 Description:  
 The goal of the project is to make the simplest downloads folder organizer that
-is configured by code making it so small that the whole thing fits in one file!
-Eliminating the need to manually organize or clean up your downloads folder!
+is configured by code making it so small that the whole thing fits in one file!  Eliminating the need to manually
+organize or clean up your downloads folder!
 
 ## cd proj/rftp
 
