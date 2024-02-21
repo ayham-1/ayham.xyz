@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Cornelsen - Grammatik aktiv Training B1+
 * Edward Bernays - Propaganda
 * Victor Hugo - Les Miserables [Volume 2]
 * Postman Neil - Amusing Ourselves to Death
