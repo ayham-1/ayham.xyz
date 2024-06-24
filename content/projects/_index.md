@@ -10,6 +10,16 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/sway-vnc-scripts
+![sway-vnc-scripts.webp](pix/proj/sway-vnc-scripts.webp "sway-vnc-scripts")
+Development Status: *Active*
+Project Link: [github.com/ayham-1/sway-vnc-scripts](https://github.com/ayham-1/sway-vnc-scripts)  
+Last Update: *
+Creation Date: 2024-06-24
+Description:
+Scripts to easily start a sway VNC server & connect as a client to said server. Through this script, one can access
+his desktop remotely, like 'signing-in'. Requires port-forwarding
+
 ## cd proj/donglify
 ![donglify.webp](pix/proj/donglify.webp "donglify")
 Development Status: *Active*  

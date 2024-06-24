@@ -19,5 +19,5 @@ In this article, I would be focusing on WiFi and DNS hardening. More specificall
 these are the areas where slight changes to the configuration would offer a more
 secure network stack:
 
-* Automatic full/half MAC-address octets randomization every network connection.
+* Automatic full/half MAC-address octets randomization for every network connection.
 * 
