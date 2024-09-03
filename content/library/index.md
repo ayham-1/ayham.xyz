@@ -11,6 +11,9 @@ List of books/magazines I read, this is neither a recommendation list nor endors
 * Victor Hugo - Les Miserables [Volume 2]
 * Postman Neil - Amusing Ourselves to Death
 * Geoff Colvin - Talent is Overrated
+
+![Seneca - Letters From A Stoic](pix/library/seneca.jpg "left")
+
 * Cornelsen - Grammatik Aktiv (A1-B1)
 * Seneca - Letters From A Stoic
 * Olly Richards & Alex Rawlings - Short Stories in German
