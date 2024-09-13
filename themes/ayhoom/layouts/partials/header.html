@@ -3,10 +3,10 @@
 	<nav>
 		<ul>
 			{{- range .Site.Menus.main -}}
-			<li><a href="{{ .URL }}">
+			<li><a href="{{ .URL }}">[
 					{{- $text := print .Name | safeHTML -}}
 					{{- $text -}}
-				</a>
+				]</a>
 			</li>
 			{{- end -}}
 		</ul>

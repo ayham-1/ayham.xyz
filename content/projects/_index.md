@@ -12,11 +12,11 @@ This page could also be seen as a timeline of my 'project-life'.
 
 ## cd proj/sway-vnc-scripts
 ![sway-vnc-scripts.webp](pix/proj/sway-vnc-scripts.webp "sway-vnc-scripts")
-Development Status: *Active*
+Development Status: *Archived*  
 Project Link: [github.com/ayham-1/sway-vnc-scripts](https://github.com/ayham-1/sway-vnc-scripts)  
-Last Update: *
-Creation Date: 2024-06-24
-Description:
+Last Update: 2024-06-24  
+Creation Date: 2024-06-24  
+Description:  
 Scripts to easily start a sway VNC server & connect as a client to said server. Through this script, one can access
 his desktop remotely, like 'signing-in'. Requires port-forwarding
 
@@ -46,10 +46,10 @@ system's trash if `trash` cmd is present.
 ## cd proj/wsgen
 
 ![wsgen.webp](pix/proj/wsgen.webp "wsgen")
-Development Status: *Active*  
+Development Status: *Archived*  
 Webpage Link: [wsgendb.github.io](wsgendb.github.io)  
 Project Link: [github.com/wsgendb](https://github.com/wsgendb)  
-Last Update: *  
+Last Update: 2023-08-24  
 Creation Date: 2022-05-18  
 Description:  
 Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain
@@ -58,9 +58,9 @@ worksheets, update them, export them into Question Papers, Markschemes, and Exam
 ## cd proj/firmus
 
 ![firmus.webp](pix/proj/firmus.webp "firmus")
-Development Status: *Active*  
+Development Status: *Archived*  
 Project Link: [github.com/ayham-1/firmus](https://github.com/ayham-1/firmus)  
-Last Update: *  
+Last Update: 2022-11-29*  
 Creation Date: 2022-09-25  
 Description:  
 A trusty, strong and reliable application launcher for Android.
@@ -79,7 +79,7 @@ generation is currently incomplete.  Uses very bleeding-edge technology: Zig (ma
 ## cd proj/CamCurrency
 
 ![camcurrency.webp](pix/proj/camcurrency.webp "camcurrency")
-Development Status: *Active*  
+Development Status: *Archived*  
 Store Link: [ayham.xyz/store](https://ayham.xyz/store)  
 Project Link: [github.com/ayham-1/CamCurrency](https://github.com/ayham-1/CamCurrency)  
 Last Update: 2021-10-24  
@@ -101,7 +101,7 @@ and the only part that currently works is accounts &amp; database management w/ 
 
 ## cd proj/fixmydownloads
 
-development status: *archived*  
+development status: *Archived*  
 project link: [github.com/ayham-1/fixmydownloads](https://github.com/ayham-1/fixmydownloads)  
 Last Update: 2020-05-02  
 Creation Date: 2020-04-17  

@@ -27,7 +27,7 @@ body {
 	margin-bottom: 50px;
 	vertical-align: middle;
 
-	font-family: Verdana, sans-serif;
+	font-family: monospace, sans-serif;
 }
 
 @media (min-width: 45em) {

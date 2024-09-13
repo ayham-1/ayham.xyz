@@ -9,9 +9,9 @@ date = [":git","date", "publishDate", "lastmod"]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 rssLimit = 20
-copyright = "(c) 2022 ayham"
+copyright = "(c) 2024 ayham"
 
-[author]
+[params.author]
 	name = "ayham"
 	email = "me@ayham.xyz"
 
@@ -21,31 +21,36 @@ copyright = "(c) 2022 ayham"
 		pre = "home"
 		url = "/"
 		weight = 1
+#	[[menu.main]]
+#		name = "Résumé"
+#		pre = "resume"
+#		url = "/resume/"
+#		weight = 2
 	[[menu.main]]
 		name = "Store"
 		pre = "store"
 		url = "/store/"
-		weight = 2
+		weight = 3
 	[[menu.main]]
 		name = "Projects"
 		pre = "projects"
 		url = "/projects/"
-		weight = 3
+		weight = 4
 	[[menu.main]]
 		name = "Posts"
 		pre = "posts"
 		url = "/posts/"
-		weight = 4
+		weight = 5
 	[[menu.main]]
 		name = "Library"
 		pre = "library"
 		url = "/library/"
-		weight = 5
+		weight = 6
 	[[menu.main]]
 		name = "Apps"
 		pre = "apps"
 		url = "/apps/"
-		weight = 6
+		weight = 7
 
 [markup]
   [markup.highlight]
