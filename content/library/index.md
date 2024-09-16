@@ -6,6 +6,7 @@ layout: "single"
 
 List of books/magazines I read, this is neither a recommendation list nor endorsement.
 
+* Verlag Liebaug-Dartmann - Die blaue Übungsgrammatik für C1
 * klett - Mit Erfolg zu DSH
 * klett - Mit Erfolg zu Telc C1 Hochschule
 * Cornelsen - Grammatik aktiv Training B1+
