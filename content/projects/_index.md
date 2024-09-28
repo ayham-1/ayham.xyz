@@ -10,12 +10,21 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/pcreporter
+![pcreporter.webp](pix/proj/pcreporter.webp "pcreporter")
+Development Status: *Active*  
+Project Link: [github.com/ayham-1/pcreporter](https://github.com/ayham-1/pcreporter)  
+Last Update: 28.09.2024  
+Creation Date: 10.07.2024  
+Description:  
+Telegram BOT as a personal computer reporting service.  
+
 ## cd proj/sway-vnc-scripts
 ![sway-vnc-scripts.webp](pix/proj/sway-vnc-scripts.webp "sway-vnc-scripts")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/sway-vnc-scripts](https://github.com/ayham-1/sway-vnc-scripts)  
-Last Update: 2024-06-24  
-Creation Date: 2024-06-24  
+Last Update: 24.06.2024  
+Creation Date: 24.06.2024  
 Description:  
 Scripts to easily start a sway VNC server & connect as a client to said server. Through this script, one can access
 his desktop remotely, like 'signing-in'. Requires port-forwarding
@@ -25,7 +34,7 @@ his desktop remotely, like 'signing-in'. Requires port-forwarding
 Development Status: *Active*  
 Project Link: [github.com/ayham-1/donglify](https://github.com/ayham-1/donglify)  
 Last Update: *  
-Creation Date: 2024-01-01  
+Creation Date: 01.01.2024  
 Description:  
 The majority of Linux installs suffer from a major security threat, physical security. Any unencrypted drive's data can
 be easily stolen by attaching to a secondary device. This bypasses the user's password and leaves all data free for
@@ -37,8 +46,8 @@ partition, plug the USB in and run the script. The script also supports booting 
 ![maid.webp](pix/proj/maid.webp "maid")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/linux.home.maid](https://github.com/ayham-1/linux.home.maid)  
-Last Update: 2023-08-18  
-Creation Date: 2023-08-16
+Last Update: 18.08.2023  
+Creation Date: 16.08.2023  
 Description:  
 A simple BASH script which uses a whitelist to enforce files and directories in the /home/user. The script can use
 system's trash if `trash` cmd is present.
@@ -49,8 +58,8 @@ system's trash if `trash` cmd is present.
 Development Status: *Archived*  
 Webpage Link: [wsgendb.github.io](wsgendb.github.io)  
 Project Link: [github.com/wsgendb](https://github.com/wsgendb)  
-Last Update: 2023-08-24  
-Creation Date: 2022-05-18  
+Last Update: 24.08.2023  
+Creation Date: 18.05.2022  
 Description:  
 Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain
 worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
@@ -60,8 +69,8 @@ worksheets, update them, export them into Question Papers, Markschemes, and Exam
 ![firmus.webp](pix/proj/firmus.webp "firmus")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/firmus](https://github.com/ayham-1/firmus)  
-Last Update: 2022-11-29*  
-Creation Date: 2022-09-25  
+Last Update: 29.11.2022  
+Creation Date: 25.09.2022  
 Description:  
 A trusty, strong and reliable application launcher for Android.
 
@@ -70,8 +79,8 @@ A trusty, strong and reliable application launcher for Android.
 ![sokoban.webp](pix/proj/sokoban.webp "sokoban")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/sokoban](https://github.com/ayham-1/sokoban)  
-Last Update: 2022-09-09  
-Creation Date: 2022-06-26  
+Last Update: 09.09.2022  
+Creation Date: 26.06.2022  
 Description:  
 A simple sokoban implementation that currently uses an AI pre-generated set of puzzles. The code for home-built puzzle
 generation is currently incomplete.  Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
@@ -82,8 +91,8 @@ generation is currently incomplete.  Uses very bleeding-edge technology: Zig (ma
 Development Status: *Archived*  
 Store Link: [ayham.xyz/store](https://ayham.xyz/store)  
 Project Link: [github.com/ayham-1/CamCurrency](https://github.com/ayham-1/CamCurrency)  
-Last Update: 2021-10-24  
-Creation Date: 2021-09-21  
+Last Update: 24.10.2021  
+Creation Date: 21.09.2021  
 Description:  
 An application that allows users to convert between currencies on the fly using the camera. Currently the application is
 available on Google Play Store.
@@ -93,8 +102,8 @@ available on Google Play Store.
 ![papertrader.webp](pix/proj/papertrader.webp "papertrader")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/PaperTrader](https://github.com/ayham-1/PaperTrader)  
-Last update: 2021-12-24  
-Creation date: 2020-05-02  
+Last update: 24.12.2021  
+Creation date: 02.05.2020  
 Description:  
 The opensource cross-platform paper trading platform for learning assets trading. this project has a basic architecture,
 and the only part that currently works is accounts &amp; database management w/ the server-client 1-1 model.
@@ -103,8 +112,8 @@ and the only part that currently works is accounts &amp; database management w/ 
 
 development status: *Archived*  
 project link: [github.com/ayham-1/fixmydownloads](https://github.com/ayham-1/fixmydownloads)  
-Last Update: 2020-05-02  
-Creation Date: 2020-04-17  
+Last Update: 02.05.2020  
+Creation Date: 17.04.2020  
 Description:  
 The goal of the project is to make the simplest downloads folder organizer that
 is configured by code making it so small that the whole thing fits in one file!  Eliminating the need to manually
@@ -115,8 +124,8 @@ organize or clean up your downloads folder!
 ![rftp.webp](pix/proj/rftp.webp "rftp")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/rftp](https://github.com/ayham-1/rftp)  
-Last Update: 2020-01-18  
-Creation Date: 2019-11-01  
+Last Update: 18.01.2020  
+Creation Date: 01.11.2019  
 Description:  
 A simple CLI ftp server for a school project written in rust.
 
@@ -125,8 +134,8 @@ A simple CLI ftp server for a school project written in rust.
 ![contractnotifier.webp](pix/proj/contractnotifier.webp "contractnotifier")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/ContractNotifier](https://github.com/ayham-1/ContractNotifier)  
-Last Update: 2020-01-18  
-Creation Date: 2019-11-01  
+Last Update: 18.01.2020  
+Creation Date: 01.11.2019  
 Description:  
 An application for my school's principal to notify him for contracts expiry. 
 The main cause of this application is to store contracts, and notify the user
@@ -139,8 +148,8 @@ resorted to me.
 ![graphsolver.webp](pix/proj/graphsolver.webp "graphsolver")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/GraphSolver](https://github.com/ayham-1/GraphSolver)  
-Last Update: 2019-12-08  
-Creation Date: 2019-10-11  
+Last Update: 08.12.2019  
+Creation Date: 11.10.2019  
 Description:  
 Written for a school project in grade 8, GraphSolver attempts to solve basic
 equations of Linear, Quadratic and Cubic. May contain bugs :D. This project
@@ -151,8 +160,8 @@ is written with a friend, [Ali](https://github.com/AliAlboainin96).
 ![upperlowerbounds.webp](pix/proj/upperlowerbounds.webp "upperlowerbounds")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/upperLowerBounds](https://github.com/ayham-1/upperLowerBounds)  
-Last Update: 2019-10-25  
-Creation Date: 2019-09-26  
+Last Update: 25.10.2019  
+Creation Date: 26.09.2019  
 Description:  
 Yet another grade 8 project. Calculates upper and lower bounds for
 pre-configured set of equations.
@@ -162,8 +171,8 @@ pre-configured set of equations.
 ![quicmaf.webp](pix/proj/quicmaf.webp "quicmaf")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/QuicMaf](https://github.com/ayham-1/QuicMaf)  
-Last Update: 2019-03-24  
-Creation Date: 2019-02-14  
+Last Update: 24.03.2019  
+Creation Date: 14.02.2019  
 Description:  
 A Maths project for Grade 8. Evaluates and solves basic linear algebric
 notations. This project ended up containing alot of bugs that I was too lazy to
@@ -174,8 +183,8 @@ fix.
 ![kilo.webp](pix/proj/kilo.webp "kilo")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/kilo](https://github.com/ayham-1/kilo)  
-Last Update: 2019-02-06  
-Creation Date: 2019-02-01  
+Last Update: 06.02.2019  
+Creation Date: 01.02.2019  
 Description:  
 A small editor for the sole purpose of learning. Built by following a tutorial.
 
@@ -184,8 +193,8 @@ A small editor for the sole purpose of learning. Built by following a tutorial.
 ![lsh.webp](pix/proj/lsh.webp "lsh")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/lsh](https://github.com/ayham-1/lsh)  
-Last Update: 2019-02-01  
-Creation Date: 2019-02-01  
+Last Update: 01.02.2019  
+Creation Date: 01.02.2019  
 Description:  
 A small shell for the sole purpose of learning. Built by following a tutorial.
 
@@ -193,8 +202,8 @@ A small shell for the sole purpose of learning. Built by following a tutorial.
 
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/clox](https://github.com/ayham-1/clox)  
-Last Update: 2019-02-01  
-Creation Date: 2019-01-12  
+Last Update: 01.02.2019  
+Creation Date: 12.01.2019  
 Description:  
 A language interpreter, followed by this tutorial:
 [craftinginterpreters.com](http://www.craftinginterpreters.com/)
@@ -205,7 +214,7 @@ A language interpreter, followed by this tutorial:
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/Time-Manager](https://github.com/ayham-1/Time-Manager)  
 Last Update: not available  
-Creation Date: 2019-01-02  
+Creation Date: 02.01.2019  
 Description:  
 A half-complete project written for personal use to gamify time management.
 
@@ -214,8 +223,8 @@ A half-complete project written for personal use to gamify time management.
 ![OSRAM.webp](pix/proj/osram.webp "osram.webp")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/OSRAM](https://github.com/ayham-1/OSRAM)  
-Last Update: 2018-06-08  
-Creation Date: 2018-04-18  
+Last Update: 08.06.2018  
+Creation Date: 18.04.2018  
 Description:  
 A theoretically working game engine with a basic platformer demo. The platform
 for this project is Visual Studio. Supports basic 2D rendering and simple
@@ -226,8 +235,8 @@ collision physics.
 ![tictactoe.webp](pix/proj/tictactoe.webp "tictactoe")
 Development Status: *Archived*  
 Project Link: [github.com/ayham-1/TicTacToe](https://github.com/ayham-1/TicTacToe)  
-Last Update: 2017-11-19  
-Creation Date: 2017-11-18  
+Last Update: 19.11.2017  
+Creation Date: 18.11.2017  
 Description:  
 Probably my first Git project, school coding project, and public project. 
 There exists a long standing bug which I used to win when I was challenged
