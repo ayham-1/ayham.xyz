@@ -10,6 +10,15 @@ This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
 
+## cd proj/iloveads
+![iloveads.webp](pix/proj/iloveads.webp "iloveads")
+Development Status: *Archived*  
+Project Link: [github.com/ayham-1/iloveads](https://github.com/ayham-1/iloveads)  
+Last Update: 14.10.2024  
+Creation Date: 11.10.2024  
+Description:  
+we love ads so much, we make sure we click on every single ad ever!!!1
+
 ## cd proj/pcreporter
 ![pcreporter.webp](pix/proj/pcreporter.webp "pcreporter")
 Development Status: *Active*  
