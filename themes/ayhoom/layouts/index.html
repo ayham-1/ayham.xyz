@@ -2,6 +2,8 @@
 {{- $image := resources.Get "pix/avatar/pfp.png" -}}
 {{- $image := $image.Resize (printf "%dx%d webp" $image.Width $image.Height) -}}
 
+{{- $github_img := resources.Get "pix/github.svg" -}}
+
 {{- $pfpCSS := resources.Get "css/image.pfp.css" | resources.Fingerprint "md5" -}}
 {{- $indexCSS := resources.Get "css/index.css" | resources.Fingerprint "md5" -}}
 
@@ -38,7 +40,9 @@
                 <img class=pfp src="{{ $image.Permalink }}" width=35% height=auto
                     alt="ayham">
                 <h3>{{ .Params.subtitle }}</h3>
+		<center>
                 {{ .Content }}
+		</center>
             </div>
         </div>
     </center>

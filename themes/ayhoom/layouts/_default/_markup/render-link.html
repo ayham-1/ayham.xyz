@@ -1,12 +1,20 @@
+{{ $parsedURL := urls.Parse .Destination }}
+{{ $queryParams := $parsedURL.Query }}
+{{ $baseURL := $parsedURL }}
+{{ $icon := $queryParams.Get "icon" | default "" }}
 {{- if strings.HasPrefix .Destination "http" -}}
-
-<a href="{{ .Destination | safeURL }}"{{- with .Title -}} title="{{ . }}"{{- end -}} target="_blank">
-	{{- else -}}
-<a href="{{ .Destination | safeURL }}"{{- with .Title -}} title="{{ . }}"{{- end -}}>
-	{{- end -}}
-	{{- .Text | safeHTML -}}</a>
+<dev>
+<a href="{{ $baseURL | safeURL }}"{{- with .Title -}} title="{{ . }}"{{- end -}} target="_blank">
+{{- else -}}
+<a href="{{ $baseURL | safeURL }}"{{- with .Title -}} title="{{ . }}"{{- end -}}>
+{{- end -}}
+{{ if $icon }}
+{{- $image := resources.Get (printf "%s" ($icon | safeURL)) | resources.Fingerprint "md5" -}}
+	<img src="{{ $image.Permalink }}" style="height: 1em; width: 1em; margin-right: 0.4em; vertical-align: middle;" integrity="{{ $image.Data.Integrity}}">{{ end }}
+{{- .Text | safeHTML -}}</a>
 {{- /* This comment removes trailing newlines. */ -}}
 {{- if strings.HasPrefix .Destination "http" -}}
 <span class="externalLink">🔗</span>
+</dev>
 {{- end -}}
 {{- /* This comment removes trailing newlines. */ -}}
