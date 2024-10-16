@@ -1,6 +1,5 @@
 {{- $image := resources.Get (printf "%s" (.Destination | safeURL)) |
 resources.Fingerprint "md5" -}}
 <center>
-	<img alt="{{- .PlainText | htmlUnescape -}}" src="{{- $image.Permalink
-		-}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
+	<img alt="{{- .PlainText | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
 </center>
