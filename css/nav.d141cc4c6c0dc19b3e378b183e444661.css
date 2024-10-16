@@ -1,0 +1,28 @@
+nav {
+	background: var(--altbg);
+	border-radius: var(--border-radius);
+
+	text-align: center;
+	font-variant: small-caps;
+	clear: both;
+
+	font-size: 18px;
+	max-width: var(--navwidth);
+}
+nav li {
+	display: inline-block;
+	list-style: none;
+	background: var(--bg);
+	padding: 8px;
+	max-width: 7em;
+
+	margin: 4px;
+}
+nav ul.header {
+	display: block;
+	list-style-type: disc;
+}
+nav ul {
+	padding: 0px;
+	margin: 0px;
+}
