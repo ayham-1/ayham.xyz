@@ -1,7 +1,7 @@
 ---
 title: "Projects"
-type: "generic"
-layout: "single"
+type: "projects"
+layout: "proj-list"
 ---
 
 # cd proj/
@@ -9,90 +9,6 @@ layout: "single"
 This is a list of projects I work on. An image, development status,
 creation date, small description, and a project link is provided per project.
 This page could also be seen as a timeline of my 'project-life'.
-
-## cd proj/iloveads
-![iloveads.webp](pix/proj/iloveads.webp "iloveads")
-Development Status: *Archived*  
-Project Link: [github.com/ayham-1/iloveads](https://github.com/ayham-1/iloveads)  
-Last Update: 14.10.2024  
-Creation Date: 11.10.2024  
-Description:  
-we love ads so much, we make sure we click on every single ad ever!!!1
-
-## cd proj/pcreporter
-![pcreporter.webp](pix/proj/pcreporter.webp "pcreporter")
-Development Status: *Active*  
-Project Link: [github.com/ayham-1/pcreporter](https://github.com/ayham-1/pcreporter)  
-Last Update: 28.09.2024  
-Creation Date: 10.07.2024  
-Description:  
-Telegram BOT as a personal computer reporting service.  
-
-## cd proj/sway-vnc-scripts
-![sway-vnc-scripts.webp](pix/proj/sway-vnc-scripts.webp "sway-vnc-scripts")
-Development Status: *Archived*  
-Project Link: [github.com/ayham-1/sway-vnc-scripts](https://github.com/ayham-1/sway-vnc-scripts)  
-Last Update: 24.06.2024  
-Creation Date: 24.06.2024  
-Description:  
-Scripts to easily start a sway VNC server & connect as a client to said server. Through this script, one can access
-his desktop remotely, like 'signing-in'. Requires port-forwarding
-
-## cd proj/donglify
-![donglify.webp](pix/proj/donglify.webp "donglify")
-Development Status: *Active*  
-Project Link: [github.com/ayham-1/donglify](https://github.com/ayham-1/donglify)  
-Last Update: *  
-Creation Date: 01.01.2024  
-Description:  
-The majority of Linux installs suffer from a major security threat, physical security. Any unencrypted drive's data can
-be easily stolen by attaching to a secondary device. This bypasses the user's password and leaves all data free for
-access. Unfortunately, to correctly configure a *complete* encrypted Linux system takes alot of patience and
-configuration. This script helps you manage GRUB automatically. All you have to do is install the system's `/`
-partition, plug the USB in and run the script. The script also supports booting from ISOs available on the dongle.
-
-## cd proj/maid
-![maid.webp](pix/proj/maid.webp "maid")
-Development Status: *Archived*  
-Project Link: [github.com/ayham-1/linux.home.maid](https://github.com/ayham-1/linux.home.maid)  
-Last Update: 18.08.2023  
-Creation Date: 16.08.2023  
-Description:  
-A simple BASH script which uses a whitelist to enforce files and directories in the /home/user. The script can use
-system's trash if `trash` cmd is present.
-
-## cd proj/wsgen
-
-![wsgen.webp](pix/proj/wsgen.webp "wsgen")
-Development Status: *Archived*  
-Webpage Link: [wsgendb.github.io](wsgendb.github.io)  
-Project Link: [github.com/wsgendb](https://github.com/wsgendb)  
-Last Update: 24.08.2023  
-Creation Date: 18.05.2022  
-Description:  
-Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain
-worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
-
-## cd proj/firmus
-
-![firmus.webp](pix/proj/firmus.webp "firmus")
-Development Status: *Archived*  
-Project Link: [github.com/ayham-1/firmus](https://github.com/ayham-1/firmus)  
-Last Update: 29.11.2022  
-Creation Date: 25.09.2022  
-Description:  
-A trusty, strong and reliable application launcher for Android.
-
-## cd proj/sokoban
-
-![sokoban.webp](pix/proj/sokoban.webp "sokoban")
-Development Status: *Archived*  
-Project Link: [github.com/ayham-1/sokoban](https://github.com/ayham-1/sokoban)  
-Last Update: 09.09.2022  
-Creation Date: 26.06.2022  
-Description:  
-A simple sokoban implementation that currently uses an AI pre-generated set of puzzles. The code for home-built puzzle
-generation is currently incomplete.  Uses very bleeding-edge technology: Zig (master), WASM and emscripten.
 
 ## cd proj/CamCurrency
 

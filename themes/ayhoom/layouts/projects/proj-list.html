@@ -1,0 +1,15 @@
+{{- define "main" -}}
+{{- partial "header.html" . -}}
+<main>
+	<center><h1>{{- .Params.title -}}</h1></center>
+	<ul>
+		{{- range .Pages.ByPublishDate.Reverse -}}
+		<li>
+			<h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+			<h3><a href="{{ .RelPermalink }}">{{ .Content }}</a></h3>
+		</li>
+		{{- end -}}
+	</ul>
+	{{ .Content }}
+	</main>
+{{ end }}
