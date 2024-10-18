@@ -3,14 +3,21 @@
 <main>
 	<center><h1>{{- .Params.title -}}</h1></center>
 	{{ .Content }}
-	<ul>
+	<div id="proj-grid">
 		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
-		<li>
-			<h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-		</li>
+		<div id="proj-grid-item">
+			<center><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3></center>
+			{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
+			<div id="proj-grid-item-status">{{ .Params.devstatus }}</div>
+			<div id="proj-grid-item-projlink">{{ .Params.projlink }}</div>
+			<img id="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
+			<div id="proj-grid-item-text">{{ .Content }}</div>
+			<div id="proj-grid-item-lastupdate">Latest: {{ .Params.lastupdate }}</div>
+			<div id="proj-grid-item-creationdate">Creation: {{ .Params.creationdate }}</div>
+		</div>
 		{{- end -}}
 		{{- end -}}
-	</ul>
+	</div>
 </main>
 {{ end }}
