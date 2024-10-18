@@ -1,0 +1,105 @@
+:root {
+	--proj-list-sf: 1.15;
+}
+
+#proj-grid {
+	display: grid;
+	grid-auto-flow: dense;
+	align-items: start;
+	gap: 1em;
+	//box-sizing: border-box;
+}
+
+@media screen and (min-width: 1200px) {
+	#proj-grid {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: auto;
+	}
+}
+
+
+#proj-grid-item {
+	height: 100%;
+
+	transition: -webkit-transform 0.75s ease-in-out;
+	transition: transform 0.75s ease-in-out;
+}
+
+#proj-grid-item-card {
+	height: 100%;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	background-color: var(--altbg);
+}
+
+#proj-grid-item-text {
+	max-height: 5em;
+	transition: max-height 0.75s ease;
+	overflow: hidden;
+}
+
+#proj-grid-item-header, #proj-grid-item-footer {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 2.5em;
+	padding-right: 2.5em;
+
+	transition: max-height 0.75s ease-in-out;
+	max-height: 0px;
+	overflow: hidden;
+}
+
+#proj-grid-item-footer {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+#proj-grid-item-status, #proj-grid-item-projlink {
+	background-color: var(--altbg);
+
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-width: 1px;
+	border-radius: 5px 5px 0px 0px;
+
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	padding-top: 0.1em;
+}
+
+#proj-grid-item-lastupdate, #proj-grid-item-creationdate {
+	background-color: var(--altbg);
+
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-width: 1px;
+	border-radius: 0px 0px 5px 5px;
+
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	padding-bottom: 0.1em;
+}
+
+#proj-grid-item:hover {
+	cursor: pointer;
+	-webkit-transform: scale(var(--proj-list-sf));
+	transform: scale(var(--proj-list-sf));
+}
+
+#proj-grid-item:hover > #proj-grid-item-card {
+	background-color: var(--altbg);
+}
+
+#proj-grid-item:hover > #proj-grid-item-card > #proj-grid-item-text {
+	max-height: 1000px;
+}
+
+#proj-grid-item:hover > #proj-grid-item-header, #proj-grid-item:hover > #proj-grid-item-footer {
+	max-height: 1000px;
+}

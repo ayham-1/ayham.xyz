@@ -1,20 +1,31 @@
 {{- define "main" -}}
 {{- partial "header.html" . -}}
+{{- $projCSS := resources.Get "css/proj.css" | resources.Fingerprint "md5" -}}
 <main>
+	<link rel="stylesheet" type="text/css" href="{{ $projCSS.Permalink }}" integrity="{{ $projCSS.Data.Integrity }}" crossorigin="anonymous">
 	<center><h1>{{- .Params.title -}}</h1></center>
 	{{ .Content }}
 	<div id="proj-grid">
 		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
+		{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
 		<div id="proj-grid-item">
-			<center><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3></center>
-			{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
-			<div id="proj-grid-item-status">{{ .Params.devstatus }}</div>
-			<div id="proj-grid-item-projlink">{{ .Params.projlink }}</div>
-			<img id="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
-			<div id="proj-grid-item-text">{{ .Content }}</div>
-			<div id="proj-grid-item-lastupdate">Latest: {{ .Params.lastupdate }}</div>
-			<div id="proj-grid-item-creationdate">Creation: {{ .Params.creationdate }}</div>
+			<div id="proj-grid-item-header">
+				<div id="proj-grid-item-status">{{ .Params.devstatus }}</div>
+				<div id="proj-grid-item-projlink">
+					<a href="{{ .Params.projlink | safeURL }}" target="_blank">Link</a><span class="externalLink">🔗</span>
+				</div>
+			</div>
+			<div id="proj-grid-item-card">
+				<center><h3>{{ .Title }}</h3>
+				<img id="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
+				</center>
+				<div id="proj-grid-item-text">{{ .Content }}</div>
+			</div>
+			<div id="proj-grid-item-footer">
+				<div id="proj-grid-item-lastupdate">Latest: {{ .Params.lastupdate }}</div>
+				<div id="proj-grid-item-creationdate">Creation: {{ .Params.creationdate }}</div>
+			</div>
 		</div>
 		{{- end -}}
 		{{- end -}}
