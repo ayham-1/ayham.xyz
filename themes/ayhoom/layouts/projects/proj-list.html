@@ -2,14 +2,15 @@
 {{- partial "header.html" . -}}
 <main>
 	<center><h1>{{- .Params.title -}}</h1></center>
+	{{ .Content }}
 	<ul>
-		{{- range .Pages.ByPublishDate.Reverse -}}
+		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
+		{{- range .Pages -}}
 		<li>
 			<h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-			<h3><a href="{{ .RelPermalink }}">{{ .Content }}</a></h3>
 		</li>
 		{{- end -}}
+		{{- end -}}
 	</ul>
-	{{ .Content }}
-	</main>
+</main>
 {{ end }}

@@ -3,8 +3,8 @@ title: "fixmydownloads"
 params:
     devstatus: "Archived"
     projlink: "github.com/ayham-1/fixmydownloads"
-    lastupdate: "02.05.2020"
-    creationdate: "17.04.2020"
+    lastupdate: "2020-05-02"
+    creationdate: "2020-04-17"
     img: "pix/proj/fixmydownloads.webp"
 ---
 

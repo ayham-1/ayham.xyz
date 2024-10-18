@@ -3,8 +3,8 @@ title: "pcreporter"
 params:
     devstatus: "Active"
     projlink: "github.com/ayham-1/pcreporter"
-    lastupdate: "28.09.2024"
-    creationdate: "10.07.2024"
+    lastupdate: "2024-09-28"
+    creationdate: "2024-07-10"
     img: "pix/proj/pcreporter.webp"
 ---
 

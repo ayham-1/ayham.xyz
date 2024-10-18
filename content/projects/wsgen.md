@@ -3,8 +3,8 @@ title: "wsgen"
 params:
     devstatus: "Archived"
     projlink: "github.com/wsgendb"
-    lastupdate: "24.08.2023"
-    creationdate: "18.05.2022"
+    lastupdate: "2023-08-24"
+    creationdate: "2022-05-18"
     img: "pix/proj/wsgen.webp"
 ---
 

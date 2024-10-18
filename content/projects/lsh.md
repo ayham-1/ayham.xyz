@@ -3,8 +3,8 @@ title: "lsh"
 params:
     devstatus: "Archived"
     projlink: "github.com/ayham-1/lsh"
-    lastupdate: "01.02.2019"
-    creationdate: "01.02.2019"
+    lastupdate: "2019-02-01"
+    creationdate: "2019-02-01"
     img: "pix/proj/lsh.webp"
 ---
 

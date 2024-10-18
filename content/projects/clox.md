@@ -3,8 +3,8 @@ title: "clox"
 params:
     devstatus: "Archived"
     projlink: "github.com/ayham-1/clox"
-    lastupdate: "01.02.2019"
-    creationdate: "12.01.2019"
+    lastupdate: "2019-02-01"
+    creationdate: "2019-01-12"
     img: "pix/proj/clox.webp"
 ---
 

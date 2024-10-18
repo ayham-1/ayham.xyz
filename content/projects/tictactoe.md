@@ -3,8 +3,8 @@ title: "tictactoe"
 params:
     devstatus: "Archived"
     projlink: "github.com/ayham-1/TicTacToe"
-    lastupdate: "19.11.2017"
-    creationdate: "18.11.2017"
+    lastupdate: "2017-11-19"
+    creationdate: '2017-11-18'
     img: "pix/proj/tictactoe.webp"
 ---
 
