@@ -1,30 +1,31 @@
 {{- define "main" -}}
 {{- partial "header.html" . -}}
-{{- $projCSS := resources.Get "css/proj.css" | resources.Fingerprint "md5" -}}
+{{- $projCSS := resources.Get "css/proj.css" | resources.Fingerprint "sha256" -}}
+{{- $projJS := resources.Get "js/proj.js" | resources.Fingerprint "md5" -}}
 <main>
 	<link rel="stylesheet" type="text/css" href="{{ $projCSS.Permalink }}" integrity="{{ $projCSS.Data.Integrity }}" crossorigin="anonymous">
+	<script src="{{ $projJS.Permalink }}" integrity="{{ $projJS.Data.Integrity }}" crossorigin="anonymous"></script>
 	<center><h1>{{- .Params.title -}}</h1></center>
 	{{ .Content }}
-	<div id="proj-grid">
-		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
+	<div class="proj-grid" onload="load()">
+	{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
 		{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
-		<div id="proj-grid-item">
-			<div id="proj-grid-item-header">
-				<div id="proj-grid-item-status">{{ .Params.devstatus }}</div>
-				<div id="proj-grid-item-projlink">
+		<div class="proj-grid-item">
+			<div class="proj-grid-item-header">
+				<div class="proj-grid-item-status">{{ .Params.devstatus }}</div>
+				<div class="proj-grid-item-projlink">
 					<a href="{{ .Params.projlink | safeURL }}" target="_blank">Link</a><span class="externalLink">🔗</span>
 				</div>
 			</div>
-			<div id="proj-grid-item-card">
-				<center><h3>{{ .Title }}</h3>
-				<img id="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
-				</center>
-				<div id="proj-grid-item-text">{{ .Content }}</div>
+			<div class="proj-grid-item-card">
+				<h3 class="proj-grid-item-title">{{ .Title }}</h3>
+					<img class="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
+				<div class="proj-grid-item-text">{{ .Content }}</div>
 			</div>
-			<div id="proj-grid-item-footer">
-				<div id="proj-grid-item-lastupdate">Latest: {{ .Params.lastupdate }}</div>
-				<div id="proj-grid-item-creationdate">Creation: {{ .Params.creationdate }}</div>
+			<div class="proj-grid-item-footer">
+				<div class="proj-grid-item-lastupdate">Latest: {{ .Params.lastupdate }}</div>
+				<div class="proj-grid-item-creationdate">Creation: {{ .Params.creationdate }}</div>
 			</div>
 		</div>
 		{{- end -}}
