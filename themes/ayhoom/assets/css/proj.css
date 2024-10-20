@@ -9,6 +9,12 @@
 	width: 100%;
 	height: auto;
 	position: relative;
+
+	/* nojs defaults */
+	display: grid;
+	gap: 1em;
+	align-items: center;
+	/***/
 }
 
 @media screen and (min-width: 1200px) {
@@ -19,8 +25,10 @@
 }
 
 .proj-grid-item {
-	position: absolute;
-	width: calc(33.33%);
+	/* nojs defaults */
+	//position: absolute;
+	//width: calc(33.33%);
+	/***/
 
 	transition: transform var(--slow-transition) ease, z-index var(--slow-transition);
 	z-index: 0;
@@ -79,7 +87,7 @@
 	padding-left: 2.5em;
 	padding-right: 2.5em;
 
-	transition: max-height var(--slow-transition) ease-in;
+	transition: max-height var(--mid-transition) cubic-bezier(.9,.03,.69,.22); 
 	max-height: 0px;
 	overflow: hidden;
 }
@@ -128,5 +136,6 @@
 }
 
 .proj-grid-item:hover > .proj-grid-item-header, .proj-grid-item:hover > .proj-grid-item-footer {
-	max-height: 1000px;
+	max-height: 100px;
+	//transition: max-height var(--fast-transition) ease; 
 }

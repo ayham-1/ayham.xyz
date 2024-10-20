@@ -61,35 +61,25 @@ function resize_cards() {
 	}
 }
 
-function fix_transitions() {
-	var items = document.getElementsByClassName("proj-grid-item");
+function disable_nojs_defaults() {
+	const grid = document.getElementsByClassName("proj-grid")[0];
+	grid.style.display = "block";
 
-	function handle_z_index(item) {
-		// check if mouse is hovering
-		console.log("transitionend");
-		//if (item.style.zIndex == 1) {
-		//	item.style.zIndex = 0;
-		//}
-	}
-
+	const items = grid.getElementsByClassName("proj-grid-item");
 	for (let i = 0; i < items.length; i++) {
 		const item = items[i];
-
-		item.addEventListener("mouseenter", () => {
-			item.style.zIndex = 1;
-			console.log("mouseenter");
-		});
-
-		item.addEventListener("transitionend", handle_z_index);
+		item.style.position = "absolute";
+		item.style.width = "calc(33%)";
 	}
 }
 
 function load() {
+	disable_nojs_defaults();
 	resize_cards();
 	arrange_cards();
-	//fix_transitions();
 }
 
 window.onload = load;
+window.pageshow = load;
 window.onreload = load;
 window.onresize = load;

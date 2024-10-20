@@ -7,6 +7,9 @@
 	<script src="{{ $projJS.Permalink }}" integrity="{{ $projJS.Data.Integrity }}" crossorigin="anonymous"></script>
 	<center><h1>{{- .Params.title -}}</h1></center>
 	{{ .Content }}
+	<br>
+	<center><p><i>This page functions visually better with Javascript enabled.</i></p></center>
+	<br>
 	<div class="proj-grid" onload="load()">
 	{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
