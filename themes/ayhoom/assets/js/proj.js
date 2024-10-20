@@ -1,4 +1,4 @@
-const MAX_CARD_HEIGHT = 100;
+const MAX_CARD_HEIGHT = 400;
 
 function arrange_cards() {
 	const grid = document.getElementsByClassName("proj-grid")[0];
@@ -61,9 +61,33 @@ function resize_cards() {
 	}
 }
 
+function fix_transitions() {
+	var items = document.getElementsByClassName("proj-grid-item");
+
+	function handle_z_index(item) {
+		// check if mouse is hovering
+		console.log("transitionend");
+		//if (item.style.zIndex == 1) {
+		//	item.style.zIndex = 0;
+		//}
+	}
+
+	for (let i = 0; i < items.length; i++) {
+		const item = items[i];
+
+		item.addEventListener("mouseenter", () => {
+			item.style.zIndex = 1;
+			console.log("mouseenter");
+		});
+
+		item.addEventListener("transitionend", handle_z_index);
+	}
+}
+
 function load() {
 	resize_cards();
 	arrange_cards();
+	//fix_transitions();
 }
 
 window.onload = load;

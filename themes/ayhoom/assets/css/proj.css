@@ -1,5 +1,8 @@
 :root {
 	--proj-list-sf: 1.15;
+	--fast-transition: 0.25s;
+	--mid-transition: 0.75s;
+	--slow-transition: 1.75s;
 }
 
 .proj-grid {
@@ -19,14 +22,14 @@
 	position: absolute;
 	width: calc(33.33%);
 
-	transition: -webkit-transform 0.75s ease-in-out;
-	transition: transform 0.75s ease-in-out;
+	transition: transform var(--slow-transition) ease, z-index var(--slow-transition);
+	z-index: 0;
 }
 
 .proj-grid-item:hover {
 	cursor: pointer;
-	-webkit-transform: scale(var(--proj-list-sf));
 	transform: scale(var(--proj-list-sf));
+	z-index: 100;
 }
 
 .proj-grid-item-card {
@@ -65,7 +68,7 @@
 
 	height: 20%;
 	max-height: 5em;
-	transition: max-height 0.75s ease;
+	transition: max-height var(--mid-transition) ease;
 	overflow: hidden;
 	padding: 0px;
 }
@@ -76,7 +79,7 @@
 	padding-left: 2.5em;
 	padding-right: 2.5em;
 
-	transition: max-height 0.75s ease-in-out;
+	transition: max-height var(--slow-transition) ease-in;
 	max-height: 0px;
 	overflow: hidden;
 }
@@ -113,7 +116,6 @@
 	padding-right: 0.1em;
 	padding-bottom: 0.1em;
 }
-
 
 .proj-grid-item:hover > .proj-grid-item-card {
 	background-color: var(--altbg);
