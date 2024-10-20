@@ -14,8 +14,6 @@
 	<div class="proj-grid" onload="load()">
 		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
-		{{- warnf "Processing %s" .Title -}}
-		{{- warnf "Processing %s" .Params.creationdate -}}
 		{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
 		<div class="proj-grid-item">
 			<div class="proj-grid-item-header">
