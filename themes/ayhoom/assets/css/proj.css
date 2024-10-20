@@ -131,6 +131,13 @@
 	}
 }
 
+
+@media (pointer: coarse) {
+	.proj-grid-item-header, .proj-grid-item-footer {
+		max-height: none;
+	}
+}
+
 .proj-grid-item-footer {
 	padding-left: 0.5em;
 	padding-right: 0.5em;
