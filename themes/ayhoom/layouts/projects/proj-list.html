@@ -15,7 +15,6 @@
 		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
 		{{- range .Pages -}}
 		{{- warnf "Processing %s" .Title -}}
-		{{- warnf "Processing %s" .Params.img -}}
 		{{- warnf "Processing %s" .Params.creationdate -}}
 		{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
 		<div class="proj-grid-item">
