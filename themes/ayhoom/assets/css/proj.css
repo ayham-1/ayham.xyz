@@ -121,6 +121,7 @@
 	transition: max-height var(--mid-transition) cubic-bezier(.9,.03,.69,.22); 
 	max-height: 0px;
 	overflow: hidden;
+
 }
 
 
