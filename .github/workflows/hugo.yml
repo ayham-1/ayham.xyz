@@ -18,7 +18,7 @@ jobs:
           extended: true
           hugo-version: '0.119.0'
       - name: Build
-        run: ls assets/pix && hugo --minify
+        run: ls assets/pix/proj && hugo --minify --logLevel debug
       - env:
           BRANCH: public
           FOLDER: public
