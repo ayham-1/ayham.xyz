@@ -1,6 +1,15 @@
 :root {
-	--genwidth: 75%;
-	--navwidth: 85% ;
+	--genwidth-vlg: 70%;
+	--navwidth-vlg: 80%;
+
+	--genwidth-lg: 85%;
+	--navwidth-lg: 90%;
+
+	--genwidth-md: 95%;
+	--navwidth-md: 95%;
+
+	--genwidth-sm: 100%;
+	--navwidth-sm: 100%;
 }
 
 :root {
@@ -30,14 +39,32 @@ body {
 	font-family: monospace, sans-serif;
 }
 
-@media (min-width: 45em) {
+@media (max-width: 750px) {
 	body {
-		max-width: var(--genwidth);
+		max-width: var(--genwidth-sm);
+	}
+}
+
+@media (min-width: 750px) {
+	body {
+		max-width: var(--genwidth-md);
+	}
+}
+
+@media (min-width: 1200px) {
+	body {
+		max-width: calc(var(--genwidth-lg));
+	}
+}
+
+@media (min-width: 1500px) {
+	body {
+		max-width: calc(var(--genwidth-vlg));
 	}
 }
 
 main {
-	margin: 1em;
+	margin: 0;
 	padding: 0.5em;
 }
 

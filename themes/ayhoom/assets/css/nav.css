@@ -7,8 +7,32 @@ nav {
 	clear: both;
 
 	font-size: 18px;
-	max-width: var(--navwidth);
 }
+
+@media (max-width: 750px) {
+	nav {
+		max-width: var(--navwidth-sm);
+	}
+}
+
+@media (min-width: 750px) {
+	nav {
+		max-width: var(--navwidth-md);
+	}
+}
+
+@media (min-width: 1200px) {
+	nav {
+		max-width: calc(var(--navwidth-lg));
+	}
+}
+
+@media (min-width: 1500px) {
+	body {
+		max-width: calc(var(--navwidth-vlg));
+	}
+}
+
 nav li {
 	display: inline-block;
 	list-style: none;

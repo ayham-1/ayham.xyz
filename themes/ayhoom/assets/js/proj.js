@@ -1,17 +1,27 @@
 const MAX_CARD_HEIGHT = 400;
+const THREE_COLUMN_MIN_SCR_WIDTH = 1000;
+const TWO_COLUMN_MIN_SCR_WIDTH = 800;
 
 function arrange_cards() {
 	const grid = document.getElementsByClassName("proj-grid")[0];
 	let CONTAINER_WIDTH = grid.clientWidth;
 	let GAP = 10;
 
-	let COLUMNS = 3;
+	let screen_width = window.innerWidth;
+	let COLUMNS = 0;
+	if (screen_width > THREE_COLUMN_MIN_SCR_WIDTH) {
+		COLUMNS = 3;
+	} else if (screen_width > TWO_COLUMN_MIN_SCR_WIDTH) {
+		COLUMNS = 2;
+	} else {
+		COLUMNS = 1;
+	}
+
 	let ITEM_WIDTH = (CONTAINER_WIDTH / COLUMNS);
 
 	let y_poss = [];
 	for (let i = 0; i < COLUMNS; i++)
 		y_poss.push(0);
-
 
 	let x_pos = 0;
 	let current_col = 0;
@@ -19,6 +29,8 @@ function arrange_cards() {
 	const items = grid.getElementsByClassName("proj-grid-item");
 	for (let i = 0; i < items.length; i++) {
 		const item = items[i];
+		item.style.width = ITEM_WIDTH + "px";
+
 		const card = item.getElementsByClassName("proj-grid-item-card")[0];
 
 		x_pos = current_col * ITEM_WIDTH;
