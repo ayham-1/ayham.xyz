@@ -1,6 +1,23 @@
-const MAX_CARD_HEIGHT = 400;
+let MAX_CARD_HEIGHT = 400;
 const THREE_COLUMN_MIN_SCR_WIDTH = 1000;
 const TWO_COLUMN_MIN_SCR_WIDTH = 800;
+
+let coarse_pointer = false;
+
+function handle_coarse_pointer(event) {
+	if (event.matches) {
+		coarse_pointer = true;
+	} else {
+		coarse_pointer = false;
+	}
+
+	if (document.readyState === "complete")
+		setup();
+}
+
+const mediaQueryList = window.matchMedia('(pointer: coarse)');
+mediaQueryList.addEventListener('change', handle_coarse_pointer);
+handle_coarse_pointer(mediaQueryList);
 
 function arrange_cards() {
 	const grid = document.getElementsByClassName("proj-grid")[0];
@@ -64,7 +81,7 @@ function resize_cards() {
 		current_height += div.getElementsByClassName("proj-grid-item-title")[0].clientHeight;
 		current_height += div.getElementsByClassName("proj-grid-item-text")[0].clientHeight;
 
-		if (current_height + img.style.clientHeight > MAX_CARD_HEIGHT) {
+		if (current_height + img.style.clientHeight > MAX_CARD_HEIGHT && !coarse_pointer) {
 			current_height = MAX_CARD_HEIGHT;
 		}
 
@@ -85,13 +102,14 @@ function disable_nojs_defaults() {
 	}
 }
 
-function load() {
+function setup() {
 	disable_nojs_defaults();
 	resize_cards();
 	arrange_cards();
 }
 
-window.onload = load;
-window.pageshow = load;
-window.onreload = load;
-window.onresize = load;
+window.onload = setup;
+window.pageshow = setup;
+window.onreload = setup;
+window.onresize = setup;
+
