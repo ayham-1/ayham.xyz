@@ -8,4 +8,4 @@ params:
     img: "pix/proj/wsgen.webp"
 ---
 
-Innovating the workflow of curating highschool worksheet from A-Level like past-papers. An easy application to maintain worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically.
+An easy to use application to maintain A-Level worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically. Currently there is a showable demo.
