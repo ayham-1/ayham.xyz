@@ -2,7 +2,7 @@
 title: "GraphSolver"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/GraphSolver"
+    projlink: "https://github.com/ayham-1/GraphSolver"
     lastupdate: "2019-12-08"
     creationdate: "2019-10-11"
     img: "pix/proj/graphsolver.webp"

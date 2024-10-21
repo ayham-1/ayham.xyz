@@ -2,7 +2,7 @@
 title: "maid"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/linux.home.maid"
+    projlink: "https://github.com/ayham-1/linux.home.maid"
     lastupdate: "2023-08-18"
     creationdate: "2023-08-16"
     img: "pix/proj/maid.webp"

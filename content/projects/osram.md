@@ -2,7 +2,7 @@
 title: "osram"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/OSRAM"
+    projlink: "https://github.com/ayham-1/OSRAM"
     lastupdate: "2018-06-08"
     creationdate: "2018-04-18"
     img: "pix/proj/osram.webp"

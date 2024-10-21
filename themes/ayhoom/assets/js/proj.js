@@ -87,6 +87,7 @@ function resize_cards() {
 
 		let height = Math.min(MAX_CARD_HEIGHT, current_height + img.style.clientHeight);
 		div.style.height = height + "px";
+		div.setAttribute("index", i);
 	}
 }
 
@@ -106,7 +107,6 @@ function setup() {
 	disable_nojs_defaults();
 	resize_cards();
 	arrange_cards();
-	recalc_after_mouse_exit_card();
 }
 
 window.onload = setup;
@@ -114,15 +114,3 @@ window.pageshow = setup;
 window.onreload = setup;
 window.onresize = setup;
 
-function recalc_after_mouse_exit_card() {
-	const cards = document.getElementsByClassName("proj-grid-item");
-	for (let i = 0; i < cards.length; i++) {
-		cards[i].addEventListener("transitionend", (e) => {
-			zindex = window.getComputedStyle(e.target, null).getPropertyValue("z-index");
-			if (zindex == "0") {
-				resize_cards();
-				arrange_cards();
-			}
-		});
-	}
-}

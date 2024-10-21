@@ -2,7 +2,7 @@
 title: "sokoban"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/sokoban"
+    projlink: "https://github.com/ayham-1/sokoban"
     lastupdate: "2022-09-09"
     creationdate: "2022-06-26"
     img: "pix/proj/sokoban.webp"

@@ -2,7 +2,7 @@
 title: "iloveads"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/iloveads"
+    projlink: "https://github.com/ayham-1/iloveads"
     lastupdate: "2024-10-14"
     creationdate: "2024-10-11"
     img: "pix/proj/iloveads.webp"
