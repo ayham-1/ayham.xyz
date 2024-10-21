@@ -8,4 +8,4 @@ params:
     img: "pix/proj/iloveads.webp"
 ---
 
-we love ads so much, we make sure we click on every single ad ever!!!1
+we love ads so much, we make sure we click on every single ad ever!!!1 This is a satirical project, a browser and a python script, used to make sure every link that is blocked by an Adblocker opened in the background.
