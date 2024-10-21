@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Website on Ayham's Online Website</title><link>https://ayham.xyz/tags/website/</link><description>Recent content in Website on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Wed, 23 Aug 2023 04:07:04 +0300</lastBuildDate><atom:link href="https://ayham.xyz/tags/website/index.xml" rel="self" type="application/rss+xml"/><item><title>Pushing Static Pages to The Limit</title><link>https://ayham.xyz/posts/pushing-static-pages-to-the-limit/</link><pubDate>Sun, 04 Sep 2022 18:07:13 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/pushing-static-pages-to-the-limit/</guid><description>&lt;p>Static webpages are well renowned for their speed, security, and simplicity. A
+very common misconception is that static webpages can&amp;rsquo;t enjoy Javascript. Here
+is how I got this website to template applications that use Javascript and WASM
+using Hugo&amp;rsquo;s shortcode system.&lt;/p>
+&lt;h1 id="addapp-js--css-shortcode">addapp (JS + CSS) shortcode&lt;/h1>
+&lt;p>Create a new shortcode file in &lt;code>theme/&amp;lt;name&amp;gt;/layouts/shortcodes/addapp.html&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#999;font-style:italic">&amp;lt;!-- ENTERING SHORTCODE: addapp --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- $appName := .Get 0 }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- $appJS := resources.Get (printf &amp;#34;apps/%s/app.js&amp;#34; ($appName | safeURL)) }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- partial (printf &amp;#34;apps/%s/app.html&amp;#34; ($appName | safeURL)) . }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#6ab825;font-weight:bold">script&lt;/span> &lt;span style="color:#bbb">src&lt;/span>=&lt;span style="color:#ed9d13">&amp;#34;{{ $appJS.Permalink }}&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#6ab825;font-weight:bold">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#999;font-style:italic">&amp;lt;!-- EXITING SHORTCODE: addapp --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then call the shortcode, for example, in this website&amp;rsquo;s game sokoban (file:
+&lt;code>content/apps/sokoban.md&lt;/code>):&lt;/p></description></item><item><title>blogit: A Complete Guide</title><link>https://ayham.xyz/posts/blogit-to-blog-it/</link><pubDate>Fri, 26 Nov 2021 19:18:52 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/blogit-to-blog-it/</guid><description>&lt;p>Running a personal website should be an easy task. Unfortunately, a big
+hindrance is that there aren&amp;rsquo;t many &amp;ldquo;suckless&amp;rdquo; blogging system.
+
+
+
+&lt;dev>
+&lt;a href="https://pedantic.software/git/blogit"target="_blank">blogit&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev> is the closest in terms of
+simplicity and minimalism to perfection. This article would be an end-all be-all
+guide to effectively install blogit onto your own website.&lt;/p></description></item></channel></rss>
