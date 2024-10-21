@@ -21,36 +21,26 @@ copyright = "(c) 2024 ayham"
 		pre = "home"
 		url = "/"
 		weight = 1
-#	[[menu.main]]
-#		name = "Résumé"
-#		pre = "resume"
-#		url = "/resume/"
-#		weight = 2
-	[[menu.main]]
-		name = "Store"
-		pre = "store"
-		url = "/store/"
-		weight = 3
 	[[menu.main]]
 		name = "Projects"
 		pre = "projects"
 		url = "/projects/"
-		weight = 4
+		weight = 2
 	[[menu.main]]
 		name = "Posts"
 		pre = "posts"
 		url = "/posts/"
-		weight = 5
+		weight = 3
 	[[menu.main]]
 		name = "Library"
 		pre = "library"
 		url = "/library/"
-		weight = 6
+		weight = 4
 	[[menu.main]]
 		name = "Apps"
 		pre = "apps"
 		url = "/apps/"
-		weight = 7
+		weight = 5
 
 [markup]
   [markup.highlight]
