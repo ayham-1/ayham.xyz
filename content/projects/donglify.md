@@ -2,7 +2,7 @@
 title: "donglify"
 params:
     devstatus: "Active"
-    projlink: "github.com/ayham-1/donglify"
+    projlink: "https://github.com/ayham-1/donglify"
     lastupdate: "*"
     creationdate: "2024-01-01"
     img: "pix/proj/donglify.webp"

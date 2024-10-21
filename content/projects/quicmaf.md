@@ -2,7 +2,7 @@
 title: "Quicmaf"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/QuicMaf"
+    projlink: "https://github.com/ayham-1/QuicMaf"
     lastupdate: "2019-02-14"
     creationdate: "2019-02-14"
     img: "pix/proj/quicmaf.webp"

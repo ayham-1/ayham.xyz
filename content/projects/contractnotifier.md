@@ -2,7 +2,7 @@
 title: "contractnotifier"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/ContractNotifier"
+    projlink: "https://github.com/ayham-1/ContractNotifier"
     lastupdate: "2020-01-18"
     creationdate: "2019-11-01"
     img: "pix/proj/contractnotifier.webp"

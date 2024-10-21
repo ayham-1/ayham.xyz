@@ -2,7 +2,7 @@
 title: "Papertrader"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/PaperTrader"
+    projlink: "https://github.com/ayham-1/PaperTrader"
     lastupdate: "2021-12-24"
     creationdate: "2020-05-02"
     img: "pix/proj/papertrader.webp"

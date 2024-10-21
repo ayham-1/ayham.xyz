@@ -2,7 +2,7 @@
 title: "camcurrency"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/CamCurrency"
+    projlink: "https://github.com/ayham-1/CamCurrency"
     lastupdate: "2021-10-24"
     creationdate: "2021-09-21"
     img: "pix/proj/camcurrency.webp"

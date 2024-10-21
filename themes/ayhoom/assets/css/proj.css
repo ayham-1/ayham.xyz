@@ -53,7 +53,6 @@
 }
 
 .proj-grid-item:hover {
-	cursor: pointer;
 	transform: scale(var(--proj-list-sf));
 	z-index: 100;
 }
@@ -70,6 +69,7 @@
 	border-width: 1px;
 	border-radius: 10px;
 	background-color: var(--altbg);
+
 }
 
 @media (pointer: coarse) {
@@ -103,7 +103,6 @@
 	transition: max-height var(--mid-transition) ease;
 	overflow: hidden;
 	padding: 0px;
-
 }
 
 @media (pointer: coarse) {

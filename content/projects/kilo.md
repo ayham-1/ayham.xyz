@@ -2,7 +2,7 @@
 title: "kilo"
 params:
     devstatus: "Archived"
-    projlink: "github.com/ayham-1/kilo"
+    projlink: "https://github.com/ayham-1/kilo"
     lastupdate: "2019-02-06"
     creationdate: "2019-02-01"
     img: "pix/proj/kilo.webp"
