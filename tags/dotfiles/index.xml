@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dotfiles on Ayham's Online Website</title><link>https://ayham.xyz/tags/dotfiles/</link><description>Recent content in Dotfiles on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Mon, 09 Jan 2023 19:23:28 +0300</lastBuildDate><atom:link href="https://ayham.xyz/tags/dotfiles/index.xml" rel="self" type="application/rss+xml"/><item><title>Stowing Your Dotfiles</title><link>https://ayham.xyz/posts/stowing-your-dotfiles/</link><pubDate>Mon, 02 Jan 2023 06:35:38 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/stowing-your-dotfiles/</guid><description>&lt;p>Linux differs from other operating systems in how most applications are
+configured - through files. Using text for configuration might seem as a
+step-back, however, GUI configurations were never a progression.&lt;/p>
+&lt;p>Having applications configured through text has a couple of advantages:&lt;/p>
+&lt;ul>
+&lt;li>Portable - any computer which can install that application can have the same
+configuration.&lt;/li>
+&lt;li>The light level of configuration - some Linux distributions, such as NixOS, offer
+a system level configuration. However, this would invalidate the first point,
+and the level of configuration would be potentially limited through the
+configuration of the distribution.&lt;/li>
+&lt;li>The &lt;code>stow&lt;/code> method is minimal and re-uses packaging software for dotfiles.&lt;/li>
+&lt;/ul>
+&lt;h2 id="your-dotfiles-in-git">Your dotfiles in Git&lt;/h2>
+&lt;p>In order to have portable dotfiles, you need a method of update &amp;amp; transport. For
+that, you can use Git.&lt;/p></description></item></channel></rss>

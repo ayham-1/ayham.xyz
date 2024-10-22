@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Neovim on Ayham's Online Website</title><link>https://ayham.xyz/tags/neovim/</link><description>Recent content in Neovim on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Sun, 11 Dec 2022 04:39:14 +0300</lastBuildDate><atom:link href="https://ayham.xyz/tags/neovim/index.xml" rel="self" type="application/rss+xml"/><item><title>Brackets Heaven in Neovim</title><link>https://ayham.xyz/posts/brackets-heaven-in-neovim/</link><pubDate>Sun, 11 Dec 2022 03:14:19 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/brackets-heaven-in-neovim/</guid><description>&lt;p>Lately I have been writing alot of flutter. And there is one charecteristic
+&amp;lsquo;annoyance&amp;rsquo; with that, &lt;em>BRACKETS&lt;/em>. The flutter meta is having class constructors
+that enclose other classes to form a Widget tree. Since initializing those
+Widgets is done with class Constructors, you end up with this abomination:&lt;/p>
+&lt;p>&lt;center>
+	&lt;img alt="screenshot1.png" src="https://ayham.xyz/pix/posts/brackets-nvim/screenshot1.d133482f3830c0d3117743aa5086b0bf.png" integrity="md5-0TNILzgwwNMRd0OqUIawvw==" crossorigin="anonymous">
+&lt;/center>
+&lt;/p>
+&lt;p>Ofcourse, this is Neovim we are talking about, and there is always a way to make
+your life easier with plugins.&lt;/p></description></item></channel></rss>
