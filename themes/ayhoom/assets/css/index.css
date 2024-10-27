@@ -1,11 +1,35 @@
 .indexTable {
-	display:grid;
-	grid-template-rows: 50% 50%;
+	display: grid;
+	//grid-template-rows: 50% 50%;
 	justify-content: center;
 }
 
 @media screen and (min-width: 40em) {
 	.indexTable {
 		grid-template-columns: 50% 50%;
+	}
+}
+
+@media (max-width: 750px) {
+	.proj-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (min-width: 750px) {
+	.proj-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 1200px) {
+	.proj-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 1500px) {
+	.proj-grid {
+		grid-template-columns: 1fr 1fr;
 	}
 }
