@@ -5,7 +5,7 @@ date: 2022-05-11T17:00:41+03:00
 ---
 
 ##### Skillset
-* Languages (in-order): C, C++, Python, Bash, Rust, Zig, Nixlang, Dart/Kotlin (Android)
+* Languages (in-order): C, C++, Python, Java, Bash, Rust, Zig, Nixlang, Dart/Kotlin (Android)
 * Tools: Neovim, Git, Tmux, Docker, CMake, Meson, GoHugo
 * OS (in-order): ArchLinux, NixOS, Debian-based, OpenSUSE, Gentoo
 
