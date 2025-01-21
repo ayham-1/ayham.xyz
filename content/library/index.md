@@ -16,9 +16,6 @@ List of books/magazines I read, this is neither a recommendation list nor endors
 - Victor Hugo - Les Miserables [Volume 2]
 - Postman Neil - Amusing Ourselves to Death
 - Geoff Colvin - Talent is Overrated
-
-![Seneca - Letters From A Stoic](pix/library/seneca.jpg "left")
-
 - Cornelsen - Grammatik Aktiv (A1-B1)
 - Seneca - Letters From A Stoic
 - Olly Richards & Alex Rawlings - Short Stories in German
@@ -38,7 +35,6 @@ List of books/magazines I read, this is neither a recommendation list nor endors
 - Bronze Age Pervert - Bronze Age Mindset
 - Anne Rooney - Think Like A Mathematician
 - Charles Darwin - A Tale Of Two Cities
-  ![George Orwell - 1984](pix/library/1984.jpg "right")
 - Christopher Marlowe - Dr. Faustus
 - John Steinback - The Winter of Our Discontent
 - John Steinback - Of Mice and Men
@@ -54,9 +50,6 @@ List of books/magazines I read, this is neither a recommendation list nor endors
 - Titania McGrath - Woke: A Guide to Social Justice
 - Ray Bradbury - Fahrenheit 451
 - Viktor Emil Frankl - Man's Search for Meaning
-
-![Plato - Republic](pix/library/republic.jpg "left")
-
 - Robert H. Latiff - Future War: Preparing for the New Global Battlefield
 - Andrew Doyle - Free Speech and Why It Matters
 - Greg Lukianoff, Jonathan Haidt - The Coddling of the American Mind
