@@ -8,11 +8,11 @@ If you have stumbled upon this page, chances are you want to know how this
 works. This website is built using <https://gohugo.io>. The project can be found
 here on [Github](https://github.com/realaltffour/ayham.xyz).
 
-* All pages use no cookies, except stated otherwise.
-* All external links are marked with a link emoji.
-* Specific WASM binaries for applications hosted can be found on their
+- All pages use no cookies, except stated otherwise.
+- All external links are marked with a link emoji.
+- Specific WASM binaries for applications hosted can be found on their
   respective websites.
-* All linked resources include an integrity attribute.
-* All linked resources are minified where possible, check project for full code.
+- All linked resources include an integrity attribute.
+- All linked resources are minified where possible, check project for full code.
 
 Enjoy your stay!
