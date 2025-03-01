@@ -4,8 +4,9 @@ type: "library"
 layout: "single"
 ---
 
-List of books/magazines I read, this is neither a recommendation list nor endorsement.
+*List of books/magazines I read, this is neither a recommendation list nor endorsement.*
 
+- Rashid Khalidi - The Hundred Years' War On Palestine
 - J. R. R. Tolkien - The Hobbit
 - O'Reillys Taschenbibliothek - R kurz & gut
 - Verlag Liebaug-Dartmann - Die blaue Übungsgrammatik für C1
