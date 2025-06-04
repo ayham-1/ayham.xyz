@@ -9,7 +9,7 @@ date = [":git","date", "publishDate", "lastmod"]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 rssLimit = 20
-copyright = "(c) 2024 ayham"
+copyright = "(c) 2025 ayham"
 
 [params.author]
 	name = "ayham"
@@ -76,7 +76,7 @@ copyright = "(c) 2024 ayham"
     disable = true
   [privacy.instagram]
     disable = true
-  [privacy.twitter]
+  [privacy.x]
     disable = true
   [privacy.vimeo]
     disable = true
