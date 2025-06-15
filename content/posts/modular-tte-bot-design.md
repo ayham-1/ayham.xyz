@@ -1,8 +1,7 @@
 ---
 title: "Modular TTE Bot Design"
-date: 2025-06-15T00:00:00+02:00
+date: 2025-06-16T00:00:00+02:00
 tags: ["code", "tte", "writeup"]
-draft: true
 ---
 
 As a running tradition in the AuD class at OVGU, students are required to 
@@ -388,8 +387,8 @@ The game itself has probably an implicit soft-limit on the average of rounds a
 bot can reasonably achieve without over-optimization. The way the tiles redraw
 is programmed means that sooner or later, you will get unlucky with your 
 card draws and fail the run. There is no current garauntee from the game that 
-one can unendlessly reach the next round's target resources.
+one can endlessly reach the next round's target resources.
 
-So if the game is not designed to allow for unendless runs and the success of 
-a bot just means reaching round 5, you may ask: was it all worth 
-it? And for that I answer: need it be?
+So if the game is not designed to allow for endless runs and the success of a 
+bot just means reaching round 5, you may ask: was it all worth it? And for that 
+I answer: need it be?
