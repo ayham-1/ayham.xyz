@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archlinux on Ayham's Online Website</title><link>https://ayham.xyz/tags/archlinux/</link><description>Recent content in Archlinux on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Mon, 24 Jun 2024 22:28:26 +0200</lastBuildDate><atom:link href="https://ayham.xyz/tags/archlinux/index.xml" rel="self" type="application/rss+xml"/><item><title>Hardening the Archlinux WiFi Network Stack</title><link>https://ayham.xyz/posts/hardening-the-archl-network-stack/</link><pubDate>Sun, 21 Apr 2024 11:09:06 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/hardening-the-archl-network-stack/</guid><description>&lt;p>A wise Archlinux user once said:&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-quote" data-lang="quote">One shall secure his network stack, or shall suffer network leaks.
+- a wise internet enjoyer
+&lt;/code>&lt;/pre>&lt;p>Due to ArchLinux&amp;rsquo;s design of customizability and Laissez-Faire-like package and
+system architecture policies, one has to make the incomprehnsibly (indeed)
+difficult choice of choosing his network stack. Generally speaking, a decent
+choice for estabilishing WiFi connection, is using &lt;code>iwd&lt;/code>. And &lt;code>dhcpcd&lt;/code> for ethernet.
+In this article, I would be focusing on WiFi and DNS hardening. More specifically,
+these are the areas where slight changes to the configuration would offer a more
+secure network stack:&lt;/p></description></item></channel></rss>

@@ -1,0 +1,240 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Ayham's online website"><meta name=keywords content="ayham,personal,blog,linux"><meta name=author content="ayham"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light"><link rel=icon type=image/x-icon href=https://ayham.xyz/pix/avatar/pfp_hu_9b8ef136499e5f25.260c87cca6a67382a9043e12d7bf4dae.png integrity="md5-JgyHzKamc4KpBD4S179Nrg==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/nav.dbcff7b67f99ee271630f11e6d609150.css integrity="md5-28/3tn+Z7icWMPEebWCRUA==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/footer.e71d515740d85272dc5a068dedc6394b.css integrity="md5-5x1RV0DYUnLcWgaN7cY5Sw==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/common.4d89642363d46c847439f85578bb0cf0.css integrity="md5-TYlkI2PUbIR0OfhVeLsM8A==" crossorigin=anonymous><title>Ayham's Online Website | A Practical Guide to GnuPG</title></head><body><center><nav><ul><li><a href=/>[Home]</a></li><li><a href=/projects/>[Projects]</a></li><li><a href=/posts/>[Posts]</a></li><li><a href=/library/>[Library]</a></li><li><a href=/apps/>[Apps]</a></li></ul></nav><hr></center><main><center><h1>A Practical Guide to GnuPG</h1></center>Publish Date: <time datetime=2022-09-27>Sep 27, 2022</time>&nbspLast Update: <time datetime=2022-12-11>Dec 11, 2022</time><br>Tags:<a href=https://ayham.xyz/tags/guide>guide</a>
+<a href=https://ayham.xyz/tags/security>security</a><br>1503 words, 8 minute(s) to read.<br><br><article><center><img alt=pix/posts/guide-to-gpg/encryption-chadism.webp src=/pix/posts/guide-to-gpg/encryption-chadism_hu_1ac1fe4151eef53a.webp width=400 height=400 integrity crossorigin=anonymous></center><p>Using GnuPG can be hard, we&rsquo;ve been there before. You generate your keys and
+then somehow you loose them, and then you realize you should get to learn how to
+correctly use GnuPG, but reality hits and there are no complete tutorials. So
+you go around the interent and try different articles and sources with no luck.
+Although I don&rsquo;t promise a complete and comprehensive guide to GnuPG, in this
+article I would go over setting up GnuPG keys, subkeys, using GnuPG for SSH,
+transferring keys to other computers and using online services like Github and
+Codeberg.</p><h2 id=generating-gnupg-master-keys>Generating GnuPG Master-keys</h2><p>GnuPG uses asymmetric encryption, which means that you would use 2 keys. Private
+keys for decrypting data. Public keys for encrypting data. By default, the
+implementation of GnuPG generates 2 pairs of keys, the master-key and a signed
+sub-key. It also generates your primary user identity.</p><p>The types of keys GnuPG can generate are:</p><ul><li>pub - public primary-key</li><li>sub - public sub-key</li><li>sec - secret primary-key</li><li>ssb - secret sub-key</li></ul><p>By default, running <code>gpg --gen-key</code> creates pub, sec, and sub, ssb. The latter
+pair is for encryption.</p><p>Generate your new secret keys either with the quick command <code>gpg --gen-key</code>, or,
+if you would like to specify the bit-size (recommended 4096), with the command
+<code>gpg --full-generate-key</code>.</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">7
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --list-secret-keys
+</span></span><span style=display:flex><span>/home/ayham/.local/share/gnupg/pubring.kbx
+</span></span><span style=display:flex><span>------------------------------------------
+</span></span><span style=display:flex><span>sec   rsa4096 2022-09-27 [SC] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>      8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF
+</span></span><span style=display:flex><span>uid           [ultimate] ayham &lt;me@ayham.xyz&gt;
+</span></span><span style=display:flex><span>ssb   rsa4096 2022-09-27 [E] [expires: 2023-03-26]
+</span></span></code></pre></td></tr></table></div></div><p>After creating your initial keys, you should have one master key (the first one)
+that is signing and certification only &lsquo;<code>[SC]</code>&rsquo;, and one encryption key &lsquo;<code>[E]</code>&rsquo;.</p><h2 id=generating-sub-keys>Generating Sub-keys</h2><p>Sub-keys are separate pair of keys generated by GnuPG, with the slight
+difference being that those keys are signed by your master key. Since the
+Web-of-trust is built upon the master key, you must keep your master key secret,
+and as I will show later, not on actively operating computers. Sub-keys allow
+you to sign and encrypt with your master&rsquo;s key identity without the actual
+master key.</p><p>Sign-only keys can be used to sign Git commits. To generate a signing key:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">35
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --edit-key me@ayham.xyz
+</span></span><span style=display:flex><span>gpg (GnuPG) 2.2.39; Copyright (C) <span style=color:#3677a9>2022</span> g10 Code GmbH
+</span></span><span style=display:flex><span>This is free software: you are free to change and redistribute it.
+</span></span><span style=display:flex><span>There is NO WARRANTY, to the extent permitted by law.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sec  rsa4096/783F6DE277DA7BFF
+</span></span><span style=display:flex><span>     created: 2022-09-27  expires: 2023-03-26  usage: SC
+</span></span><span style=display:flex><span>     trust: ultimate      validity: ultimate
+</span></span><span style=display:flex><span>ssb  rsa4096/186B390DB1EB9503
+</span></span><span style=display:flex><span>     created: 2022-09-27  expires: 2023-03-26  usage: E
+</span></span><span style=display:flex><span>[ultimate] (1). ayham &lt;me@ayham.xyz&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gpg&gt; addkey
+</span></span><span style=display:flex><span>Please <span style=color:#6ab825;font-weight:700>select</span> what kind of key you want:
+</span></span><span style=display:flex><span>   (3) DSA (sign only)
+</span></span><span style=display:flex><span>   (4) RSA (sign only)
+</span></span><span style=display:flex><span>   (5) Elgamal (encrypt only)
+</span></span><span style=display:flex><span>   (6) RSA (encrypt only)
+</span></span><span style=display:flex><span>  (14) Existing key from card
+</span></span><span style=display:flex><span>Your selection? <span style=color:#3677a9>4</span>
+</span></span><span style=display:flex><span>RSA keys may be between <span style=color:#3677a9>1024</span> and <span style=color:#3677a9>4096</span> bits long.
+</span></span><span style=display:flex><span>What keysize <span style=color:#6ab825;font-weight:700>do</span> you want? (3072) <span style=color:#3677a9>4096</span>
+</span></span><span style=display:flex><span>Requested keysize is <span style=color:#3677a9>4096</span> bits
+</span></span><span style=display:flex><span>Please specify how long the key should be valid.
+</span></span><span style=display:flex><span>         <span style=color:#40ffff>0</span> = key does not expire
+</span></span><span style=display:flex><span>      &lt;n&gt;  = key expires in n days
+</span></span><span style=display:flex><span>      &lt;n&gt;w = key expires in n weeks
+</span></span><span style=display:flex><span>      &lt;n&gt;m = key expires in n months
+</span></span><span style=display:flex><span>      &lt;n&gt;y = key expires in n years
+</span></span><span style=display:flex><span>Key is valid <span style=color:#6ab825;font-weight:700>for</span>? (0) 6m
+</span></span><span style=display:flex><span>Key expires at Fri <span style=color:#3677a9>31</span> Mar <span style=color:#3677a9>2023</span> 03:23:40 PM +03
+</span></span><span style=display:flex><span>Is this correct? (y/N) y
+</span></span><span style=display:flex><span>Really create? (y/N) y
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>gpg&gt; save
+</span></span></code></pre></td></tr></table></div></div><p>Choose an expiry date which is far enough to not be a hassle. You can always
+change the key expiry date, with the &lsquo;<code>expire</code>&rsquo; command. If you have multiple
+devices (or installs) on which you would like to use your GnuPG keys, you can
+create as many keys as you need and then distribute them appropriately. However,
+this only works for sign keys and NOT encryption keys. GnuPG will just use the
+latest encryption key. This configuration of subkeys would allow you to
+selectively revoke compromised keys, with no need to revoke your master key.</p><h2 id=using-gnupg-for-ssh>Using GnuPG for SSH</h2><p>You can generate an authorization key for SSH:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --quick-add-key &lt;your key id&gt; rsa4096 auth 6m
+</span></span></code></pre></td></tr></table></div></div><p>To setup GnuPG to act as an SSH agent:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;enable-ssh-support&#34;</span> &gt;&gt; ~/.local/share/gnupg/gpg-agent.conf
+</span></span><span style=display:flex><span>[~] $ <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;use-standard-socket&#34;</span> &gt;&gt; ~/.local/share/gnupg/gpg-agent.conf
+</span></span></code></pre></td></tr></table></div></div><p>Your location of the configuration file may vary.</p><p>Add to your pre-desktop files (e.x. .bash_profile, .zprofile):</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">5
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#24909d>export</span> <span style=color:#40ffff>SSH_AUTH_SOCK</span>=<span style=color:#6ab825;font-weight:700>$(</span>gpgconf --list-dirs agent-ssh-socket<span style=color:#6ab825;font-weight:700>)</span>
+</span></span><span style=display:flex><span>gpgconf --launch gpg-agent
+</span></span><span style=display:flex><span>gpg-connect-agent /bye
+</span></span><span style=display:flex><span>gpg-connect-agent updatestartuptty /bye &gt;/dev/null
+</span></span><span style=display:flex><span><span style=color:#24909d>export</span> <span style=color:#40ffff>GnuPG_TTY</span>=<span style=color:#6ab825;font-weight:700>$(</span>tty<span style=color:#6ab825;font-weight:700>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>Tell the GnuPG agent about your key. First find your auth. public key:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --with-keygrip --list-secret-keys
+</span></span><span style=display:flex><span>/home/ayham/.local/share/gnupg/pubring.kbx
+</span></span><span style=display:flex><span>------------------------------------------
+</span></span><span style=display:flex><span>sec   rsa4096 2022-09-27 [SC] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>      8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF
+</span></span><span style=display:flex><span>      <span style=color:#40ffff>Keygrip</span> = 48D61587035B00590DA8B96BA587161668E0C4AA
+</span></span><span style=display:flex><span>uid           [ultimate] ayham &lt;me@ayham.xyz&gt;
+</span></span><span style=display:flex><span>ssb   rsa4096 2022-09-27 [E] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>      <span style=color:#40ffff>Keygrip</span> = 1D1A365C136EC6C78523C26CF766B041810E03AD
+</span></span><span style=display:flex><span>ssb   rsa4096 2022-09-27 [A] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>      <span style=color:#40ffff>Keygrip</span> = 41FE9D7D43999B0A0344E4F4900E1E1A3E142065
+</span></span><span style=display:flex><span>ssb   rsa4096 2022-09-29 [S] [expires: 2023-03-28]
+</span></span><span style=display:flex><span>      <span style=color:#40ffff>Keygrip</span> = 1134F1DEDA38D009B43BD61356F6B25A8F4E6EE9
+</span></span></code></pre></td></tr></table></div></div><p>Append the keygrip to <code>sshcontrol</code>:</p><pre tabindex=0><code>echo {41FE9D7D43999B0A0344E4F4900E1E1A3E142065} &gt;&gt; ~/.local/share/gnupg/sshcontrol
+</code></pre><p>Re-login or end any SSH agents, then run <code>ssh-add -l</code> to check if the agent does
+detect the key.</p><h2 id=transferring-your-keys>Transferring Your Keys</h2><p>Back-up your keys:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">4
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --armor --export &gt; public-keys.asc
+</span></span><span style=display:flex><span>[~] $ gpg --armor --export-secret-keys &gt; private-keys.asc
+</span></span><span style=display:flex><span>[~] $ gpg --export-ownertrust &gt; ownertrust.asc
+</span></span><span style=display:flex><span>[~] $ gpg --armor --gen-revoke me@ayham.xyz &gt; revocation.asc
+</span></span></code></pre></td></tr></table></div></div><p>Keep all those files safe somewhere external. Move the public key files to the
+destination installion you would like to have your keys.</p><p>You will need to get your subkey&rsquo;s public key id which you would want to use on
+the destination installation:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --list-secret-keys --keyid-format short
+</span></span><span style=display:flex><span>/home/ayham/.local/share/gnupg/pubring.kbx
+</span></span><span style=display:flex><span>------------------------------------------
+</span></span><span style=display:flex><span>sec   rsa4096/77DA7BFF 2022-09-27 [SC] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>      8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF
+</span></span><span style=display:flex><span>uid         [ultimate] ayham &lt;me@ayham.xyz&gt;
+</span></span><span style=display:flex><span>ssb   rsa4096/B1EB9503 2022-09-27 [E] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>ssb   rsa4096/9625CB0E 2022-09-27 [A] [expires: 2023-03-26]
+</span></span><span style=display:flex><span>ssb   rsa4096/CB24AEBF 2022-09-29 [S] [expires: 2023-03-28]
+</span></span></code></pre></td></tr></table></div></div><p>Export your subkey private key:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --armor --export-secret-keys 9625CB0E &gt; your-key-name.asc
+</span></span></code></pre></td></tr></table></div></div><p>Now to import your exported files, run these on the destination system:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">4
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --import your-public-keys.asc
+</span></span><span style=display:flex><span>[~] $ gpg --import your-private-keys.asc
+</span></span><span style=display:flex><span>[~] $ <span style=color:#999;font-style:italic># don&#39;t forget to import your ownertrust.asc to all systems</span>
+</span></span><span style=display:flex><span>[~] $ gpg --import-ownertrust your-ownertrust.asc
+</span></span></code></pre></td></tr></table></div></div><p>Do not to forget to <code>shred -U</code> your <code>*.asc</code> files.</p><p>If you chose GnuPG as your SSH agent, and if you run <code>ssh-add -l</code> on the
+destination system and it does not show a user id, you would have to update the
+<code>sshcontrol</code> file with the new keygrip (use same method as above). You would
+also need to update server SSH public key, by adding a new one. I didn&rsquo;t find
+a simpler solution to this.</p><h2 id=using-codeberg--github>Using Codeberg & Github</h2><p>You can use your newly generated subkey for signing code commits. And by
+generating a subkey for every system you would like to sign your code on, you
+can ensure that in case you loose the private key for the subkey, it is just
+a matter of revocation and updating of your master public key to reflect that.
+A disadvantage of this method is that you do need to update the master key for
+any important modifications, like adding or deleting subkeys.</p><p>To start using your keys, export your public key and paste the extracted data on
+Codeberg and Github. I hope I can safely assume that if you followed along this
+article, you would be able to do that by yourself.</p><p>Export your SSH public key like so:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ gpg --export-ssh-key &lt;your key id&gt;
+</span></span></code></pre></td></tr></table></div></div><p>Add the output to Codeberg and Github.</p><p>Check if your SSH authentication works (I use dropbear client, it works smoothly
+with GnuPG):</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">2
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ dbclient git@codeberg.org
+</span></span><span style=display:flex><span>[~] $ dbclient git@github.com
+</span></span></code></pre></td></tr></table></div></div><p>Don&rsquo;t forget to configure git to always sign your commits:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>[~] $ nvim .config/git/config
+</span></span><span style=display:flex><span>[user]
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>email</span> = &lt;your email&gt;
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>name</span> = &lt;your name&gt;
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>signingKey</span> = &lt;your subkey id&gt;!
+</span></span><span style=display:flex><span>[commit]
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>gpgsign</span> = <span style=color:#24909d>true</span>
+</span></span><span style=display:flex><span>[init]
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>defaultBranch</span> = master
+</span></span><span style=display:flex><span>[core]
+</span></span><span style=display:flex><span>	<span style=color:#40ffff>sshCommand</span> = dbclient
+</span></span></code></pre></td></tr></table></div></div><p>The exclamation mark is not a typo!</p><p>Side note: I recommend generating your master key on a different installation
+than your main install, and then importing your needed subkeys to your main
+install. Either that or delete your <code>~/.local/share/gnupg/</code> after you have
+backed up your keys to another storage, then reimport them again without the
+master private key. This is so you do not store your master private key on an
+active machine connected to the internet.</p><h3 id=further-reading>Further Reading</h3><ul><li><dev><a href=https://developer.okta.com/blog/2021/07/07/developers-guide-to-gpg target=_blank>Developers Guide to GnuPG and Yubikey</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://wiki.debian.org/Subkeys target=_blank>Debian&rsquo;s guide for subkeys</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://crypto.stackexchange.com/questions/63100/why-does-gnupg-create-4-separate-keys-and-what-does-sub-and-ssb-mean target=_blank>Why does gnupg create 4 separate keys and what does sub and ssb mean?</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://serverfault.com/questions/397973/gpg-why-am-i-encrypting-with-subkey-instead-of-primary-key target=_blank>Why am I encrypting with subkey instead of primary key?</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://www.gnupg.org/gph/en/manual/c235.html target=_blank>GNU Privacy Handbook - Key Management</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://davesteele.github.io/gpg/2014/09/20/anatomy-of-a-gpg-key/ target=_blank>Anatomy of a GnuPG Key</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://security.stackexchange.com/questions/211501/does-creating-new-subkeys-change-an-existing-master-key target=_blank>Does creating new subkeys change an existing master key?</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://superuser.com/questions/1132263/how-to-delete-a-subkey-on-linux-in-gnupg target=_blank>How to delete a subkey on Linux in GnuPG?</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://www.hjdskes.nl/blog/psa-github-gpg/ target=_blank>Jente&rsquo;s Hidskes&rsquo; article on using subkeys to sign commits</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://public-inbox.org/git/20180113002221.GQ29313@zaya.teonanacatl.net/ target=_blank>Git uses wrong subkey for signing commits</a><span class=externalLink>🔗</span></dev></li><li><dev><a href=https://wiki.archlinux.org/title/GnuPG target=_blank>Of course, ArchWiki&rsquo;s article on GnuPG</a><span class=externalLink>🔗</span></dev></li></ul></article></main><hr><footer><center><div class=footerTable><div style=display:block><p>Unique Visitors:
+<a href=https://www.digits.net target=_blank rel=noopener><img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0></a></p><p><a href=https://ayham.xyz><img width=88 height=31 src=https://ayham.xyz/pix/webpins/ayhamxyz.6d7f8c95fb6135a73680ad01aa3b523e.gif crossorigin=anonymous integrity="md5-bX+MlfthNac2gK0BqjtSPg==" alt="ayham.xyz webpin"></a></p><p>Last Edited On: 2025-06-17</p></div><div style=display:block><small>CC-BY-SA - 2025</small><br><small><a href=/index.xml>Subscribe via RSS.</a></small><br><small><a href=https://ayham.xyz/details/>Website Details.</a></small>
+<script data-goatcounter=https://ayham.goatcounter.com/count async src=//gc.zgo.at/count.js></script></div></div><center></footer></body></html>

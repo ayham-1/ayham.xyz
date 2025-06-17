@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HomePage on Ayham's Online Website</title><link>https://ayham.xyz/</link><description>Recent content in HomePage on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Tue, 17 Jun 2025 04:13:11 +0200</lastBuildDate><atom:link href="https://ayham.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>Modular TTE Bot Design</title><link>https://ayham.xyz/posts/modular-tte-bot-design/</link><pubDate>Mon, 16 Jun 2025 23:45:00 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/modular-tte-bot-design/</guid><description>&lt;p>As a running tradition in the AuD class at OVGU, students are required to
+participate in a bot writing competition for a game written by senior students.
+For this year&amp;rsquo;s competition,
+
+
+
+&lt;dev>
+&lt;a href="https://terratactician-expandoria.codeberg.page/"target="_blank">Terratician Expandoria&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev> was
+chosen. This article will be a description of the features my bot &amp;lsquo;Bob the Bot
+the Benevolent Builder II&amp;rsquo; has to offer as a platform for bot and strategy
+development and also act as the description for the secondary creative bot
+competition. The code for the bot can be found 
+
+
+&lt;dev>
+&lt;a href="https://github.com/ayham-1/tte"target="_blank">here&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>.&lt;/p></description></item><item><title>TTE Bot</title><link>https://ayham.xyz/projects/tte-bot/</link><pubDate>Tue, 17 Jun 2025 04:13:11 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/tte-bot/</guid><description>&lt;p>This was for a competition part of a class I took.&lt;/p></description></item><item><title>iloveads</title><link>https://ayham.xyz/projects/iloveads/</link><pubDate>Sun, 15 Jun 2025 11:10:21 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/iloveads/</guid><description>&lt;p>we love ads so much, we make sure we click on every single ad ever!!!1 This is
+a satirical project, a browser and a python script, used to make sure every
+link that is blocked by an Adblocker opened in the background.&lt;/p></description></item><item><title>trackgen</title><link>https://ayham.xyz/projects/trackgen/</link><pubDate>Wed, 04 Jun 2025 21:18:43 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/trackgen/</guid><description>&lt;p>This a tool to generate and visualize racing tracks. It generates the geometrical positions of the
+cones in order to be used in simulators. The commands themselves are not complete, however
+the base architecture is complete and working.&lt;/p></description></item><item><title>UMDRacing</title><link>https://ayham.xyz/projects/umdracing/</link><pubDate>Wed, 04 Jun 2025 21:18:43 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/umdracing/</guid><description>&lt;p>Member of the UMDRacing formula student group. I write software for the car.&lt;/p></description></item><item><title>Library</title><link>https://ayham.xyz/library/</link><pubDate>Sat, 01 Mar 2025 19:52:26 +0100</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/library/</guid><description>&lt;p>&lt;em>List of books/magazines I read, this is neither a recommendation list nor endorsement.&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>Rashid Khalidi - The Hundred Years&amp;rsquo; War On Palestine&lt;/li>
+&lt;li>J. R. R. Tolkien - The Hobbit&lt;/li>
+&lt;li>O&amp;rsquo;Reillys Taschenbibliothek - R kurz &amp;amp; gut&lt;/li>
+&lt;li>Verlag Liebaug-Dartmann - Die blaue Übungsgrammatik für C1&lt;/li>
+&lt;li>klett - Mit Erfolg zu DSH&lt;/li>
+&lt;li>klett - Mit Erfolg zu Telc C1 Hochschule&lt;/li>
+&lt;li>Cornelsen - Grammatik aktiv Training B1+&lt;/li>
+&lt;li>Edward Bernays - Propaganda&lt;/li>
+&lt;li>Victor Hugo - Les Miserables [Volume 2]&lt;/li>
+&lt;li>Postman Neil - Amusing Ourselves to Death&lt;/li>
+&lt;li>Geoff Colvin - Talent is Overrated&lt;/li>
+&lt;li>Cornelsen - Grammatik Aktiv (A1-B1)&lt;/li>
+&lt;li>Seneca - Letters From A Stoic&lt;/li>
+&lt;li>Olly Richards &amp;amp; Alex Rawlings - Short Stories in German&lt;/li>
+&lt;li>McGrawHill - Easy German Step-by-Step&lt;/li>
+&lt;li>Plato - Socrates&amp;rsquo; Defence&lt;/li>
+&lt;li>Albert Camus - Myth of Sisyphus&lt;/li>
+&lt;li>Aldous Huxley - Brave New World&lt;/li>
+&lt;li>Franz Kafka - The Trial&lt;/li>
+&lt;li>DK - Quantum Physics Simply&lt;/li>
+&lt;li>Victor Hugo - Les Miserables [Volume 1]&lt;/li>
+&lt;li>Charles Dickens - Hard Times&lt;/li>
+&lt;li>Zero HP Lovecraft - They Had No Deepness of Earth&lt;/li>
+&lt;li>Alain Deneault - Mediocracy: The Politics of the Extreme Centre&lt;/li>
+&lt;li>War Kitchen - Issue 9&lt;/li>
+&lt;li>War Kitchen - Issue 8&lt;/li>
+&lt;li>Theodore Kaczynski - Technological Slavery&lt;/li>
+&lt;li>Bronze Age Pervert - Bronze Age Mindset&lt;/li>
+&lt;li>Anne Rooney - Think Like A Mathematician&lt;/li>
+&lt;li>Charles Darwin - A Tale Of Two Cities&lt;/li>
+&lt;li>Christopher Marlowe - Dr. Faustus&lt;/li>
+&lt;li>John Steinback - The Winter of Our Discontent&lt;/li>
+&lt;li>John Steinback - Of Mice and Men&lt;/li>
+&lt;li>Ph.d. Robert P. Murphy - The Politically Incorrect Guide to Capitalism&lt;/li>
+&lt;li>George Orwell - Animal Farm&lt;/li>
+&lt;li>Nassim Nicholas Taleb - Skin in the Game&lt;/li>
+&lt;li>John R. Searle - The Mystery of Consciousness&lt;/li>
+&lt;li>Mark Bauerlein - The Dumbest Generation&lt;/li>
+&lt;li>Paul Krugman - The Accidental Theorist and Other Dispatches From the Dismal Science&lt;/li>
+&lt;li>Adam Smith - Volume 1 - The Wealth Of Nations&lt;/li>
+&lt;li>George Orwell - 1984&lt;/li>
+&lt;li>Titania McGrath - My First Little Book of Intersectional Activism&lt;/li>
+&lt;li>Titania McGrath - Woke: A Guide to Social Justice&lt;/li>
+&lt;li>Ray Bradbury - Fahrenheit 451&lt;/li>
+&lt;li>Viktor Emil Frankl - Man&amp;rsquo;s Search for Meaning&lt;/li>
+&lt;li>Robert H. Latiff - Future War: Preparing for the New Global Battlefield&lt;/li>
+&lt;li>Andrew Doyle - Free Speech and Why It Matters&lt;/li>
+&lt;li>Greg Lukianoff, Jonathan Haidt - The Coddling of the American Mind&lt;/li>
+&lt;li>Plato - Republic&lt;/li>
+&lt;li>B.F. Skinner - Beyond Freedom and Dignity&lt;/li>
+&lt;li>Bryan Caplan - The Myth of the Rational Voter&lt;/li>
+&lt;li>Fyodor Dystovysky - Crime and Punishment&lt;/li>
+&lt;li>Stephen R.C. Hicks - Explaining Post-Modernism&lt;/li>
+&lt;li>Jordan B. Peterson - 12 Rules For Life&lt;/li>
+&lt;li>Jaron Lanier - Ten Arguments For Deleting Your Social Media Accounts Right Now&lt;/li>
+&lt;li>DK - The Economics Books&lt;/li>
+&lt;li>Slavoj Zizek - The Sublime Object of Ideology&lt;/li>
+&lt;li>Mario Puzo - The Godfather&lt;/li>
+&lt;li>Debra Soh - The End of Gender: Debunking the Myths About Sex and Identity in Our Society&lt;/li>
+&lt;li>John Kessnich, Graham Sollers, and Dave Shreiner - The OpenGL Programing Guide&lt;/li>
+&lt;li>Walter Savitch - Introduction to Java&lt;/li>
+&lt;/ul></description></item><item><title>Website's Details</title><link>https://ayham.xyz/details/</link><pubDate>Mon, 16 May 2022 04:24:54 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/details/</guid><description>&lt;p>If you have stumbled upon this page, chances are you want to know how this
+works. This website is built using 
+
+
+&lt;dev>
+&lt;a href="https://gohugo.io"target="_blank">https://gohugo.io&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>. The project can be found
+here on 
+
+
+&lt;dev>
+&lt;a href="https://github.com/realaltffour/ayham.xyz"target="_blank">Github&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>.&lt;/p>
+&lt;ul>
+&lt;li>All pages use no cookies, except stated otherwise.&lt;/li>
+&lt;li>All external links are marked with a link emoji.&lt;/li>
+&lt;li>Specific WASM binaries for applications hosted can be found on their
+respective websites.&lt;/li>
+&lt;li>All linked resources include an integrity attribute.&lt;/li>
+&lt;li>All linked resources are minified where possible, check project for full code.&lt;/li>
+&lt;/ul>
+&lt;p>Enjoy your stay!&lt;/p></description></item><item><title>minide</title><link>https://ayham.xyz/projects/minide/</link><pubDate>Mon, 21 Oct 2024 09:56:54 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/minide/</guid><description>&lt;p>A minimal IDE, written in C and a little bit of C++. Uses OpenGL, glfw3, freetype2, harfbuzz, fontconfig, and icu. Supports Emojis. Optimizations are one of the main goals of the project.&lt;/p></description></item><item><title>wsgen</title><link>https://ayham.xyz/projects/wsgen/</link><pubDate>Mon, 21 Oct 2024 09:56:54 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/wsgen/</guid><description>&lt;p>An easy to use application to maintain A-Level worksheets, update them, export them into Question Papers, Markschemes, and Examiner report automatically. Currently there is a showable demo.&lt;/p></description></item><item><title>camcurrency</title><link>https://ayham.xyz/projects/camcurrency/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/camcurrency/</guid><description>&lt;p>An application that allows users to convert between currencies on the fly using the camera. Currently the application is available on Google Play Store.&lt;/p></description></item><item><title>contractnotifier</title><link>https://ayham.xyz/projects/contractnotifier/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/contractnotifier/</guid><description>&lt;p>An application for my school&amp;rsquo;s principal to notify him for contracts expiry. The main cause of this application is to store contracts, and notify the user of the expiry date of the contract. I know that there is probably a lot of solutions out there. But apparently my school principle found non, and then resorted to me.&lt;/p></description></item><item><title>donglify</title><link>https://ayham.xyz/projects/donglify/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/donglify/</guid><description>&lt;p>The majority of Linux installs suffer from a major security threat, physical security. Any unencrypted drive&amp;rsquo;s data can be easily stolen by attaching to a secondary device. This bypasses the user&amp;rsquo;s password and leaves all data free for access. Unfortunately, to correctly configure a &lt;em>complete&lt;/em> encrypted Linux system takes alot of patience and configuration. This script helps you manage GRUB automatically. All you have to do is install the system&amp;rsquo;s &lt;code>/&lt;/code> partition, plug the USB in and run the script. The script also supports booting from ISOs available on the dongle.&lt;/p></description></item><item><title>firmus</title><link>https://ayham.xyz/projects/firmus/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/firmus/</guid><description>&lt;p>A trusty, strong and reliable application launcher for Android.&lt;/p></description></item><item><title>fixmydownloads</title><link>https://ayham.xyz/projects/fixmydownloads/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/fixmydownloads/</guid><description>&lt;p>The goal of the project is to make the simplest downloads folder organizer that is configured by code making it so small that the whole thing fits in one file! Eliminating the need to manually organize or clean up your downloads folder!&lt;/p></description></item><item><title>GraphSolver</title><link>https://ayham.xyz/projects/graphsolver/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/graphsolver/</guid><description>&lt;p>Written for a school project in grade 8, GraphSolver attempts to solve basic equations of Linear, Quadratic and Cubic. May contain bugs :D. This project is written with a friend, 
+
+
+&lt;dev>
+&lt;a href="https://github.com/AliAlboainin96"target="_blank">Ali&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>.&lt;/p></description></item><item><title>maid</title><link>https://ayham.xyz/projects/maid/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/maid/</guid><description>&lt;p>A simple BASH script which uses a whitelist to enforce files and directories in the /home/user. The script can use system&amp;rsquo;s trash if &lt;code>trash&lt;/code> cmd is present.&lt;/p></description></item><item><title>osram</title><link>https://ayham.xyz/projects/osram/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/osram/</guid><description>&lt;p>A theoretically working game engine with a basic platformer demo. The platform for this project is Visual Studio. Supports basic 2D rendering and simple collision physics.&lt;/p></description></item><item><title>Papertrader</title><link>https://ayham.xyz/projects/papertrader/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/papertrader/</guid><description>&lt;p>The opensource cross-platform paper trading platform for learning assets trading. this project has a basic architecture, and the only part that currently works is accounts &amp;amp; database management w/ the server-client 1-1 model.&lt;/p></description></item><item><title>pcreporter</title><link>https://ayham.xyz/projects/pcreporter/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/pcreporter/</guid><description>&lt;p>Telegram BOT as a personal computer reporting service.&lt;/p></description></item><item><title>Quicmaf</title><link>https://ayham.xyz/projects/quicmaf/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/quicmaf/</guid><description>&lt;p>A Maths project for Grade 8. Evaluates and solves basic linear algebric notations. This project ended up containing alot of bugs that I was too lazy to fix.&lt;/p></description></item><item><title>sokoban</title><link>https://ayham.xyz/projects/sokoban/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/sokoban/</guid><description>&lt;p>A simple sokoban implementation that currently uses an AI pre-generated set of puzzles. The code for home-built puzzle generation is currently incomplete. Uses very bleeding-edge technology: Zig (master), WASM and emscripten.&lt;/p></description></item><item><title>sway-vnc-scripts</title><link>https://ayham.xyz/projects/sway-vnc-scripts/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/sway-vnc-scripts/</guid><description>&lt;p>Scripts to easily start a sway VNC server &amp;amp; connect as a client to said server. Through this script, one can access his desktop remotely, like &amp;lsquo;signing-in&amp;rsquo;. Requires port-forwarding&lt;/p></description></item><item><title>tictactoe</title><link>https://ayham.xyz/projects/tictactoe/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/tictactoe/</guid><description>&lt;p>Probably my first Git project, school coding project, and public project. There exists a long standing bug which I used to win when I was challenged to a TicTacToe game.&lt;/p></description></item><item><title>Time-Manager</title><link>https://ayham.xyz/projects/time-manager/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/time-manager/</guid><description>&lt;p>A half-complete project written for personal use to gamify time management.&lt;/p></description></item><item><title>upperLowerBounds</title><link>https://ayham.xyz/projects/upperlowerbounds/</link><pubDate>Mon, 21 Oct 2024 09:20:47 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/upperlowerbounds/</guid><description>&lt;p>Yet another grade 8 project. Calculates upper and lower bounds for pre-configured set of equations.&lt;/p></description></item><item><title>rftp</title><link>https://ayham.xyz/projects/rftp/</link><pubDate>Fri, 18 Oct 2024 22:12:16 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/projects/rftp/</guid><description>&lt;p>A simple CLI ftp server for a school project written in rust.&lt;/p></description></item><item><title>Hardening the Archlinux WiFi Network Stack</title><link>https://ayham.xyz/posts/hardening-the-archl-network-stack/</link><pubDate>Sun, 21 Apr 2024 11:09:06 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/hardening-the-archl-network-stack/</guid><description>&lt;p>A wise Archlinux user once said:&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-quote" data-lang="quote">One shall secure his network stack, or shall suffer network leaks.
+- a wise internet enjoyer
+&lt;/code>&lt;/pre>&lt;p>Due to ArchLinux&amp;rsquo;s design of customizability and Laissez-Faire-like package and
+system architecture policies, one has to make the incomprehnsibly (indeed)
+difficult choice of choosing his network stack. Generally speaking, a decent
+choice for estabilishing WiFi connection, is using &lt;code>iwd&lt;/code>. And &lt;code>dhcpcd&lt;/code> for ethernet.
+In this article, I would be focusing on WiFi and DNS hardening. More specifically,
+these are the areas where slight changes to the configuration would offer a more
+secure network stack:&lt;/p></description></item><item><title>Pushing Static Pages to The Limit</title><link>https://ayham.xyz/posts/pushing-static-pages-to-the-limit/</link><pubDate>Sun, 04 Sep 2022 18:07:13 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/pushing-static-pages-to-the-limit/</guid><description>&lt;p>Static webpages are well renowned for their speed, security, and simplicity. A
+very common misconception is that static webpages can&amp;rsquo;t enjoy Javascript. Here
+is how I got this website to template applications that use Javascript and WASM
+using Hugo&amp;rsquo;s shortcode system.&lt;/p>
+&lt;h1 id="addapp-js--css-shortcode">addapp (JS + CSS) shortcode&lt;/h1>
+&lt;p>Create a new shortcode file in &lt;code>theme/&amp;lt;name&amp;gt;/layouts/shortcodes/addapp.html&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#999;font-style:italic">&amp;lt;!-- ENTERING SHORTCODE: addapp --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- $appName := .Get 0 }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- $appJS := resources.Get (printf &amp;#34;apps/%s/app.js&amp;#34; ($appName | safeURL)) }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- partial (printf &amp;#34;apps/%s/app.html&amp;#34; ($appName | safeURL)) . }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#6ab825;font-weight:bold">script&lt;/span> &lt;span style="color:#bbb">src&lt;/span>=&lt;span style="color:#ed9d13">&amp;#34;{{ $appJS.Permalink }}&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#6ab825;font-weight:bold">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#999;font-style:italic">&amp;lt;!-- EXITING SHORTCODE: addapp --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then call the shortcode, for example, in this website&amp;rsquo;s game sokoban (file:
+&lt;code>content/apps/sokoban.md&lt;/code>):&lt;/p></description></item><item><title>Speech: Objective Reality and Truth</title><link>https://ayham.xyz/posts/speech-objective-reality-and-truth/</link><pubDate>Sun, 18 Dec 2022 10:59:37 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/speech-objective-reality-and-truth/</guid><description>&lt;p>&lt;em>The following is my script for a speech I made in my school&amp;rsquo;s Oxford-style
+debate competition which was held today, on 2022-12-25. The motion of the debate
+was &amp;ldquo;All Truth is Subjective&amp;rdquo;, I was the opposition&amp;rsquo;s 1st speaker. Our team went
+on to win the debate.&lt;/em>&lt;/p>
+&lt;p>Hello Everyone.&lt;/p>
+&lt;p>The topic of objective reality versus relativism intrigues me. It reminds me of
+a characteristic development children go through from toddlers into adolescents;
+which is the attained ability of understanding that there exists beings outside
+of itself that have different personalities and thoughts than the infant itself.
+This relates to the relativists argument as, in its essence, in its maximal
+state, it is the rule of me, myself and I.&lt;/p></description></item><item><title>Stowing Your Dotfiles</title><link>https://ayham.xyz/posts/stowing-your-dotfiles/</link><pubDate>Mon, 02 Jan 2023 06:35:38 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/stowing-your-dotfiles/</guid><description>&lt;p>Linux differs from other operating systems in how most applications are
+configured - through files. Using text for configuration might seem as a
+step-back, however, GUI configurations were never a progression.&lt;/p>
+&lt;p>Having applications configured through text has a couple of advantages:&lt;/p>
+&lt;ul>
+&lt;li>Portable - any computer which can install that application can have the same
+configuration.&lt;/li>
+&lt;li>The light level of configuration - some Linux distributions, such as NixOS, offer
+a system level configuration. However, this would invalidate the first point,
+and the level of configuration would be potentially limited through the
+configuration of the distribution.&lt;/li>
+&lt;li>The &lt;code>stow&lt;/code> method is minimal and re-uses packaging software for dotfiles.&lt;/li>
+&lt;/ul>
+&lt;h2 id="your-dotfiles-in-git">Your dotfiles in Git&lt;/h2>
+&lt;p>In order to have portable dotfiles, you need a method of update &amp;amp; transport. For
+that, you can use Git.&lt;/p></description></item><item><title>A Practical Guide to GnuPG</title><link>https://ayham.xyz/posts/a-practical-guide-to-gpg/</link><pubDate>Tue, 27 Sep 2022 18:22:03 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/a-practical-guide-to-gpg/</guid><description>&lt;center>
+&lt;img alt="pix/posts/guide-to-gpg/encryption-chadism.webp" src="https://ayham.xyz/pix/posts/guide-to-gpg/encryption-chadism_hu_1ac1fe4151eef53a.webp" width="400" height="400" integrity="" crossorigin="anonymous">
+&lt;/center>
+&lt;p>Using GnuPG can be hard, we&amp;rsquo;ve been there before. You generate your keys and
+then somehow you loose them, and then you realize you should get to learn how to
+correctly use GnuPG, but reality hits and there are no complete tutorials. So
+you go around the interent and try different articles and sources with no luck.
+Although I don&amp;rsquo;t promise a complete and comprehensive guide to GnuPG, in this
+article I would go over setting up GnuPG keys, subkeys, using GnuPG for SSH,
+transferring keys to other computers and using online services like Github and
+Codeberg.&lt;/p></description></item><item><title>Brackets Heaven in Neovim</title><link>https://ayham.xyz/posts/brackets-heaven-in-neovim/</link><pubDate>Sun, 11 Dec 2022 03:14:19 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/brackets-heaven-in-neovim/</guid><description>&lt;p>Lately I have been writing alot of flutter. And there is one charecteristic
+&amp;lsquo;annoyance&amp;rsquo; with that, &lt;em>BRACKETS&lt;/em>. The flutter meta is having class constructors
+that enclose other classes to form a Widget tree. Since initializing those
+Widgets is done with class Constructors, you end up with this abomination:&lt;/p>
+&lt;p>&lt;center>
+	&lt;img alt="screenshot1.png" src="https://ayham.xyz/pix/posts/brackets-nvim/screenshot1.d133482f3830c0d3117743aa5086b0bf.png" integrity="md5-0TNILzgwwNMRd0OqUIawvw==" crossorigin="anonymous">
+&lt;/center>
+&lt;/p>
+&lt;p>Ofcourse, this is Neovim we are talking about, and there is always a way to make
+your life easier with plugins.&lt;/p></description></item><item><title>Sokoban</title><link>https://ayham.xyz/apps/sokoban/</link><pubDate>Fri, 09 Sep 2022 08:06:28 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/apps/sokoban/</guid><description>&lt;link href="https://ayham.xyz/apps/sokoban/sokoshell.117ba3b9ff6c28b38722cf11aa964e4a.css" rel="stylesheet" integrity="md5-EXujuf9sKLOHIs8RqpZOSg==" crossorigin="anonymous"/>
+&lt;div class="emscripten" id="status">Downloading...&lt;/div>
+&lt;div class="emscripten">
+ &lt;progress hidden id="progress" max="100" value="0">&lt;/progress>
+&lt;/div>
+&lt;div id="winStatus" style="display:none">
+ &lt;center>
+ &lt;h3>You Won!&lt;/h3>
+ &lt;h4>Refresh in order to play another puzzle!&lt;/h4>
+ &lt;/center>
+&lt;/div>
+&lt;div class="grid">
+ &lt;div class="grid-item">
+ &lt;center>
+ &lt;h3>Game&lt;/h3>
+ &lt;canvas
+ class="emscripten"
+ id="canvas"
+ oncontextmenu="event.preventDefault()"
+ tabindex="-1"
+ >&lt;/canvas>
+ &lt;/center>
+ &lt;/div>
+ &lt;div class="grid-item">
+ &lt;center>
+ &lt;h3>Current Layout&lt;/h3>
+ &lt;textarea
+ class="mapView"
+ cols="25"
+ id="mapView"
+ onfocus="focusMap()"
+ onfocusout="focusMap()"
+ oninput="changeMap(this)"
+		style="height: 256px; width: 256px;"
+ rows="12"
+ >
+				Map should be loaded here...&lt;/textarea
+ >
+ &lt;/center>
+ &lt;/div>
+&lt;/div>
+&lt;br />&lt;script src="https://ayham.xyz/apps/sokoban/sokoshell.7022d33d520527adfae7fcc279574cc4.js" integrity="md5-cCLTPVIFJ6365/zCeVdMxA==" crossorigin="anonymous">&lt;/script>
+
+&lt;script src="https://ayham.xyz/apps/sokoban/app.js">&lt;/script>
+
+
+&lt;p>Refresh the page to get another puzzle.&lt;/p>
+&lt;p>This project is hosted 
+
+
+&lt;dev>
+&lt;a href="https://codeberg.org/ayham/sokoban"target="_blank">here&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>.&lt;/p></description></item><item><title>Installing Android 12 On The Motorola One Macro (lima)</title><link>https://ayham.xyz/posts/install-android-12-moto-macro/</link><pubDate>Tue, 02 Aug 2022 13:00:46 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/install-android-12-moto-macro/</guid><description>&lt;p>Motorola One Macro, codename lima, can surprisingly be upgraded to Android 12.
+To be exact, this phone can be upgraded to phh&amp;rsquo;s treble Android 12 GSI. I have
+already written a longer 
+
+
+&lt;a href="https://ayham.xyz/posts/hardening-the-one-macro/"title="that article">guide&lt;/a> on this phone before, however it lacks some
+edge cases. This guide would hopefully attempt to ammend these.&lt;/p>
+&lt;p>I originally intended for that article to be a complete guide which works for
+all Android versions. Although that is still somewhat true, I decided to rewrite
+a standalone article for Android 12. I&amp;rsquo;ve learned some stuff about the phone,
+some issues that could arise while updating, which I thought would deserve their
+own guide. Now, this is an article attuned to the type of step-by-step, which
+is a contrast to the original guide. This article could also hopefully act as a
+step-by-step upgrade guide.&lt;/p></description></item><item><title>A Minimal Linux Display Manager</title><link>https://ayham.xyz/posts/a-minimal-linux-display-manager/</link><pubDate>Tue, 28 Dec 2021 07:03:14 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/a-minimal-linux-display-manager/</guid><description>&lt;p>There is this itch that tiling window manager users feel. Whether it is caused
+by surfing the world of r/unix or the want for change, it might be useful to
+have a way to easily switch between window managers. This article shows how to
+achieve this using already installed applications on your system.&lt;/p></description></item><item><title>blogit: A Complete Guide</title><link>https://ayham.xyz/posts/blogit-to-blog-it/</link><pubDate>Fri, 26 Nov 2021 19:18:52 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/blogit-to-blog-it/</guid><description>&lt;p>Running a personal website should be an easy task. Unfortunately, a big
+hindrance is that there aren&amp;rsquo;t many &amp;ldquo;suckless&amp;rdquo; blogging system.
+
+
+
+&lt;dev>
+&lt;a href="https://pedantic.software/git/blogit"target="_blank">blogit&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev> is the closest in terms of
+simplicity and minimalism to perfection. This article would be an end-all be-all
+guide to effectively install blogit onto your own website.&lt;/p></description></item><item><title>Eid Marks Calculator</title><link>https://ayham.xyz/apps/eid.marks/</link><pubDate>Thu, 10 Mar 2022 04:51:39 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/apps/eid.marks/</guid><description>&lt;p>This is a very simple eid marks calculator where you put your subject marks,
+press calculate and pray for the best!&lt;/p></description></item><item><title>Hardening The Moto One Macro</title><link>https://ayham.xyz/posts/hardening-the-one-macro/</link><pubDate>Tue, 30 Nov 2021 06:56:35 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/hardening-the-one-macro/</guid><description>&lt;p>The Motorola One Macro is a mid-range phone, with decent &amp;ldquo;openness&amp;rdquo; which allows
+basic hardening modification. The phone has the follow specifications:&lt;/p>
+&lt;ul>
+&lt;li>Mediatek MT6771 Helio P70 CPU&lt;/li>
+&lt;li>720 x 1520 px, 19:9 ratios (~270 ppi)&lt;/li>
+&lt;li>Comes with Anroid 9.0, officially upgradable to Android 10.0&lt;/li>
+&lt;li>Mali-G72 MP3 GPU&lt;/li>
+&lt;li>eMMC 5.1 storage with 64GB&lt;/li>
+&lt;li>microSDXC uses shared SIM slot, 32GB tested&lt;/li>
+&lt;li>Main camera 13 MP, depth camera 2MP, 2MP for macro camera&lt;/li>
+&lt;li>WIFI 802.11 b/g/n, with hotspot&lt;/li>
+&lt;li>No NFC support&lt;/li>
+&lt;/ul>
+&lt;p>This guide goes over unlocking the bootloader, flashing a GSI, flashing
+LineageOS, reflashing stock ROM, fixing bootloop problems, and news
+on TWRP for the Moto One Macro.&lt;/p></description></item><item><title>The Beginning of a series!</title><link>https://ayham.xyz/posts/firstpost/</link><pubDate>Fri, 01 Oct 2021 16:05:06 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/firstpost/</guid><description>&lt;p>The Beginning of a series!&lt;/p>
+&lt;p>This would be the beginning of my all-new article series. I would be writing about software I make and use, with the occasional school essay turned article.&lt;/p>
+&lt;p>The story shall begin!&lt;/p></description></item><item><title>True Full Disk Encryption On Linux</title><link>https://ayham.xyz/posts/true-full-disk-encryption/</link><pubDate>Fri, 10 Dec 2021 07:09:31 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/true-full-disk-encryption/</guid><description>&lt;p>My friends laugh at me when they are told that I have to put in 4 passwords
+with ~18 characters each to login into my computer. I laugh back at them,
+wishing them joy with Ads in the start-menu.&lt;/p>
+&lt;p>In this article, we will discuss &lt;em>true&lt;/em> full disk encryption. Everything,
+including having the kernel encrypted using LUKS. I personally found difficulty
+in finding good documentation detailing how to set-up disk encryption.
+Hopefully this guide would help someone out there.&lt;/p></description></item></channel></rss>

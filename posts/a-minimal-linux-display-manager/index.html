@@ -1,0 +1,82 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Ayham's online website"><meta name=keywords content="ayham,personal,blog,linux"><meta name=author content="ayham"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light"><link rel=icon type=image/x-icon href=https://ayham.xyz/pix/avatar/pfp_hu_9b8ef136499e5f25.260c87cca6a67382a9043e12d7bf4dae.png integrity="md5-JgyHzKamc4KpBD4S179Nrg==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/nav.dbcff7b67f99ee271630f11e6d609150.css integrity="md5-28/3tn+Z7icWMPEebWCRUA==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/footer.e71d515740d85272dc5a068dedc6394b.css integrity="md5-5x1RV0DYUnLcWgaN7cY5Sw==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/common.4d89642363d46c847439f85578bb0cf0.css integrity="md5-TYlkI2PUbIR0OfhVeLsM8A==" crossorigin=anonymous><title>Ayham's Online Website | A Minimal Linux Display Manager</title></head><body><center><nav><ul><li><a href=/>[Home]</a></li><li><a href=/projects/>[Projects]</a></li><li><a href=/posts/>[Posts]</a></li><li><a href=/library/>[Library]</a></li><li><a href=/apps/>[Apps]</a></li></ul></nav><hr></center><main><center><h1>A Minimal Linux Display Manager</h1></center>Publish Date: <time datetime=2021-12-28>Dec 28, 2021</time>&nbspLast Update: <time datetime=2022-05-25>May 25, 2022</time><br>Tags:<a href=https://ayham.xyz/tags/linux>linux</a>
+<a href=https://ayham.xyz/tags/guide>guide</a><br>237 words, 2 minute(s) to read.<br><br><article><p>There is this itch that tiling window manager users feel. Whether it is caused
+by surfing the world of r/unix or the want for change, it might be useful to
+have a way to easily switch between window managers. This article shows how to
+achieve this using already installed applications on your system.</p><h1 id=a-bash-on-the-head>A BASH on the head.</h1><p>On most <em>sane</em> Linux distributions, BASH is provided as a default shell script
+interpreter, I will be using that. When I said minimal, I meant <em>minimal</em>. With
+barely 38 lines, I know no other contestant. For a bonus, I will also use
+<code>sx</code> & <code>ssh-agent</code>.</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">36
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#cd2828;font-weight:700>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#cd2828;font-weight:700></span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>DwmOption</span>=<span style=color:#ed9d13>&#34;DWM&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>EXWMOption</span>=<span style=color:#ed9d13>&#34;EXWM&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>MATEOption</span>=<span style=color:#ed9d13>&#34;MATE&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>EnlightenmentOption</span>=<span style=color:#ed9d13>&#34;Enlightenment&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>ConsoleOption</span>=<span style=color:#ed9d13>&#34;Console&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#40ffff>menu</span>=(<span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$DwmOption</span><span style=color:#ed9d13>&#34;</span> <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$EXWMOption</span><span style=color:#ed9d13>&#34;</span> <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$MATEOption</span><span style=color:#ed9d13>&#34;</span> <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$EnlightenmentOption</span><span style=color:#ed9d13>&#34;</span> <span style=color:#ed9d13>&#34;</span><span style=color:#40ffff>$ConsoleOption</span><span style=color:#ed9d13>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;Which WM would you like to run?&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>select</span> opt in <span style=color:#ed9d13>&#34;</span><span style=color:#ed9d13>${</span><span style=color:#40ffff>menu</span>[@]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>do</span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>case</span> <span style=color:#40ffff>$opt</span> in 
+</span></span><span style=display:flex><span>		<span style=color:#40ffff>$DwmOption</span>)
+</span></span><span style=display:flex><span>			<span style=color:#24909d>exec</span> ssh-agent sx sh ~/.config/X11/dwm-xinit 
+</span></span><span style=display:flex><span>			<span style=color:#24909d>break</span>
+</span></span><span style=display:flex><span>			;;
+</span></span><span style=display:flex><span>		<span style=color:#40ffff>$EXWMOption</span>)
+</span></span><span style=display:flex><span>			<span style=color:#24909d>exec</span> ssh-agent sx sh ~/.config/X11/exwm
+</span></span><span style=display:flex><span>			<span style=color:#24909d>break</span>
+</span></span><span style=display:flex><span>			;;
+</span></span><span style=display:flex><span>		<span style=color:#40ffff>$MATEOption</span>)
+</span></span><span style=display:flex><span>			<span style=color:#24909d>exec</span> ssh-agent sx mate-session
+</span></span><span style=display:flex><span>			<span style=color:#24909d>break</span>
+</span></span><span style=display:flex><span>			;;
+</span></span><span style=display:flex><span>		<span style=color:#40ffff>$EnlightenmentOption</span>)
+</span></span><span style=display:flex><span>			<span style=color:#24909d>exec</span> ssh-agent sx sh ~/.config/X11/enlightenment
+</span></span><span style=display:flex><span>			<span style=color:#24909d>break</span>
+</span></span><span style=display:flex><span>			;;
+</span></span><span style=display:flex><span>		<span style=color:#40ffff>$ConsoleOption</span>)
+</span></span><span style=display:flex><span>			<span style=color:#24909d>exec</span> zsh
+</span></span><span style=display:flex><span>			<span style=color:#24909d>break</span>
+</span></span><span style=display:flex><span>			;;
+</span></span><span style=display:flex><span>		*) <span style=color:#24909d>echo</span> <span style=color:#ed9d13>&#34;invalid option </span><span style=color:#40ffff>$REPLY</span><span style=color:#ed9d13>&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>esac</span>
+</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>done</span>
+</span></span></code></pre></td></tr></table></div></div><p>That&rsquo;s it! For adding extra entries:</p><ul><li>create a new &lsquo;Option&rsquo; variable,</li><li>then add it to the <code>menu</code> array,</li><li>adding the extra option to the &lsquo;cases&rsquo; clause appropriately.</li></ul><p>Enjoy!</p></article></main><hr><footer><center><div class=footerTable><div style=display:block><p>Unique Visitors:
+<a href=https://www.digits.net target=_blank rel=noopener><img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0></a></p><p><a href=https://ayham.xyz><img width=88 height=31 src=https://ayham.xyz/pix/webpins/ayhamxyz.6d7f8c95fb6135a73680ad01aa3b523e.gif crossorigin=anonymous integrity="md5-bX+MlfthNac2gK0BqjtSPg==" alt="ayham.xyz webpin"></a></p><p>Last Edited On: 2025-06-17</p></div><div style=display:block><small>CC-BY-SA - 2025</small><br><small><a href=/index.xml>Subscribe via RSS.</a></small><br><small><a href=https://ayham.xyz/details/>Website Details.</a></small>
+<script data-goatcounter=https://ayham.goatcounter.com/count async src=//gc.zgo.at/count.js></script></div></div><center></footer></body></html>

@@ -1,0 +1,453 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Ayham's online website"><meta name=keywords content="ayham,personal,blog,linux"><meta name=author content="ayham"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light"><link rel=icon type=image/x-icon href=https://ayham.xyz/pix/avatar/pfp_hu_9b8ef136499e5f25.260c87cca6a67382a9043e12d7bf4dae.png integrity="md5-JgyHzKamc4KpBD4S179Nrg==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/nav.dbcff7b67f99ee271630f11e6d609150.css integrity="md5-28/3tn+Z7icWMPEebWCRUA==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/footer.e71d515740d85272dc5a068dedc6394b.css integrity="md5-5x1RV0DYUnLcWgaN7cY5Sw==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/common.4d89642363d46c847439f85578bb0cf0.css integrity="md5-TYlkI2PUbIR0OfhVeLsM8A==" crossorigin=anonymous><title>Ayham's Online Website | Modular TTE Bot Design</title></head><body><center><nav><ul><li><a href=/>[Home]</a></li><li><a href=/projects/>[Projects]</a></li><li><a href=/posts/>[Posts]</a></li><li><a href=/library/>[Library]</a></li><li><a href=/apps/>[Apps]</a></li></ul></nav><hr></center><main><center><h1>Modular TTE Bot Design</h1></center>Publish Date: <time datetime=2025-06-16>Jun 16, 2025</time>&nbspLast Update: <time datetime=2025-06-17>Jun 17, 2025</time><br>Tags:<a href=https://ayham.xyz/tags/code>code</a>
+<a href=https://ayham.xyz/tags/tte>tte</a>
+<a href=https://ayham.xyz/tags/writeup>writeup</a><br>2383 words, 12 minute(s) to read.<br><br><article><p>As a running tradition in the AuD class at OVGU, students are required to
+participate in a bot writing competition for a game written by senior students.
+For this year&rsquo;s competition,
+<dev><a href=https://terratactician-expandoria.codeberg.page/ target=_blank>Terratician Expandoria</a><span class=externalLink>🔗</span>
+</dev>was
+chosen. This article will be a description of the features my bot &lsquo;Bob the Bot
+the Benevolent Builder II&rsquo; has to offer as a platform for bot and strategy
+development and also act as the description for the secondary creative bot
+competition. The code for the bot can be found
+<dev><a href=https://github.com/ayham-1/tte target=_blank>here</a><span class=externalLink>🔗</span>
+</dev>.</p><h1 id=terratician-expandoria>Terratician Expandoria</h1><p><center><img alt=showcase.webp src=https://ayham.xyz/pix/posts/modular-tte-design/showcase.87337e5a7a8afa2ef27b86d6582c9676.webp integrity="md5-hzN+WnqK+i7ye4bWWCyWdg==" crossorigin=anonymous></center></p><p>The game is a city-builder offering multiple modes of play. I will be focusing
+on the &lsquo;challenge&rsquo; mode, since that is what the main competition revolves
+around. The goal is to survive the highest number of rounds, where the demand
+of resources increases each round. Each tile, with the exception of grass and
+stone tiles, has its own mathematical formula for its respective resource
+production. This article does not only assume that the reader knows how to play
+the game, but also that they are familier with such rules. More can be found
+<dev><a href=https://terratactician-expandoria.codeberg.page/en/book/ target=_blank>at the official documentation website.</a><span class=externalLink>🔗</span></dev></p><h1 id=design-decisions>Design Decisions</h1><p>The following are the design decisions I took when architecting the bot, they
+are numbered by the order of importance.</p><h2 id=1-mathematical-formulas-are-more-accurate>1. Mathematical Formulas Are More Accurate</h2><p>The bot strictly assumes that the formulas of each tile is the most accurate
+description of the tile&rsquo;s relation with other tiles. In order to fully
+describe what that means, consider the placement of a wheat tile as example. If
+we decide to have a bot where a set of &lsquo;wants&rsquo; are to be fulfilled manually
+using a bunch of if-else statements, edge cases such as the tile&rsquo;s proximity
+to Moai and therefore its propagating effect on the Money resource would be
+hard to correctly model. Moreover, it is close to impossible to describe the
+weights of the priorities of &lsquo;wants&rsquo; in a conditional if-else manner. In order
+to avoid such complexities, my bot models the formulas provided in the docs for
+every tile manually, allowing for intricate placement decisions from the basic
+act of &lsquo;maximising&rsquo; mathematical formulas.</p><p>Even though one would be fast to argue that considerations such as placing a
+grass tile beside a Maoi is better than beside a wheat is a very easy decision,
+more complex strategies are significantly easier to write when the base
+assumption is that we have a list of placement suggestions ordered by their
+greedy score maximisation. This fact is built upon by the next design decision.</p><h2 id=2-negative-rules-ie-unwants>2. Negative Rules, i.e. Unwants</h2><p>Once we have established that &lsquo;wants&rsquo; or in other words &lsquo;positive rules&rsquo; are
+hard to write code for, we can move on to a more systematic way of writing the
+rules the bot will use. Consider the following code snippet for the rule
+<code>apply_wheat_groups_size()</code>:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>apply_wheat_groups_size</span>(PlacementSuggestion<span style=color:#666> </span>suggestion,<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span>min,<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span>max)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#999;font-style:italic>// [rule] force wheat groups to be min maxed</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(suggestion.<span style=color:#bbb>info</span>.<span style=color:#bbb>type</span><span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Wheat</span>)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>map</span>.<span style=color:#bbb>put</span>(suggestion.<span style=color:#bbb>coord</span>,<span style=color:#666> </span>suggestion.<span style=color:#bbb>info</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span>count<span style=color:#666> </span>=<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>group_count</span>(TileType.<span style=color:#bbb>Wheat</span>,<span style=color:#666> </span>suggestion.<span style=color:#bbb>coord</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(count<span style=color:#666> </span>&gt;<span style=color:#666> </span>max<span style=color:#666> </span>||<span style=color:#666> </span>count<span style=color:#666> </span>&lt;<span style=color:#666> </span>min)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(PRINT_DEBUG)<span style=color:#666> </span>System.<span style=color:#bbb>out</span>.<span style=color:#bbb>println</span>(<span style=color:#ed9d13>&#34;[rule] force wheat groups to be min maxed&#34;</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>map</span>.<span style=color:#bbb>remove</span>(suggestion.<span style=color:#bbb>coord</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>true</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>map</span>.<span style=color:#bbb>remove</span>(suggestion.<span style=color:#bbb>coord</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>false</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span></code></pre></td></tr></table></div></div><p>From its name, <code>apply_wheat_groups_size()</code> is a rule that enforces wheats to be
+grouped with a maximum size of <code>max</code>. One can easily notice that the function
+gives a judgement on a <code>PlacementSuggestion</code>, deciding whether that suggestion
+breaks the rule or not. The name &rsquo;negative rules&rsquo; comes from the fact that the
+function is rejecting a placement of the wheat tile (represented by
+<code>suggestion</code>) if its group count is larger than <code>max</code>. Likewise, &lsquo;positive
+rules&rsquo; would mean that the suggestion is created by searching for wheat
+placements on the map that make a group less than <code>max</code>. Notice, that the
+reason this function works is that the asumption here is that we are judging
+best <code>PlacementSuggestion</code>s <em>first</em>. All rules in the bot are written in
+&rsquo;negative rules&rsquo; format. The next design decision will describe how the
+suggestions are created.</p><h2 id=3-efficient-creation-of-placement-suggestions>3. Efficient creation of Placement Suggestions</h2><p>The bot maintains a <code>Map&lt;CubeCoordinate, TileInfo></code> that represents the actual
+world of the game. There is also an array for every tile type as duplicate to
+the map to allow for quick access by type. Moreover, as there is no official
+API that makes available the list of coordinates where one is allowed to place
+tiles on, the bot also internally maintains a global (relative to the bot)
+<code>Set&lt;CubeCoordinate></code> of placable coordinates. It is also important to keep in
+mind that I have written classes for every tile type, each implementing a
+function which calculates the tile&rsquo;s score.</p><p>From the previously mentioned implementation details, the bot is able to
+generate a list of placement suggestions, calculate a score for each suggestion
+and sort them from highest delta resource growth to lowest.</p><p>Ofcourse, inorder for Design Decision 1 & 2 to work, we have to calculate the
+scores of all tiles that are <em>relevant</em> to the current tile. Relevancy here is
+whether the target tile affects another tile in the region. As an example here
+are the functions <code>affects()</code> and <code>in_range()</code> of the <code>WindmillRepr</code> class:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>affects</span>(TileType<span style=color:#666> </span>type)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span>type<span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Marketplace</span><span style=color:#666> </span>||<span style=color:#666> </span>type<span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Moai</span><span style=color:#666> </span>||<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>type<span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Windmill</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>in_range</span>(CubeCoordinate<span style=color:#666> </span>coord,<span style=color:#666> </span>TileType<span style=color:#666> </span>type)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(type<span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Wheat</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>in_range</span>(coord,<span style=color:#666> </span>3);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>else</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(type<span style=color:#666> </span>==<span style=color:#666> </span>TileType.<span style=color:#bbb>Forest</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>in_range</span>(coord,<span style=color:#666> </span>1);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>else</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>false</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span></code></pre></td></tr></table></div></div><p>The previous functions describe that any Windmill tile production&rsquo;s score is
+always only affected by Wheat and Forest tiles that are in the area of 3 and 1
+respectively. And that the Windmill tile itself only affects Marketplaces,
+Moais and other Windmills. These functions are heavily used when calculating
+any suggestion&rsquo;s score, as the alternative would mean calculating a global
+score (which is inefficient past round 4). The calculation is done in the
+function <code>get_relevant_score(TileInfo info, CubeCoordinate coord)</code> of the
+abstract <code>Director</code> class.</p><h2 id=4-game-directors>4. Game Directors</h2><p>Since the implementation has a <code>RuleSet</code> class that holds all the <code>apply_*</code>
+functions that represent all the different rules the bot can maintain, a
+question arises: When, How, and Who controls the execution of the rules? Enter:
+directors.</p><p>One may want to write &lsquo;multiple&rsquo; bots each having a different strategy,
+to ease that process, I have written an abstract class <code>Director</code> which
+all &lsquo;sub-bots&rsquo; extend from. The following is a simplified snippet of the
+class:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#6ab825;font-weight:700>abstract</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>class</span> <span style=color:#447fcf;text-decoration:underline>Director</span><span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>MyBot<span style=color:#666> </span>bot;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>RuleSet<span style=color:#666> </span>rules;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>ArrayList&lt;PlacementSuggestion&gt;<span style=color:#666> </span>suggestions<span style=color:#666> </span>=<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>new</span><span style=color:#666> </span>ArrayList&lt;&gt;();<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>abstract</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>do_redraw</span>();<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>abstract</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span><span style=color:#447fcf>redraw_max_times</span>();<span style=color:#666> 
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>abstract</span><span style=color:#666> </span>PlacementSuggestion<span style=color:#666> </span><span style=color:#447fcf>pick</span>();<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>void</span><span style=color:#666> </span><span style=color:#447fcf>suggest</span>(PlacementSuggestion<span style=color:#666> </span>suggestion)<span style=color:#666> </span>{...}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>void</span><span style=color:#666> </span><span style=color:#447fcf>ask_for_suggestions</span>(TileType<span style=color:#666> </span>card)<span style=color:#666> </span>{...}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>void</span><span style=color:#666> </span><span style=color:#447fcf>accept_suggestion</span>(PlacementSuggestion<span style=color:#666> </span>suggestion)<span style=color:#666> </span>{...}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>Score<span style=color:#666> </span><span style=color:#447fcf>get_relevant_score</span>(TileInfo<span style=color:#666> </span>info,<span style=color:#666> </span>CubeCoordinate<span style=color:#666> </span>coord)<span style=color:#666> </span>{...}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>TileType<span style=color:#666> </span><span style=color:#447fcf>get_preferred_tile</span>(List&lt;TileType&gt;<span style=color:#666> </span>hand)<span style=color:#666> </span>{...}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span></code></pre></td></tr></table></div></div><p>The methods are expected to be called directly from the <code>executeTurn</code>
+function. The order is vaguely like so: <code>get_preferred_tile()</code> ->
+<code>ask_for_suggestions()</code> -> <code>pick()</code> -> <code>accept_suggestion()</code>.</p><p>The function <code>suggest()</code> is called by the classes that represent each tile to
+submit a <code>PlacementSuggestion</code> to the Director.</p><h1 id=dictators-and-the-bot-development-platform>Dictators and The Bot Development Platform</h1><p>&lsquo;Dictators&rsquo; is the <em>very technical</em> term used internally to represent the classes
+that extend the class <code>Director</code>.</p><p>Currently the available bots are:</p><ul><li><code>GreedyDictator</code>: Simply selects the best placement</li><li><code>StrictDictator</code>: Applies rules without disabling/parameter optimization.</li><li><code>DynamicDictator</code>: Rules are applied with paramenters that are tested
+extensively (method described later)</li></ul><p>To show how easy it is to start developing bot strategies using this platform,
+here is the entirety of the <code>GreedyDictator</code> bot code:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#6ab825;font-weight:700>class</span> <span style=color:#447fcf;text-decoration:underline>GreedyDictator</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>extends</span><span style=color:#666> </span>Director<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#999;font-style:italic>/* Greedy dictator, just selects the placement with highest score delta,
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>     * no consideration for the future, rules with no rules */</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>GreedyDictator(MyBot<span style=color:#666> </span>bot)<span style=color:#666> </span>{<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>super</span>(bot);<span style=color:#666> </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>PlacementSuggestion<span style=color:#666> </span><span style=color:#447fcf>pick</span>()<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>Collections.<span style=color:#bbb>sort</span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>suggestions</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(!<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>suggestions</span>.<span style=color:#bbb>isEmpty</span>())<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>suggestions</span>.<span style=color:#bbb>getLast</span>();<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>else</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>null</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span><span style=color:#447fcf>redraw_max_times</span>()<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>redraw_max_times</span>(0.<span style=color:#bbb>11f</span>,<span style=color:#666> </span>5.<span style=color:#bbb>0f</span>,<span style=color:#666> </span>0.<span style=color:#bbb>05f</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>do_redraw</span>()<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>do_redraw</span>(3.<span style=color:#bbb>0f</span><span style=color:#666> </span>/<span style=color:#666> </span>5.<span style=color:#bbb>0f</span>,<span style=color:#666> </span>0.<span style=color:#bbb>0f</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span></code></pre></td></tr></table></div></div><p>If you are interested in the performance of <code>GreedyDictator</code>, here is a very
+small analysis (n=35+2 known seeds):</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Average round value over <span style=color:#3677a9>37</span> runs: 6.49
+</span></span><span style=display:flex><span>Average food value over <span style=color:#3677a9>37</span> runs: 29703.03
+</span></span><span style=display:flex><span>Average materials value over <span style=color:#3677a9>37</span> runs: 58749.31
+</span></span><span style=display:flex><span>Average moneys value over <span style=color:#3677a9>37</span> runs: 45257.50
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Standard deviation of rounds over <span style=color:#3677a9>37</span> runs: 2.663
+</span></span><span style=display:flex><span>Standard deviation of food over <span style=color:#3677a9>37</span> runs: 21948.610
+</span></span><span style=display:flex><span>Standard deviation of materials over <span style=color:#3677a9>37</span> runs: 36599.263
+</span></span><span style=display:flex><span>Standard deviation of moneys over <span style=color:#3677a9>37</span> runs: 28670.699
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Rounds Histogram:
+</span></span><span style=display:flex><span> <span style=color:#3677a9>1</span> | ███ (3)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>2</span> | █ (1)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>3</span> | ██ (2)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>4</span> | ███ (3)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>5</span> | ████ (4)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>7</span> | █████ (5)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>8</span> | ████████████ (12)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>9</span> | █████ (5)
+</span></span><span style=display:flex><span><span style=color:#3677a9>10</span> | █ (1)
+</span></span><span style=display:flex><span><span style=color:#3677a9>11</span> | █ (1)
+</span></span></code></pre></td></tr></table></div></div><p>Even though the bot reaches round 11, it is very inconsistent with a standard
+deviation of around 3. Because I believe a bot&rsquo;s performance is not just about
+its average round/resource count but also its standard deviation and highest
+frequency count, I will not be making comparisons between <code>GreedyDictator</code> and
+the performance of the average bot on the AuD scoreboards (Although I would be
+very interested in the percentage of people that beat the greedy approach).</p><h2 id=beating-the-greedy-approach--my-submission>Beating the Greedy Approach & My Submission</h2><p>In order to show how easy it is to describe &lsquo;winning&rsquo; bots using my platform,
+here is the entirety of my bot&rsquo;s submission(<code>DynamicDictator</code>). Which has the
+following performance (n=150+2):</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Average round value over <span style=color:#3677a9>152</span> runs: 8.86
+</span></span><span style=display:flex><span>Average food value over <span style=color:#3677a9>152</span> runs: 57315.68
+</span></span><span style=display:flex><span>Average materials value over <span style=color:#3677a9>152</span> runs: 88029.77
+</span></span><span style=display:flex><span>Average moneys value over <span style=color:#3677a9>152</span> runs: 76918.13
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Standard deviation of rounds over <span style=color:#3677a9>152</span> runs: 2.142
+</span></span><span style=display:flex><span>Standard deviation of food over <span style=color:#3677a9>152</span> runs: 25501.124
+</span></span><span style=display:flex><span>Standard deviation of materials over <span style=color:#3677a9>152</span> runs: 33786.399
+</span></span><span style=display:flex><span>Standard deviation of moneys over <span style=color:#3677a9>152</span> runs: 31244.462
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Rounds Histogram:
+</span></span><span style=display:flex><span> <span style=color:#3677a9>1</span> | █████ (5)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>3</span> | █ (1)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>4</span> | ██ (2)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>5</span> | ███ (3)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>6</span> | ████ (4)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>7</span> | █████████ (9)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>8</span> | ███████████████████ (19)
+</span></span><span style=display:flex><span> <span style=color:#3677a9>9</span> | ████████████████████████████████████ (36)
+</span></span><span style=display:flex><span><span style=color:#3677a9>10</span> | ████████████████████████████████████████████████████████ (56)
+</span></span><span style=display:flex><span><span style=color:#3677a9>11</span> | █████████████ (13)
+</span></span><span style=display:flex><span><span style=color:#3677a9>12</span> | ███ (3)
+</span></span><span style=display:flex><span><span style=color:#3677a9>13</span> | █ (1)
+</span></span></code></pre></td></tr></table></div></div><p>Admittedly, the results are very much dependendant on the random seeds. However,
+if you run the <code>DynamicDictator</code> bot analysis multiple times, you would see a
+consistent lower standard deviation (around 2, if lucky less). And a higher
+round average of 8.86.</p><p><code>DynamicDictator</code> code:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">54
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#6ab825;font-weight:700>class</span> <span style=color:#447fcf;text-decoration:underline>DynamicDictator</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>extends</span><span style=color:#666> </span>Director<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#999;font-style:italic>/* dynamic dictator, follows rules, but doesn&#39;t worship them,
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>     * sometimes rules are meant to be broken, and this dictator
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>     * knows when to break them. sometimes rules are outdated
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>     * mid-game, or sometimes rules are meant for late-game
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>     * */</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>DynamicDictator(MyBot<span style=color:#666> </span>bot)<span style=color:#666> </span>{<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>super</span>(bot);<span style=color:#666> </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>int</span><span style=color:#666> </span><span style=color:#447fcf>redraw_max_times</span>()<span style=color:#666> </span>{<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>redraw_max_times</span>(0.<span style=color:#bbb>1f</span>,<span style=color:#666> </span>6.<span style=color:#bbb>0f</span>,<span style=color:#666> </span>0.<span style=color:#bbb>00f</span>);<span style=color:#666> </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#6ab825;font-weight:700>boolean</span><span style=color:#666> </span><span style=color:#447fcf>do_redraw</span>()<span style=color:#666> </span>{<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>do_redraw</span>(1.<span style=color:#bbb>0f</span><span style=color:#666> </span>/<span style=color:#666> </span>5.<span style=color:#bbb>0f</span>,<span style=color:#666> </span>0.<span style=color:#bbb>0f</span>);<span style=color:#666> </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:orange>@Override</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>PlacementSuggestion<span style=color:#666> </span><span style=color:#447fcf>pick</span>()<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>PlacementSuggestion<span style=color:#666> </span>best<span style=color:#666> </span>=<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>null</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>Collections.<span style=color:#bbb>sort</span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>suggestions</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(PRINT_DEBUG)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>System.<span style=color:#bbb>out</span>.<span style=color:#bbb>println</span>(<span style=color:#ed9d13>&#34;[round] &#34;</span><span style=color:#666> </span>+<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>round</span>);<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>for</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>var</span><span style=color:#666> </span>suggestion<span style=color:#666> </span>:<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>suggestions</span>.<span style=color:#bbb>reversed</span>())<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_wheat_groups_size</span>(suggestion,<span style=color:#666> </span>0,<span style=color:#666> </span>9))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_forest_groups_size</span>(suggestion,<span style=color:#666> </span>0,<span style=color:#666> </span>7))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>round</span><span style=color:#666> </span>&gt;<span style=color:#666> </span>0<span style=color:#666> </span>&amp;&amp;<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_avoid_forest</span>(suggestion,<span style=color:#666> </span>7))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>round</span><span style=color:#666> </span>&gt;=<span style=color:#666> </span>1<span style=color:#666> </span>&amp;&amp;<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_wheat_neighbors</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_wheat_not_to_join_other_together</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_dont_block_wheats</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_avoid_wheats_if_windmills_not_present</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_windmills_per_wheat</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_windmills_not_beside_forest</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_dhouse_less_than_3</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_moais_spaced</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>if</span><span style=color:#666> </span>(<span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>round</span><span style=color:#666> </span>&gt;=<span style=color:#666> </span>1<span style=color:#666> </span>&amp;&amp;<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>bot</span>.<span style=color:#bbb>round</span><span style=color:#666> </span>&lt;=<span style=color:#666> </span>9<span style=color:#666> </span>&amp;&amp;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>this</span>.<span style=color:#bbb>rules</span>.<span style=color:#bbb>apply_stones_not_beside_wheat</span>(suggestion))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>continue</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span>best<span style=color:#666> </span>=<span style=color:#666> </span>suggestion;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>            </span><span style=color:#6ab825;font-weight:700>break</span>;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>        </span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span>best;<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>}<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666></span>}<span style=color:#666>
+</span></span></span></code></pre></td></tr></table></div></div><p>Due to the limitation of time I can spend on this, the performance of the
+previous <code>DynamicDictator</code> is not to its full potential. I believe with enough
+time spent, one can theoretically achieve way better performance.</p><h2 id=discussing-strategy>Discussing Strategy</h2><p>The following are some of the observations I made when developing the bot,
+there is no guarantee they are correct. They are here just as a potential
+guidance for strategy developers:</p><ul><li>only one placement of a tile is allowed per turn</li><li>memory is more abundant than time</li><li>the longer the tile is placed the better</li><li>more tiles placed earlier the better</li><li>marketplaces convert food/materials to money, and they are very important for
+money production (develope good percentage calculators)</li><li>after placing using <code>controller.placeTile()</code>, <code>world.getMap()</code> does not update (same turn)</li><li>begining new wheat groups in expectation of windmills is a good strategy</li></ul><h1 id=testing-the-bot>Testing the Bot</h1><p>Testing a bot&rsquo;s performance requires the definition of what does it mean to have
+a &lsquo;performant bot&rsquo;. The official AuD competition (currently as of 06.06)
+measures a bot&rsquo;s performance through the average of 100 seeds. Of course that
+is very arguable, as getting an unlucky batch of 100 seeds will disadvantage
+certain bots (due to the nature of the redraw of tiles). As such, I personally
+just used standard deviation and running the bot over a large number of seeds
+multiple times until I got a decent looking analysis before uploading the bot.</p><p>Speaking of analysis, I used the python script <code>run-avgs</code> (found in the git
+repo) which runs the bot over a user-specified number of seeds, saving them to
+a file, and calculates the different metrics (as shown previously in this
+article).</p><h1 id=conclusion>Conclusion</h1><p>The game itself has probably an implicit soft-limit on the average of rounds a
+bot can reasonably achieve without over-optimization. The way the tiles redraw
+is programmed means that sooner or later, you will get unlucky with your
+card draws and fail the run. There is no current garauntee from the game that
+one can endlessly reach the next round&rsquo;s target resources.</p><p>So if the game is not designed to allow for endless runs and the success of a
+bot just means reaching round 5, you may ask: was it all worth it? And for that
+I answer: need it be?</p></article></main><hr><footer><center><div class=footerTable><div style=display:block><p>Unique Visitors:
+<a href=https://www.digits.net target=_blank rel=noopener><img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0></a></p><p><a href=https://ayham.xyz><img width=88 height=31 src=https://ayham.xyz/pix/webpins/ayhamxyz.6d7f8c95fb6135a73680ad01aa3b523e.gif crossorigin=anonymous integrity="md5-bX+MlfthNac2gK0BqjtSPg==" alt="ayham.xyz webpin"></a></p><p>Last Edited On: 2025-06-17</p></div><div style=display:block><small>CC-BY-SA - 2025</small><br><small><a href=/index.xml>Subscribe via RSS.</a></small><br><small><a href=https://ayham.xyz/details/>Website Details.</a></small>
+<script data-goatcounter=https://ayham.goatcounter.com/count async src=//gc.zgo.at/count.js></script></div></div><center></footer></body></html>

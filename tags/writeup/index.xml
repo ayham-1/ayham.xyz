@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Writeup on Ayham's Online Website</title><link>https://ayham.xyz/tags/writeup/</link><description>Recent content in Writeup on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Tue, 17 Jun 2025 04:13:11 +0200</lastBuildDate><atom:link href="https://ayham.xyz/tags/writeup/index.xml" rel="self" type="application/rss+xml"/><item><title>Modular TTE Bot Design</title><link>https://ayham.xyz/posts/modular-tte-bot-design/</link><pubDate>Mon, 16 Jun 2025 23:45:00 +0200</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/modular-tte-bot-design/</guid><description>&lt;p>As a running tradition in the AuD class at OVGU, students are required to
+participate in a bot writing competition for a game written by senior students.
+For this year&amp;rsquo;s competition,
+
+
+
+&lt;dev>
+&lt;a href="https://terratactician-expandoria.codeberg.page/"target="_blank">Terratician Expandoria&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev> was
+chosen. This article will be a description of the features my bot &amp;lsquo;Bob the Bot
+the Benevolent Builder II&amp;rsquo; has to offer as a platform for bot and strategy
+development and also act as the description for the secondary creative bot
+competition. The code for the bot can be found 
+
+
+&lt;dev>
+&lt;a href="https://github.com/ayham-1/tte"target="_blank">here&lt;/a>&lt;span class="externalLink">🔗&lt;/span>
+&lt;/dev>.&lt;/p></description></item></channel></rss>

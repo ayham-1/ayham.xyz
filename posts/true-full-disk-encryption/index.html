@@ -1,0 +1,79 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Ayham's online website"><meta name=keywords content="ayham,personal,blog,linux"><meta name=author content="ayham"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light"><link rel=icon type=image/x-icon href=https://ayham.xyz/pix/avatar/pfp_hu_9b8ef136499e5f25.260c87cca6a67382a9043e12d7bf4dae.png integrity="md5-JgyHzKamc4KpBD4S179Nrg==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/nav.dbcff7b67f99ee271630f11e6d609150.css integrity="md5-28/3tn+Z7icWMPEebWCRUA==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/footer.e71d515740d85272dc5a068dedc6394b.css integrity="md5-5x1RV0DYUnLcWgaN7cY5Sw==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/common.4d89642363d46c847439f85578bb0cf0.css integrity="md5-TYlkI2PUbIR0OfhVeLsM8A==" crossorigin=anonymous><title>Ayham's Online Website | True Full Disk Encryption On Linux</title></head><body><center><nav><ul><li><a href=/>[Home]</a></li><li><a href=/projects/>[Projects]</a></li><li><a href=/posts/>[Posts]</a></li><li><a href=/library/>[Library]</a></li><li><a href=/apps/>[Apps]</a></li></ul></nav><hr></center><main><center><h1>True Full Disk Encryption On Linux</h1></center>Publish Date: <time datetime=2021-12-10>Dec 10, 2021</time>&nbspLast Update: <time datetime=2022-05-25>May 25, 2022</time><br>Tags:<a href=https://ayham.xyz/tags/guide>guide</a>
+<a href=https://ayham.xyz/tags/linux>linux</a>
+<a href=https://ayham.xyz/tags/security>security</a><br>699 words, 4 minute(s) to read.<br><br><article><p>My friends laugh at me when they are told that I have to put in 4 passwords
+with ~18 characters each to login into my computer. I laugh back at them,
+wishing them joy with Ads in the start-menu.</p><p>In this article, we will discuss <em>true</em> full disk encryption. Everything,
+including having the kernel encrypted using LUKS. I personally found difficulty
+in finding good documentation detailing how to set-up disk encryption.
+Hopefully this guide would help someone out there.</p><h1 id=introduction>Introduction</h1><p>We will be installing
+<dev><a href=https://artixlinux.org/ target=_blank>Artix Linux</a><span class=externalLink>🔗</span>
+</dev>, because this is
+what I use and recommend (not for everyone). This tutorial should work using
+any distro that allows you to select where to install the system. In the end we
+would have a bootable UEFI system where the user is prompted for a password to
+unlock the <code>/boot/</code> partition, then another prompt for the main partition.
+The reason for this seperation is that GRUB, at least with my testing
+(2021-08), does not officially (?) support LUKS2 formatting.</p><pre tabindex=0><code>$ lsblk
+NAME             MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda                8:0    0 931.5G  0 disk  
+├─sda1             8:1    0   512M  0 part  
+├─sda2             8:2    0     2G  0 part  
+└─sda3             8:3    0   929G  0 part  
+  └─hdd          254:0    0   929G  0 crypt 
+    ├─vol-root   254:1    0   150G  0 lvm   /
+    ├─vol-home   254:2    0   300G  0 lvm   /home
+    ├─vol-data   254:3    0   421G  0 lvm   /data
+    ├─vol-swap   254:4    0     8G  0 lvm   [SWAP]
+</code></pre><p>This would be the final result. LVM over LUKS2 for the main (<code>/dev/sda3</code>)
+partition, LUKS1 for <code>/dev/sda2</code>, and the UEFI disk on <code>/dev/sda1</code>.</p><p>I am not responsible for any loss of data that occurs because you irresponsibly
+ran any command.</p><p>Flash your ISO into your USB, turn off your device, plug the USB in, boot into
+the USB, and follow this guide from another device.</p><h1 id=partitioning-the-disk>Partitioning the Disk</h1><p>Following this would irreversibly erase your whole disk. First, start by
+identifying the disk name. Run <code>lsblk</code>, find your disk name by its known
+space. I from hereafter use <code>/dev/sda</code> as the installation hard-disk.
+Using your
+<dev><a href=https://wiki.archlinux.org/title/Partitioning#Tools target=_blank>favourite disk editing tools</a><span class=externalLink>🔗</span>
+</dev>,
+do the following tasks:</p><ul><li>Label disk as GPT</li><li>Create a 512MB, EFI tagged. FAT32 formatted. (<code>/dev/sda1</code>)</li><li>Create the boot disk with 2GB. We will format it later on. (<code>/dev/sda2</code>)</li><li>Create the main disk with as much space that is available, leave some at the
+end. We will format it later on. (<code>/dev/sda3</code>)</li></ul><p>Set up the boot disk, then the main disk:</p><pre tabindex=0><code>$ cryptsetup luksFormat --type luks1 /dev/sda2
+$ cryptsetup luksFormat --type luks2 /dev/sda3
+</code></pre><p>Format the boot disk:</p><pre tabindex=0><code>$ cryptsetup open /dev/sda2 boot-crypt
+$ mkfs.ext4 /dev/mapper/boot-crypt
+</code></pre><p>Format the main disk as LVM:</p><pre tabindex=0><code>$ cryptsetup open /dev/sda3 hdd
+$ pvcreate /dev/mapper/hdd
+$ vgcreate vol /dev/mapper/hdd
+$ lvcreate -L[your / size] -n root vol
+$ lvcreate -L[your /home size] -n home vol
+$ lvcreate -L[your /data size] -n data vol
+$ mkfs.ext4 /dev/vol/root
+$ mkfs.ext4 /dev/vol/home
+$ mkfs.ext4 /dev/vol/data
+</code></pre><p>Your disk should be ready for installation!</p><h1 id=artix-installation>Artix Installation</h1><p>This section won&rsquo;t hold your hand installing a full Artix system. I will just
+go over configuring the disk. <code>mount</code> your horses and go <code>chroot</code>ing!</p><pre tabindex=0><code>$ mount /dev/vol/root /mnt/
+$ mkdir -p /mnt/home/
+$ mount /dev/vol/home /mnt/home/
+$ mkdir -p /mnt/boot/EFI
+$ mount /dev/sda1 /mnt/boot/EFI
+$ mount /dev/mapper/boot-crypt /mnt/boot/
+$ mkdir -p /mnt/data
+$ mount /dev/vol/data /mnt/data
+$ lsblk # check if everything is fine
+$ # After bootstrapping Artix Linux into /mnt, don&#39;t forget to configure fstab!
+$ artix-chroot /mnt/
+$ # Continue installing the system, skipping GRUB for the next section
+</code></pre><h2 id=grub-bootloader-installation--configuration>GRUB Bootloader Installation & Configuration</h2><p>This section assumes that you are already <code>chroot</code>ed. Install <code>GRUB</code>:</p><pre tabindex=0><code>$ pacman -S grub efibootmgr
+</code></pre><p>Set-up <code>GRUB</code> & <code>mkinitcpio</code> for encryption:</p><pre tabindex=0><code>$ vi /etc/default/grub
+# Change the following:
+GRUB_CMDLINE_LINUX=&#34;... cryptdevice=UUID=[YOUR LUKS PARTITION UUID]&#34;
+GRUB_PRELOAD_MODULES=&#34;part_gpt part_msdos lvm&#34;
+GRUB_ENABLE_CRYPTODISK=y
+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+</code></pre><pre tabindex=0><code>$ vi /etc/mkinitcpio.conf
+# Change the following:
+HOOKS=(.. lvm2 encrypt)
+</code></pre><p>Finally, configure <code>GRUB</code>:</p><pre tabindex=0><code>$ grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>Make sure you run <code>mkinitcpio</code>, do so by updating your kernel pacman will
+update your initcpio automatically, or run this:</p><pre tabindex=0><code>$ mkinitcpio -P
+</code></pre><p>Congratz, you should have a <em>true</em> full disk encryption system!</p><h1 id=conclusion>Conclusion</h1><p>Full disk encryption should not be hard to setup, try it out in a VM before
+converting all of your machines!</p></article></main><hr><footer><center><div class=footerTable><div style=display:block><p>Unique Visitors:
+<a href=https://www.digits.net target=_blank rel=noopener><img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0></a></p><p><a href=https://ayham.xyz><img width=88 height=31 src=https://ayham.xyz/pix/webpins/ayhamxyz.6d7f8c95fb6135a73680ad01aa3b523e.gif crossorigin=anonymous integrity="md5-bX+MlfthNac2gK0BqjtSPg==" alt="ayham.xyz webpin"></a></p><p>Last Edited On: 2025-06-17</p></div><div style=display:block><small>CC-BY-SA - 2025</small><br><small><a href=/index.xml>Subscribe via RSS.</a></small><br><small><a href=https://ayham.xyz/details/>Website Details.</a></small>
+<script data-goatcounter=https://ayham.goatcounter.com/count async src=//gc.zgo.at/count.js></script></div></div><center></footer></body></html>

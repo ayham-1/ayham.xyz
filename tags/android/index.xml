@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on Ayham's Online Website</title><link>https://ayham.xyz/tags/android/</link><description>Recent content in Android on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Wed, 10 Aug 2022 22:07:23 +0300</lastBuildDate><atom:link href="https://ayham.xyz/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Installing Android 12 On The Motorola One Macro (lima)</title><link>https://ayham.xyz/posts/install-android-12-moto-macro/</link><pubDate>Tue, 02 Aug 2022 13:00:46 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/install-android-12-moto-macro/</guid><description>&lt;p>Motorola One Macro, codename lima, can surprisingly be upgraded to Android 12.
+To be exact, this phone can be upgraded to phh&amp;rsquo;s treble Android 12 GSI. I have
+already written a longer 
+
+
+&lt;a href="https://ayham.xyz/posts/hardening-the-one-macro/"title="that article">guide&lt;/a> on this phone before, however it lacks some
+edge cases. This guide would hopefully attempt to ammend these.&lt;/p>
+&lt;p>I originally intended for that article to be a complete guide which works for
+all Android versions. Although that is still somewhat true, I decided to rewrite
+a standalone article for Android 12. I&amp;rsquo;ve learned some stuff about the phone,
+some issues that could arise while updating, which I thought would deserve their
+own guide. Now, this is an article attuned to the type of step-by-step, which
+is a contrast to the original guide. This article could also hopefully act as a
+step-by-step upgrade guide.&lt;/p></description></item><item><title>Hardening The Moto One Macro</title><link>https://ayham.xyz/posts/hardening-the-one-macro/</link><pubDate>Tue, 30 Nov 2021 06:56:35 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/posts/hardening-the-one-macro/</guid><description>&lt;p>The Motorola One Macro is a mid-range phone, with decent &amp;ldquo;openness&amp;rdquo; which allows
+basic hardening modification. The phone has the follow specifications:&lt;/p>
+&lt;ul>
+&lt;li>Mediatek MT6771 Helio P70 CPU&lt;/li>
+&lt;li>720 x 1520 px, 19:9 ratios (~270 ppi)&lt;/li>
+&lt;li>Comes with Anroid 9.0, officially upgradable to Android 10.0&lt;/li>
+&lt;li>Mali-G72 MP3 GPU&lt;/li>
+&lt;li>eMMC 5.1 storage with 64GB&lt;/li>
+&lt;li>microSDXC uses shared SIM slot, 32GB tested&lt;/li>
+&lt;li>Main camera 13 MP, depth camera 2MP, 2MP for macro camera&lt;/li>
+&lt;li>WIFI 802.11 b/g/n, with hotspot&lt;/li>
+&lt;li>No NFC support&lt;/li>
+&lt;/ul>
+&lt;p>This guide goes over unlocking the bootloader, flashing a GSI, flashing
+LineageOS, reflashing stock ROM, fixing bootloop problems, and news
+on TWRP for the Moto One Macro.&lt;/p></description></item></channel></rss>
