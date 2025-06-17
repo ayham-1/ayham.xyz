@@ -1,6 +1,6 @@
 ---
 title: "Modular TTE Bot Design"
-date: 2025-06-16T00:00:00+02:00
+date: 2025-06-16T23:45:00+02:00
 tags: ["code", "tte", "writeup"]
 ---
 

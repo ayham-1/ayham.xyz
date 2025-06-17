@@ -8,4 +8,4 @@ params:
     img: "pix/proj/tte-bot.webp"
 ---
 
-This was for a compitition part of a class I took.
+This was for a competition part of a class I took.
