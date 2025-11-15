@@ -10,6 +10,7 @@ date: 2022-05-11T17:00:41+03:00
 - Languages (written atleast a project with, in-order): Zig, Bash, Nixlang, Rust, Dart/Kotlin (Android)
 - Tools: Neovim, Git, Tmux, GoHugo, Docker, CMake, Meson
 - OS (in-order): ArchLinux, NixOS, Debian-based, OpenSUSE, Gentoo
+- Niche Knowledge: STM32 HAL, FreeRTOS, TouchGFX
 
 <!-- section break -->
 
