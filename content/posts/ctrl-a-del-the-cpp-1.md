@@ -4,7 +4,7 @@ date: 2025-12-27T19:06:43+01:00
 ---
 
 
-As part of my participation of the UMD Racing Formula Student team, I have been
+As part of my participation in the UMD Racing Formula Student team, I have been
 writing the embedded software for the low-voltage class of PCBs that are 
 powered with STM32 MCUs. For the architecture design, we have opted to go for a 
 framework-style of software that is completely written in C. One of the 
