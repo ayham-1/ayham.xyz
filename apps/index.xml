@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Apps on Ayham's Online Website</title><link>https://ayham.xyz/apps/</link><description>Recent content in Apps on Ayham's Online Website</description><generator>Hugo</generator><language>en-us</language><managingEditor>me@ayham.xyz (ayham)</managingEditor><webMaster>me@ayham.xyz (ayham)</webMaster><lastBuildDate>Fri, 16 Sep 2022 05:29:03 +0300</lastBuildDate><atom:link href="https://ayham.xyz/apps/index.xml" rel="self" type="application/rss+xml"/><item><title>Sokoban</title><link>https://ayham.xyz/apps/sokoban/</link><pubDate>Fri, 09 Sep 2022 08:06:28 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/apps/sokoban/</guid><description>&lt;link href="https://ayham.xyz/apps/sokoban/sokoshell.117ba3b9ff6c28b38722cf11aa964e4a.css" rel="stylesheet" integrity="md5-EXujuf9sKLOHIs8RqpZOSg==" crossorigin="anonymous"/&gt;
+&lt;div class="emscripten" id="status"&gt;Downloading...&lt;/div&gt;
+&lt;div class="emscripten"&gt;
+ &lt;progress hidden id="progress" max="100" value="0"&gt;&lt;/progress&gt;
+&lt;/div&gt;
+&lt;div id="winStatus" style="display:none"&gt;
+ &lt;center&gt;
+ &lt;h3&gt;You Won!&lt;/h3&gt;
+ &lt;h4&gt;Refresh in order to play another puzzle!&lt;/h4&gt;
+ &lt;/center&gt;
+&lt;/div&gt;
+&lt;div class="grid"&gt;
+ &lt;div class="grid-item"&gt;
+ &lt;center&gt;
+ &lt;h3&gt;Game&lt;/h3&gt;
+ &lt;canvas
+ class="emscripten"
+ id="canvas"
+ oncontextmenu="event.preventDefault()"
+ tabindex="-1"
+ &gt;&lt;/canvas&gt;
+ &lt;/center&gt;
+ &lt;/div&gt;
+ &lt;div class="grid-item"&gt;
+ &lt;center&gt;
+ &lt;h3&gt;Current Layout&lt;/h3&gt;
+ &lt;textarea
+ class="mapView"
+ cols="25"
+ id="mapView"
+ onfocus="focusMap()"
+ onfocusout="focusMap()"
+ oninput="changeMap(this)"
+		style="height: 256px; width: 256px;"
+ rows="12"
+ &gt;
+				Map should be loaded here...&lt;/textarea
+ &gt;
+ &lt;/center&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;&lt;script src="https://ayham.xyz/apps/sokoban/sokoshell.7022d33d520527adfae7fcc279574cc4.js" integrity="md5-cCLTPVIFJ6365/zCeVdMxA==" crossorigin="anonymous"&gt;&lt;/script&gt;
+
+&lt;script src="https://ayham.xyz/apps/sokoban/app.js"&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Refresh the page to get another puzzle.&lt;/p&gt;
+&lt;p&gt;This project is hosted 
+
+
+&lt;dev&gt;
+&lt;a href="https://codeberg.org/ayham/sokoban"target="_blank"&gt;here&lt;/a&gt;&lt;span class="externalLink"&gt;🔗&lt;/span&gt;
+&lt;/dev&gt;.&lt;/p&gt;</description></item><item><title>Eid Marks Calculator</title><link>https://ayham.xyz/apps/eid.marks/</link><pubDate>Thu, 10 Mar 2022 04:51:39 +0300</pubDate><author>me@ayham.xyz (ayham)</author><guid>https://ayham.xyz/apps/eid.marks/</guid><description>&lt;p&gt;This is a very simple eid marks calculator where you put your subject marks,
+press calculate and pray for the best!&lt;/p&gt;</description></item></channel></rss>

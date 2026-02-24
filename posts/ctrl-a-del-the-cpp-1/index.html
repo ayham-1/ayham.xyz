@@ -1,0 +1,256 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Ayham's online website"><meta name=keywords content="ayham,personal,blog,linux"><meta name=author content="ayham"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light"><link rel=icon type=image/x-icon href=https://ayham.xyz/pix/avatar/pfp_hu_188fba7a760b515b.28a507d08c065e953b8c959c51058846.png integrity="md5-KKUH0IwGXpU7jJWcUQWIRg==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/nav.dbcff7b67f99ee271630f11e6d609150.css integrity="md5-28/3tn+Z7icWMPEebWCRUA==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/footer.e71d515740d85272dc5a068dedc6394b.css integrity="md5-5x1RV0DYUnLcWgaN7cY5Sw==" crossorigin=anonymous><link rel=stylesheet type=text/css href=https://ayham.xyz/css/common.4d89642363d46c847439f85578bb0cf0.css integrity="md5-TYlkI2PUbIR0OfhVeLsM8A==" crossorigin=anonymous><title>Ayham's Online Website | Ctrl+A DEL the C++ #1: what is struct memory-alignment?</title></head><body><center><nav><ul><li><a href=/>[Home]</a></li><li><a href=/projects/>[Projects]</a></li><li><a href=/posts/>[Posts]</a></li><li><a href=/library/>[Library]</a></li><li><a href=/apps/>[Apps]</a></li></ul></nav><hr></center><main><center><h1>Ctrl+A DEL the C++ #1: what is struct memory-alignment?</h1></center>Publish Date: <time datetime=2025-12-27>Dec 27, 2025</time><br><br>985 words, 5 minute(s) to read.<br><br><article><p>As part of my participation in the UMD Racing Formula Student team, I have been
+writing the embedded software for the low-voltage class of PCBs that are
+powered with STM32 MCUs. For the architecture design, we have opted to go for a
+framework-style of software that is completely written in C. One of the
+sub-projects this framework should accommodate is a testbench that is basically
+just an STM32F7 discovery board with a display. Unfortunately, due to time
+constraints, the testbench UI is designed using TouchGFX which exclusively
+generates C++ code from a WYSIWYG editor.</p><p>And this is where this entry&rsquo;s C++ story comes from: apparently, changing the
+order of a struct&rsquo;s members breaks the memory alignment between C (the framework),
+and the C++ side of the testbench code.</p><p>Every project that uses the framework is recommended to have a singular global
+struct which holds the entire memory usage of the PCB, and a function which
+initialises this state struct. For the aforementioned testbench, this struct is
+written in C code (a pair of .h/.c files).</p><p>This is said struct:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">74
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#6ab825;font-weight:700>struct</span> umdr_pcb_state
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#999;font-style:italic>// spoofing business
+</span></span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>volatile</span> <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> lvms;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> tsms;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> asms;
+</span></span><span style=display:flex><span>        } switches;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> is_usable;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> brake_perc;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> apps_perc;
+</span></span><span style=display:flex><span>        } pedals;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> mission;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> start_actioning;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> wants_hv_on;
+</span></span><span style=display:flex><span>        } mission_selector;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> eco;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> pitmode;
+</span></span><span style=display:flex><span>            <span style=color:#6ab825;font-weight:700>uint8_t</span> antiskid;
+</span></span><span style=display:flex><span>        } feature_selector;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led0;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led1;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led2;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led3;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led4;
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>uint8_t</span> led5;
+</span></span><span style=display:flex><span>    } spoof;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint8_t</span> usart_txBuffer[umdr_pcb_usart_buf_sz];
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint8_t</span> usart_rxBuffer[umdr_pcb_usart_buf_sz];
+</span></span><span style=display:flex><span>    QueueHandle_t usart_rx_cmds; <span style=color:#999;font-style:italic>// char[64]
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_serializer_master_switches mswitches;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_serializer_pedal_sensors psensors;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_power_distributor pwr_dist;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_usr_event_mission_selector mselector;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_usr_event_feature_selector fselector;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_deserializer_leds leds;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_spoofer res;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_spoofer asb;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_spoofer dv;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_spoofer ams;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_spoofer bamo;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    CAN_HandleTypeDef * hcan;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>volatile</span> <span style=color:#6ab825;font-weight:700>struct</span> UMDR_CanOutputSysEntry can_out[umdr_pcb_num_sys];
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>volatile</span> <span style=color:#6ab825;font-weight:700>struct</span> UMDR_CanInputSysEntry can_in[umdr_pcb_num_sys];
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>volatile</span> CAN_FilterTypeDef can_in_filters[umdr_pcb_can_filters];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_CanOutputSys output_sys;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_CanInputSys input_sys;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_car_logic clu;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_display_driver_generic display_driver;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_graphics_rgb565 graphics;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_dashboard dashboard;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></td></tr></table></div></div><p>And the global variable is defined like so:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">1
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#6ab825;font-weight:700>extern</span> <span style=color:#6ab825;font-weight:700>struct</span> umdr_pcb_state state;
+</span></span></code></pre></td></tr></table></div></div><p>Without going into specific design decisions, this struct uses multiple modules
+of the framework on the same PCB (the testbench) which would normally be split
+into the different PCBs of the actual car.</p><p>The global struct <code>state</code> is used by the spoofing code of the different
+hardware-facing modules of the framework, which is written in C. This same
+struct is also used by the C++ code responsible for the nice TouchGFX interface
+of the testbench. This is how a GUI touch-button on the testbench can be
+registered as &lsquo;spoofed&rsquo; physical button input in the framework.</p><p>It should be noted that the &rsquo;normal&rsquo; precuations of using C code in C++ were
+taken; the entire C header file is wrapped with <code>extern "C"</code> guards, and all
+integer types strictly use the standard <code>stdint.h</code>, and all enums use defined
+sizes (modern C), and <code>bool</code> is not used, etc.</p><p>The real funny business happens when the <code>spoof</code> struct is moved within the
+parent <code>state</code> struct. The order of the members shown in the above code snippet
+do work, but if you move the spoof struct to the bottom of the state struct the
+entire memory alignment of the access from the C++ side breaks. Because,
+well&mldr; C++?</p><p><center><img alt=debugger-memory-view.png src=https://ayham.xyz/pix/posts/ctrl-a-del-the-cpp-1/debugger-memory-view.fef1eeb5d868315c8dcc640dcfbedd9e.png integrity="md5-/vHutdhoMVyNzGQNz77dng==" crossorigin=anonymous></center></p><p>Notice how the values for the spoofed pedals being shown correctly in the
+debugger view of STM32CubeIDE&mldr;</p><p><center><img alt=breakpoint-wrong-memory-read.png src=https://ayham.xyz/pix/posts/ctrl-a-del-the-cpp-1/breakpoint-wrong-memory-read.af8b693f5c4705f45f878bdeaab06327.png integrity="md5-r4tpP1xHBfRfh4veqrBjJw==" crossorigin=anonymous></center></p><p>Now notice how this C++ side breakpoint shows the memory misaligned.</p><p>You have to trust me in saying that the only change between the expected
+behaviour code and this nonsense is the order of the members of the struct.</p><p>Searching up online (and asking <em>the</em> ChatGPT), points towards a very common
+problem when interfacing between C and C++: sometimes the C compilation process
+sees a different layout than the C++ process.</p><p>If <code>printf</code> debugging is rookie-level debugging, then changing the order of
+your variable definitions and seeing what order breaks the alignment surely
+must be expert-level debugging.</p><p>After an agonizing number of recompilations with different permutations of
+ordering of the members, placing the &lsquo;dashboard&rsquo; member above the spoofing struct
+breaks the layout, and placing the dashboard member below the spoofing struct
+unbreaks the layout (and for some reason, the spoofing struct should not be the last
+member in the struct).</p><p>For completeness sake, here is the definition of the <code>UMDR_dashboard</code> struct:</p><div class=highlight><div style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#686868">31
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#6ab825;font-weight:700>struct</span> UMDR_dashboard
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span> UMDR_graphics_rgb565 * graphics;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>volatile</span> <span style=color:#6ab825;font-weight:700>struct</span> UMDR_CanOutputSysEntry * leds_ctrl;
+</span></span><span style=display:flex><span>    } can_out;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#999;font-style:italic>// struct UMDR_CanInputSysEntry * buttons_broadcast;
+</span></span></span><span style=display:flex><span>        <span style=color:#999;font-style:italic>// struct UMDR_CanInputSysEntry * clu_broadcast;
+</span></span></span><span style=display:flex><span>        <span style=color:#999;font-style:italic>// struct UMDR_CanInputSysEntry * ams_broadcast;
+</span></span></span><span style=display:flex><span>    } can_in;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    xTaskHandle thread_dashboard_handling;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint32_t</span> thread_dashboard_buffer[<span style=color:#3677a9>512</span>];
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint8_t</span> thread_dashboard_handlerCtrlBlock[<span style=color:#3677a9>200</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    xTaskHandle thread_can_router;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint32_t</span> thread_can_router_buffer[<span style=color:#3677a9>512</span>];
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>uint8_t</span> thread_can_router_handlerCtrlBlock[<span style=color:#3677a9>200</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#999;font-style:italic>// Screens
+</span></span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>enum</span> UMDR_dashboard_active_screen active_screen;
+</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>struct</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#6ab825;font-weight:700>struct</span> UMDR_screen_bootup bootup;
+</span></span><span style=display:flex><span>    } screens;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></td></tr></table></div></div><p>This is a WIP module. The <code>xTaskHandle</code> is just a pointer. and the enum has a
+specified size of <code>uint16_t</code>, so it <em>should</em> work&mldr;</p><p>As debugging weird compiler behaviour is not an activity I want to spend leisure
+time on, I would be designing around this limitation of whatever part of the
+compiler this is, by just simply splitting the spoofing & state and maybe
+integrating the complete system as a module in the framework, this way it is
+pure C with C++ style getters/setters (yuck).</p><p><em>How the C++ compiler looks at me after I have the wrong order
+of struct-members (I committed the sin of mixing C and C++):</em></p><p><center><img alt=cpp-compiler-reaction.gif src=https://ayham.xyz/pix/posts/ctrl-a-del-the-cpp-1/cpp-compiler-reaction.7214fb144026ddea74cc0bfc20f6523f.gif integrity="md5-chT7FEAm3ep0zAv8IPZSPw==" crossorigin=anonymous></center></p></article></main><hr><footer><center><div class=footerTable><div style=display:block><p>Unique Visitors:
+<a href=https://www.digits.net target=_blank rel=noopener><img src="https://counter.digits.net/?counter={f115c91c-b3dd-7584-456b-e7a9e52faa74}&template=simple" alt="Hit Counter by Digits" border=0></a></p><p><a href=https://ayham.xyz><img width=88 height=31 src=https://ayham.xyz/pix/webpins/ayhamxyz.6d7f8c95fb6135a73680ad01aa3b523e.gif crossorigin=anonymous integrity="md5-bX+MlfthNac2gK0BqjtSPg==" alt="ayham.xyz webpin"></a></p><p>Last Edited On: 2026-02-24</p></div><div style=display:block><small>CC-BY-SA - 2026</small><br><small><a href=/index.xml>Subscribe via RSS.</a></small><br><small><a href=https://ayham.xyz/details/>Website Details.</a></small>
+<script data-goatcounter=https://ayham.goatcounter.com/count async src=//gc.zgo.at/count.js></script></div></div><center></footer></body></html>

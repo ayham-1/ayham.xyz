@@ -1,0 +1,135 @@
+:root {
+	--genwidth-vlg: 70%;
+	--navwidth-vlg: 80%;
+
+	--genwidth-lg: 85%;
+	--navwidth-lg: 90%;
+
+	--genwidth-md: 95%;
+	--navwidth-md: 95%;
+
+	--genwidth-sm: 100%;
+	--navwidth-sm: 100%;
+}
+
+:root {
+	--bg: #E0E1DD;
+	--altbg: #E0E1DD;
+
+	--fg: #0D1B2A;
+	--altfg: #0D1B2A;
+
+	--links-color: #0D1B2A;
+	--links-highlight: #0D1B2A;
+	--links-underline: #0D1B2A;
+	--links-underline-highlight: #0D1B2A;
+
+	--headings-color: #252422;
+	--headings-underline: #252422;
+}
+
+body {
+	background: var(--bg);
+	color: var(--fg);
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 50px;
+	vertical-align: middle;
+
+	font-family: monospace, sans-serif;
+}
+
+@media (max-width: 750px) {
+	body {
+		max-width: var(--genwidth-sm);
+	}
+}
+
+@media (min-width: 750px) {
+	body {
+		max-width: var(--genwidth-md);
+	}
+}
+
+@media (min-width: 1200px) {
+	body {
+		max-width: calc(var(--genwidth-lg));
+	}
+}
+
+@media (min-width: 1500px) {
+	body {
+		max-width: calc(var(--genwidth-vlg));
+	}
+}
+
+main {
+	margin: 0;
+	padding: 0.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--headings-color);
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-color: var(--headings-underline);
+
+	font-variant: small-caps;
+}
+
+ul h3 { 
+	text-decoration: none;
+}
+
+a {
+	color: var(--links-color);
+	text-decoration: underline;
+	text-decoration-color: var(--links-underline);
+	-webkit-text-decoration-color: var(--links-underline);
+	text-decoration-thickness: auto;
+}
+
+/* show underline on hover */
+a:hover {
+	color: var(--links-highlight);
+	text-decoration: underline;
+	text-decoration-color: var(--links-underline-highlight);
+	-webkit-text-decoration-color: var(--links-underline-highlight);
+}
+
+center > small {
+	color: var(--altfg);
+}
+small > a {
+	text-decoration-style: dashed;
+}
+
+.highlight div,
+.highlight pre {
+	overflow-x: auto;
+}
+
+img {
+	max-width: 100%;
+}
+
+.externalLink {
+	white-space:nowrap;
+	vertical-align:super;
+	text-decoration:none;
+	font-size:8px
+}
+
+ul {
+	padding-left: 1em;
+	margin-left: 0;
+	margin-top: 0;
+}
+
+ul li {
+	text-align: left;
+}
+
+center ul {
+	display: inline-block;
+}
