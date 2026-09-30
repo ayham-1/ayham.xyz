@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	{{- partial "head.html" . -}}
+	{{- partial "header.html" . -}}
 	<body>
+		<main>
 		{{block "main" . }}{{end -}}
-		{{partial "footer.html" . -}}
+		</main>
 	</body>
+	{{partial "footer.html" . -}}
 </html>

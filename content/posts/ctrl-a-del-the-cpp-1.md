@@ -1,5 +1,5 @@
 ---
-title: "Ctrl+A DEL the C++ #1: what is struct memory-alignment?"
+title: "Ctrl+A DEL the C++: what is struct memory-alignment?"
 date: 2025-12-27T19:06:43+01:00
 ---
 

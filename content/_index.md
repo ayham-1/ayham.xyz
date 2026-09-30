@@ -4,7 +4,7 @@ subtitle: "Welcome!"
 date: 2022-05-11T17:00:41+03:00
 ---
 
-##### Skillset
+### Skillset
 
 - Languages (competent, in-order): C, Python, C++, Java
 - Languages (written atleast a project with, in-order): Zig, Bash, Nixlang, Rust, Dart/Kotlin (Android)

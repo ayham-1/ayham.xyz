@@ -1,40 +1,35 @@
 {{- define "main" -}}
-{{- partial "header.html" . -}}
 {{- $projCSS := resources.Get "css/proj.css" | resources.Fingerprint "sha256" -}}
 {{- $projJS := resources.Get "js/proj.js" | resources.Fingerprint "md5" -}}
-<main>
-	<link rel="stylesheet" type="text/css" href="{{ $projCSS.Permalink }}" integrity="{{ $projCSS.Data.Integrity }}" crossorigin="anonymous">
-	<script src="{{ $projJS.Permalink }}" integrity="{{ $projJS.Data.Integrity }}" crossorigin="anonymous"></script>
-	<center><h1>{{- .Params.title -}}</h1></center>
-	{{ .Content }}
-	<br>
-	<center><small><p><i>This page functions visually better with Javascript enabled and viewed on desktop.</i></p></small></center>
-	<br>
-	<center>
-	<div class="proj-grid" onload="load()">
-		{{- range .Pages.GroupByParamDate "creationdate" "2000-12-30" -}}
-		{{- range .Pages -}}
-		{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
-		<div class="proj-grid-item">
-			<div class="proj-grid-item-header">
-				<div class="proj-grid-item-status"><small>{{ .Params.devstatus }}</small></div>
-				<div class="proj-grid-item-projlink"><small>
-					<a href="{{ .Params.projlink | safeURL }}" target="_blank">Link</a><span class="externalLink">🔗</span></small>
-				</div>
+<link rel="stylesheet" type="text/css" href="{{ $projCSS.Permalink }}" integrity="{{ $projCSS.Data.Integrity }}" crossorigin="anonymous">
+<script src="{{ $projJS.Permalink }}" integrity="{{ $projJS.Data.Integrity }}" crossorigin="anonymous"></script>
+<h1>{{- .Params.title -}}</h1>
+{{ .Content }}
+<hr>
+<div class="proj-items">
+	{{- range .Pages.GroupByParamDate "creationdate" "30.12.2000" -}}
+	{{- range .Pages -}}
+	{{- $image := resources.Get (printf "%s" (.Params.img | safeURL)) | resources.Fingerprint "md5" -}}
+	<div class="proj-item">
+		<div class="proj-item-card">
+			<div class="proj-image-wrapper">
+				<img class="proj-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
 			</div>
-			<div class="proj-grid-item-card">
-				<h3 class="proj-grid-item-title">{{ .Title }}</h3>
-				<img class="proj-grid-item-image" alt="{{- $image.Permalink | htmlUnescape -}}" src="{{- $image.Permalink -}}" integrity="{{ $image.Data.Integrity }}" crossorigin="anonymous">
+			<div class="proj-item-info">
+				<h3 class="proj-item-title">{{ .Title }}</h3>
+				<div class="proj-item-projlink"><small>
+					<a href="{{ .Params.projlink | safeURL }}" target="_blank">Link</a><span class="externalLink">🔗</span>
+				</small></div>
+				<div class="proj-item-status"><small>Status: {{ .Params.devstatus }}</small></div>
+
 				<div class="proj-grid-item-text">{{ .Content }}</div>
-			</div>
-			<div class="proj-grid-item-footer">
-				<div class="proj-grid-item-lastupdate"><small>Latest: {{ .Params.lastupdate }}</small></div>
-				<div class="proj-grid-item-creationdate"><small>Creation: {{ .Params.creationdate }}</small></div>
+
+				<div class="proj-item-lastupdate"><small>Latest: {{ .Params.lastupdate }}</small></div>
+				<div class="proj-item-creationdate"><small>Creation: {{ .Params.creationdate }}</small></div>
 			</div>
 		</div>
-		{{- end -}}
-		{{- end -}}
 	</div>
-	</center>
-</main>
+	{{- end -}}
+	{{- end -}}
+</div>
 {{ end }}

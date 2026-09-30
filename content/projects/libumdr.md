@@ -1,9 +1,9 @@
 ---
 title: "libumdr"
 params:
-    devstatus: "Active"
+    devstatus: "Abondoned"
     projlink: "closed-source"
-    lastupdate: "*"
+    lastupdate: "2026-08-01"
     creationdate: "2025-04-17"
     img: "pix/proj/libumdr.webp"
 ---

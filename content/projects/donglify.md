@@ -1,7 +1,7 @@
 ---
 title: "donglify"
 params:
-    devstatus: "Active"
+    devstatus: "Archived"
     projlink: "https://github.com/ayham-1/donglify"
     lastupdate: "*"
     creationdate: "2024-01-01"

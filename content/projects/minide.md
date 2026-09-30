@@ -1,7 +1,7 @@
 ---
 title: "minide"
 params:
-    devstatus: "Active"
+    devstatus: "Archived"
     projlink: "https://github.com/ayham-1/minide"
     lastupdate: "*"
     creationdate: "2023-08-26"

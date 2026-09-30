@@ -9,7 +9,7 @@ date = [":git","date", "publishDate", "lastmod"]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 rssLimit = 20
-copyright = "(c) 2025 ayham"
+copyright = "CC-BY-SA"
 
 [params.author]
 	name = "ayham"

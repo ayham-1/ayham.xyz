@@ -1,12 +1,9 @@
 {{- define "main" -}}
-{{- partial "header.html" . -}}
 {{- $libraryCSS := resources.Get "css/library.css" | resources.Fingerprint "md5" -}}
-<main>
 	<link rel="stylesheet" type="text/css" href="{{ $libraryCSS.Permalink }}" integrity="{{ $libraryCSS.Data.Integrity }}" crossorigin="anonymous">
 	<center>
 		<h1>{{- .Params.title -}}</h1>
 		<h3>{{- .Params.subtitle -}}</h3>
 	</center>
 	{{ .Content }}
-</main>
 {{ end }}
