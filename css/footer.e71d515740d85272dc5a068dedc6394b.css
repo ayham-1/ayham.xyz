@@ -1,0 +1,26 @@
+footer {
+	text-align: center ;
+    
+	font-variant: small-caps ;
+	clear: both ;
+	color: var(--altfg);
+	background: var(--altbg);
+	max-width: var(--genwidth);
+	display: block;
+	margin: auto;
+	padding: 0.5em;
+
+    max-width: var(--genwidth);
+}
+
+.footerTable {
+	display: grid;
+	grid-template-rows: 50% 50%;
+	justify-content: center;
+}
+
+@media screen and (min-width: 40em) {
+	.footerTable {
+		grid-template-columns: 50% 50%;
+	}
+}

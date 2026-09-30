@@ -1,0 +1,112 @@
+:root {
+}
+
+.proj-items {
+    max-width: 80%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.proj-item {
+    border-bottom: 1px solid #000000; 
+    padding-bottom: 1.5rem;             
+    margin-bottom: 1.5rem;              
+}
+
+.proj-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Card hugs its content tightly and aligns to the top */
+.proj-item-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+}
+
+/* --- Odd Items: Image on Left, Text on Right --- */
+.proj-item:nth-child(odd) .proj-item-card {
+    flex-direction: row;
+}
+.proj-item:nth-child(odd) .proj-item-info {
+    text-align: left;
+}
+
+/* --- Even Items: Image on Right, Text on Left --- */
+.proj-item:nth-child(even) .proj-item-card {
+    flex-direction: row-reverse;
+}
+.proj-item:nth-child(even) .proj-item-info {
+    text-align: right;
+}
+
+.proj-image-wrapper {
+    flex: 0 0 33%;
+    max-width: 33%;
+    height: 180px; /* Reduced slightly for a more compact card look */
+    position: relative;
+}
+
+.proj-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.proj-item-image:hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #ffffff; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.proj-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Removed space-between so elements stack naturally instead of forcing card height */
+    gap: 0.5rem; 
+}
+
+/* --- CRITICAL FIX FOR HUGO CONTENT BLOAT --- */
+/* Removes default browser margins from paragraphs inside your markdown content */
+.proj-grid-item-text p {
+    margin: 0 0 0.5rem 0;
+}
+.proj-grid-item-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Hide empty footer wrappers so they don't add dead space */
+.proj-item-footer:empty {
+    display: none;
+}
+
+/* Optional: Stack vertically on mobile screens */
+@media (max-width: 768px) {
+    .proj-item-card,
+    .proj-item:nth-child(even) .proj-item-card {
+        flex-direction: column !important;
+        text-align: left !important;
+    }
+    
+    .proj-image-wrapper {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 200px;
+    }
+}
